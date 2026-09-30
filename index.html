@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Analisi 1 — esercitazioni visuali e interattive per il corso della Sapienza." />
+    <meta name="description" content="Analisi 1 — materiale didattico ed esercitazioni interattive per il corso della Sapienza." />
     <meta name="theme-color" content="#822433" />
     <title>Analisi 1 · Lezione 01</title>
     <link rel="stylesheet" href="styles.css" />
@@ -17,7 +17,7 @@
           <span class="brand-mark" aria-hidden="true">Σ</span>
           <span>
             <strong>Analisi 1</strong>
-            <small>Sapienza · esercitazioni</small>
+            <small>Sapienza · Analisi 1</small>
           </span>
         </a>
         <div class="header-meta">
@@ -32,7 +32,7 @@
           <p class="kicker"><span class="kicker-dot"></span> Lezione 01 · esercitazione</p>
           <h1>Grafici di funzione<br /><em>e trasformazioni.</em></h1>
           <p class="lesson-meta"><strong>Lezione 2 ottobre 2026</strong><br />Prof.ssa Anna Livia Croella</p>
-          <p class="hero-lede">Grafici, trasformazioni, funzioni composte, modulo ed estremi: una prima cassetta degli attrezzi per vedere la struttura dietro la formula.</p>
+          <p class="hero-lede">Grafici di funzione, trasformazioni, funzioni composte, modulo ed estremi: richiami teorici ed esercitazioni interattive sui principali concetti della lezione.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#grafici">Apri l'esercitazione <span aria-hidden="true">↓</span></a>
             <a class="button button-quiet" href="lezione-01.pdf" download>Scarica la lezione <span aria-hidden="true">↓</span></a>
@@ -41,7 +41,7 @@
         <div class="hero-card" aria-label="Mappa dei contenuti della lezione">
           <div class="hero-card-top">
             <span class="status-dot"></span>
-            <span>Oggi in aula</span>
+            <span>Contenuti della lezione</span>
             <span class="hero-card-number">01 / 14</span>
           </div>
           <div class="hero-equation" aria-hidden="true">
@@ -62,15 +62,15 @@
         <div class="section-heading compact-heading">
           <div>
             <p class="kicker">Il percorso</p>
-            <h2 id="percorso-title">Una lezione alla volta.</h2>
+            <h2 id="percorso-title">Struttura del corso.</h2>
           </div>
-          <p class="heading-note">La teoria viene introdotta a lezione. Qui si visualizza, si prova, si controlla.</p>
+          <p class="heading-note">La teoria viene introdotta a lezione; questa pagina propone visualizzazioni, esercizi e verifiche.</p>
         </div>
         <div class="lesson-rail" aria-label="Lezioni del corso">
-          <button class="lesson-step active" type="button" data-scroll="#grafici"><span>01</span><strong>Grafici</strong><small>oggi</small></button>
-          <button class="lesson-step" type="button" disabled><span>02</span><strong>Limiti</strong><small>prossima</small></button>
-          <button class="lesson-step" type="button" disabled><span>03</span><strong>Continuità</strong><small>in arrivo</small></button>
-          <button class="lesson-step" type="button" disabled><span>04</span><strong>Derivate</strong><small>in arrivo</small></button>
+          <button class="lesson-step active" type="button" data-scroll="#grafici"><span>01</span><strong>Grafici</strong><small>in corso</small></button>
+          <button class="lesson-step" type="button" disabled><span>02</span><strong>Limiti</strong><small>successiva</small></button>
+          <button class="lesson-step" type="button" disabled><span>03</span><strong>Continuità</strong><small>prossimamente</small></button>
+          <button class="lesson-step" type="button" disabled><span>04</span><strong>Derivate</strong><small>prossimamente</small></button>
           <span class="lesson-more">… altre 10 lezioni</span>
         </div>
       </section>
@@ -78,8 +78,8 @@
       <section class="section-shell theory-grid" id="teoria" aria-labelledby="teoria-title">
         <div class="section-heading">
           <div>
-            <p class="kicker">Prima di iniziare</p>
-            <h2 id="teoria-title">Quattro idee da tenere insieme.</h2>
+            <p class="kicker">Richiami teorici</p>
+            <h2 id="teoria-title">Sintesi dei concetti fondamentali.</h2>
           </div>
           <p class="heading-note">Sintesi operativa dei paragrafi su funzioni, composte, modulo ed estremi.</p>
         </div>
@@ -114,10 +114,10 @@
       <section class="section-shell lab-section" id="grafici" aria-labelledby="grafici-title">
         <div class="section-heading">
           <div>
-            <p class="kicker">Esercitazione 01 · muovi i parametri</p>
-            <h2 id="grafici-title">Trasformare un grafico.</h2>
+            <p class="kicker">Esercitazione 01 · trasformazioni grafiche</p>
+            <h2 id="grafici-title">Trasformazioni del grafico di una funzione.</h2>
           </div>
-          <p class="heading-note">Scegli una funzione base e osserva cosa succede a <span class="math">g(x) = A · f(B(x − h)) + k</span>.</p>
+          <p class="heading-note">Seleziona una funzione di riferimento e analizza la trasformazione <span class="math">g(x) = A · f(B(x − h)) + k</span>.</p>
         </div>
 
         <div class="lab-card graph-lab">
@@ -167,47 +167,47 @@
       <section class="section-shell split-labs" id="composizione" aria-labelledby="composizione-title">
         <div class="section-heading">
           <div>
-            <p class="kicker">Esercitazione 02 · ordine delle operazioni</p>
-            <h2 id="composizione-title">Una funzione dentro l’altra.</h2>
+            <p class="kicker">Esercitazione 02 · composizione di funzioni</p>
+            <h2 id="composizione-title">Composizione di funzioni.</h2>
           </div>
-          <p class="heading-note">La composizione è una catena: l’uscita di <span class="math">g</span> deve poter entrare nel dominio di <span class="math">f</span>.</p>
+          <p class="heading-note">La composizione applica prima <span class="math">g</span> e poi <span class="math">f</span>; l’immagine di <span class="math">g</span> deve appartenere al dominio di <span class="math">f</span>.</p>
         </div>
 
         <div class="lab-card composition-lab">
           <div class="composition-topline">
             <div>
-              <span class="mini-label">Scegli un esempio</span>
+              <span class="mini-label">Seleziona un esempio</span>
               <select id="composition-example">
                 <option value="sqrt-square">f(u) = √u · g(x) = x² − 1</option>
                 <option value="square-shift">f(u) = u² · g(x) = x + 1</option>
                 <option value="abs-linear">f(u) = |u| · g(x) = 2x − 3</option>
               </select>
             </div>
-            <button class="swap-button" id="swap-composition" type="button">Inverti f e g ↔</button>
+            <button class="swap-button" id="swap-composition" type="button">Scambia f e g ↔</button>
           </div>
           <div class="composition-stage">
-            <div class="function-node node-g"><span class="node-label">prima</span><strong id="composition-g">g(x) = x² − 1</strong><small>porta x in u</small></div>
+            <div class="function-node node-g"><span class="node-label">1ª applicazione</span><strong id="composition-g">g(x) = x² − 1</strong><small>da x a u</small></div>
             <div class="stage-arrow"><span>g(x)</span><b>→</b></div>
-            <div class="function-node node-f"><span class="node-label">poi</span><strong id="composition-f">f(u) = √u</strong><small>porta u in y</small></div>
+            <div class="function-node node-f"><span class="node-label">2ª applicazione</span><strong id="composition-f">f(u) = √u</strong><small>da u a y</small></div>
             <div class="stage-arrow"><span>f(g(x))</span><b>→</b></div>
             <div class="result-node"><span class="node-label">risultato</span><strong id="composition-result">√(x² − 1)</strong><small id="composition-domain">dominio: x ≤ −1 oppure x ≥ 1</small></div>
           </div>
           <div class="composition-check">
-            <label for="composition-x">Prova un valore di x</label>
+            <label for="composition-x">Valuta la composizione in x</label>
             <input id="composition-x" type="number" value="2" step="0.5" />
             <output id="composition-output">g(2) = 3 · f(3) = √3 ≈ 1.73</output>
           </div>
-          <p class="interaction-note">Nota: in generale <span class="math">f ∘ g ≠ g ∘ f</span>. Premi “Inverti f e g” per vedere l’ordine opposto e il nuovo dominio.</p>
+          <p class="interaction-note">In generale <span class="math">f ∘ g ≠ g ∘ f</span>. Usa “Scambia f e g” per esaminare l’ordine opposto e il relativo dominio.</p>
         </div>
       </section>
 
       <section class="section-shell number-lab-section" id="modulo" aria-labelledby="modulo-title">
         <div class="section-heading">
           <div>
-            <p class="kicker">Esercitazione 03 · distanza sulla retta</p>
-            <h2 id="modulo-title">Il modulo è una distanza.</h2>
+            <p class="kicker">Esercitazione 03 · interpretazione geometrica</p>
+            <h2 id="modulo-title">Interpretazione geometrica del modulo.</h2>
           </div>
-          <p class="heading-note">Modifica centro e raggio. La disequazione si traduce immediatamente in un intervallo.</p>
+          <p class="heading-note">Varia centro e raggio per rappresentare geometricamente la disequazione come intervallo.</p>
         </div>
         <div class="lab-card number-lab">
           <div class="number-controls">
@@ -229,10 +229,10 @@
       <section class="section-shell quiz-section" id="esercizi" aria-labelledby="esercizi-title">
         <div class="section-heading">
           <div>
-            <p class="kicker">Autoverifica · 5 minuti</p>
-            <h2 id="esercizi-title">Ora tocca a te.</h2>
+            <p class="kicker">Verifica formativa</p>
+            <h2 id="esercizi-title">Esercizi di verifica.</h2>
           </div>
-          <p class="heading-note">Scegli una risposta e controlla il ragionamento. Non serve indovinare: serve motivare.</p>
+          <p class="heading-note">Seleziona una risposta e verifica il procedimento mediante le definizioni e le proprietà richiamate.</p>
         </div>
         <div class="quiz-grid">
           <article class="quiz-card" data-answer="c">
@@ -274,13 +274,13 @@
       <section class="section-shell closing-section" aria-labelledby="chiusura-title">
         <div class="closing-card">
           <div>
-            <p class="kicker">Da portare via</p>
-            <h2 id="chiusura-title">Formula → dominio → grafico → controllo.</h2>
+            <p class="kicker">Sintesi metodologica</p>
+            <h2 id="chiusura-title">Formula → dominio → grafico → verifica.</h2>
           </div>
           <div class="closing-list">
-            <span><b>1</b> Individua il dominio naturale.</span>
-            <span><b>2</b> Scomponi la formula in mosse semplici.</span>
-            <span><b>3</b> Usa il grafico per verificare sup, inf e soluzioni.</span>
+            <span><b>1</b> Determina il dominio naturale.</span>
+            <span><b>2</b> Scomponi la formula in trasformazioni elementari.</span>
+            <span><b>3</b> Utilizza il grafico per verificare estremi e soluzioni.</span>
           </div>
         </div>
       </section>
