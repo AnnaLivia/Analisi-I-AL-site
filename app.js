@@ -145,20 +145,20 @@
 
   const compositions = {
     'sqrt-square': {
-      f: 'f(u) = √u', g: 'g(x) = x² − 1', result: '√(x² − 1)',
+      f: 'f(x) = √x', g: 'g(x) = x² − 1', result: '√(x² − 1)',
       domain: 'dominio: x ≤ −1 oppure x ≥ 1',
       forward: (x) => ({ inner: x * x - 1, value: Math.sqrt(x * x - 1), innerText: fmt(x * x - 1), valueText: `√${fmt(x * x - 1)} ≈ ${fmt(Math.sqrt(x * x - 1))}` }),
-      reverse: { f: 'f(u) = u² − 1', g: 'g(x) = √x', result: 'x − 1', domain: 'dominio: x ≥ 0', calc: (x) => ({ inner: Math.sqrt(x), value: Math.sqrt(x) ** 2 - 1, innerText: `√${fmt(x)}`, valueText: `${fmt(x)} − 1 = ${fmt(x - 1)}` }) }
+      reverse: { f: 'f(x) = x² − 1', g: 'g(x) = √x', result: 'x − 1', domain: 'dominio: x ≥ 0', calc: (x) => ({ inner: Math.sqrt(x), value: Math.sqrt(x) ** 2 - 1, innerText: `√${fmt(x)}`, valueText: `${fmt(x)} − 1 = ${fmt(x - 1)}` }) }
     },
     'square-shift': {
-      f: 'f(u) = u²', g: 'g(x) = x + 1', result: '(x + 1)²', domain: 'dominio: ℝ',
+      f: 'f(x) = x²', g: 'g(x) = x + 1', result: '(x + 1)²', domain: 'dominio: ℝ',
       forward: (x) => ({ inner: x + 1, value: (x + 1) ** 2, innerText: fmt(x + 1), valueText: `(${fmt(x)} + 1)² = ${fmt((x + 1) ** 2)}` }),
-      reverse: { f: 'f(u) = u + 1', g: 'g(x) = x²', result: 'x² + 1', domain: 'dominio: ℝ', calc: (x) => ({ inner: x * x, value: x * x + 1, innerText: fmt(x * x), valueText: `${fmt(x * x)} + 1 = ${fmt(x * x + 1)}` }) }
+      reverse: { f: 'f(x) = x + 1', g: 'g(x) = x²', result: 'x² + 1', domain: 'dominio: ℝ', calc: (x) => ({ inner: x * x, value: x * x + 1, innerText: fmt(x * x), valueText: `${fmt(x * x)} + 1 = ${fmt(x * x + 1)}` }) }
     },
     'abs-linear': {
-      f: 'f(u) = |u|', g: 'g(x) = 2x − 3', result: '|2x − 3|', domain: 'dominio: ℝ',
+      f: 'f(x) = |x|', g: 'g(x) = 2x − 3', result: '|2x − 3|', domain: 'dominio: ℝ',
       forward: (x) => ({ inner: 2 * x - 3, value: Math.abs(2 * x - 3), innerText: fmt(2 * x - 3), valueText: `|${fmt(2 * x - 3)}| = ${fmt(Math.abs(2 * x - 3))}` }),
-      reverse: { f: 'f(u) = 2u − 3', g: 'g(x) = |x|', result: '2|x| − 3', domain: 'dominio: ℝ', calc: (x) => ({ inner: Math.abs(x), value: 2 * Math.abs(x) - 3, innerText: `|${fmt(x)}|`, valueText: `2 · ${fmt(Math.abs(x))} − 3 = ${fmt(2 * Math.abs(x) - 3)}` }) }
+      reverse: { f: 'f(x) = 2x − 3', g: 'g(x) = |x|', result: '2|x| − 3', domain: 'dominio: ℝ', calc: (x) => ({ inner: Math.abs(x), value: 2 * Math.abs(x) - 3, innerText: `|${fmt(x)}|`, valueText: `2 · ${fmt(Math.abs(x))} − 3 = ${fmt(2 * Math.abs(x) - 3)}` }) }
     }
   };
   let compositionSwapped = false;

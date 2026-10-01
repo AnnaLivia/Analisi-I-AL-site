@@ -35,8 +35,7 @@
           <p class="hero-lede">Funzioni, operazioni, parte positiva e negativa, modulo, periodicità e composizione: richiami teorici ed esercitazioni interattive sui principali concetti della lezione.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#operazioni">Apri l'esercitazione <span aria-hidden="true">↓</span></a>
-            <a class="button button-quiet" href="https://fabiofurini.github.io/mathematical-analysis-1/interactive/" target="_blank" rel="noopener noreferrer">Materiale interattivo esterno <span aria-hidden="true">↗</span></a>
-            <a class="button button-quiet" href="lim/">Esportazione LIM · in preparazione <span aria-hidden="true">↗</span></a>
+            <button class="button button-quiet button-disabled" type="button" disabled>Esportazione LIM</button>
           </div>
         </div>
         <div class="hero-card" aria-label="Mappa dei contenuti della lezione">
@@ -102,7 +101,7 @@
             <span class="card-index">03</span>
             <h3>Segno</h3>
             <p><span class="math">f⁺=max(f,0)</span> e <span class="math">f⁻=max(−f,0)</span> separano le parti positiva e negativa di una funzione.</p>
-            <div class="card-tag"><span class="math">f=f⁺−f⁻</span> · <span class="math">|f|=f⁺+f⁻</span></div>
+            <div class="card-tag"><span class="math">|f|=f⁺+f⁻</span></div>
           </article>
           <article class="theory-card accent-red-soft">
             <span class="card-index">04</span>
@@ -192,17 +191,17 @@
             <div>
               <span class="mini-label">Seleziona un esempio</span>
               <select id="composition-example">
-                <option value="sqrt-square">f(u) = √u · g(x) = x² − 1</option>
-                <option value="square-shift">f(u) = u² · g(x) = x + 1</option>
-                <option value="abs-linear">f(u) = |u| · g(x) = 2x − 3</option>
+                <option value="sqrt-square">f(x) = √x · g(x) = x² − 1</option>
+                <option value="square-shift">f(x) = x² · g(x) = x + 1</option>
+                <option value="abs-linear">f(x) = |x| · g(x) = 2x − 3</option>
               </select>
             </div>
             <button class="swap-button" id="swap-composition" type="button">Scambia f e g ↔</button>
           </div>
           <div class="composition-stage">
-            <div class="function-node node-g"><span class="node-label">1ª applicazione</span><strong id="composition-g">g(x) = x² − 1</strong><small>da x a u</small></div>
+            <div class="function-node node-g"><span class="node-label">1ª applicazione</span><strong id="composition-g">g(x) = x² − 1</strong><small>applicazione di g</small></div>
             <div class="stage-arrow"><span>g(x)</span><b>→</b></div>
-            <div class="function-node node-f"><span class="node-label">2ª applicazione</span><strong id="composition-f">f(u) = √u</strong><small>da u a y</small></div>
+            <div class="function-node node-f"><span class="node-label">2ª applicazione</span><strong id="composition-f">f(x) = √x</strong><small>applicazione di f</small></div>
             <div class="stage-arrow"><span>f(g(x))</span><b>→</b></div>
             <div class="result-node"><span class="node-label">risultato</span><strong id="composition-result">√(x² − 1)</strong><small id="composition-domain">dominio: x ≤ −1 oppure x ≥ 1</small></div>
           </div>
@@ -242,7 +241,7 @@
                 <option value="absolute">|f(x)|</option>
               </select>
             </div>
-            <div class="sign-equation"><span class="math">f = f⁺ − f⁻</span><strong id="sign-formula">f(x) = 1 − x²</strong></div>
+            <div class="sign-equation"><span class="math">|f| = f⁺ + f⁻</span><strong id="sign-formula">f(x) = 1 − x²</strong></div>
           </div>
           <div class="sign-canvas-wrap"><canvas id="sign-canvas" aria-label="Grafico interattivo della funzione e delle sue parti positiva, negativa e del modulo"></canvas></div>
           <p class="interaction-note">La parte negativa viene annullata in <span class="math">f⁺</span>; in <span class="math">f⁻</span> viene cambiato di segno; in <span class="math">|f|</span> viene riflessa sopra l’asse x.</p>
@@ -255,7 +254,7 @@
             <p class="kicker">Esercitazione 04 · periodicità</p>
             <h2 id="periodicita-title">Funzioni periodiche.</h2>
           </div>
-          <p class="heading-note">Varia il parametro <span class="math">B</span> e osserva il periodo di <span class="math">f_B(x)=sin(Bx)</span>.</p>
+          <p class="heading-note">Varia il parametro <span class="math">B</span> e osserva il periodo di <span class="math">f(x)=sin(Bx)</span>.</p>
         </div>
         <div class="lab-card periodic-lab">
           <div class="periodic-controls">
@@ -263,7 +262,7 @@
               <div class="label-row"><label for="period-frequency">B · frequenza</label><output id="period-frequency-value">1</output></div>
               <input id="period-frequency" type="range" min="0.5" max="4" step="0.5" value="1" />
             </div>
-            <div class="periodic-equation"><span class="math">f_B(x)=sin(Bx)</span><strong id="period-value">T = 2π</strong></div>
+            <div class="periodic-equation"><span class="math">f(x)=sin(Bx)</span><strong id="period-value">T = 2π</strong></div>
           </div>
           <div class="periodic-canvas-wrap"><canvas id="periodic-canvas" aria-label="Grafico interattivo di una funzione sinusoidale periodica"></canvas></div>
           <p class="interaction-note">Per <span class="math">B ≠ 0</span>, il periodo fondamentale è <span class="math">T = 2π/|B|</span>.</p>
@@ -323,6 +322,28 @@
             </div>
             <p class="quiz-feedback" aria-live="polite"></p>
           </article>
+          <article class="quiz-card" data-answer="c">
+            <span class="quiz-number">05</span>
+            <h3>Parte positiva</h3>
+            <p>Quale definizione è corretta per la parte positiva di <span class="math">f</span>?</p>
+            <div class="quiz-options">
+              <button type="button" data-choice="a">A · f⁺(x)=max(−f(x),0)</button>
+              <button type="button" data-choice="b">B · f⁺(x)=f(x)−f⁻(x)</button>
+              <button type="button" data-choice="c">C · f⁺(x)=max(f(x),0)</button>
+            </div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="b">
+            <span class="quiz-number">06</span>
+            <h3>Periodicità</h3>
+            <p>Qual è il periodo fondamentale di <span class="math">f(x)=sin(2x)</span>?</p>
+            <div class="quiz-options">
+              <button type="button" data-choice="a">A · 2π</button>
+              <button type="button" data-choice="b">B · π</button>
+              <button type="button" data-choice="c">C · 4π</button>
+            </div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </article>
         </div>
       </section>
 
@@ -337,6 +358,17 @@
             <span><b>2</b> Applica l’operazione e analizza il segno della funzione.</span>
             <span><b>3</b> Verifica periodicità, modulo e composizione.</span>
           </div>
+        </div>
+      </section>
+
+      <section class="section-shell resource-section" id="risorse" aria-labelledby="risorse-title">
+        <div class="resource-card">
+          <div>
+            <p class="kicker">Materiale aggiuntivo</p>
+            <h2 id="risorse-title">Risorse interattive.</h2>
+            <p>Materiale supplementare per la visualizzazione e l'esplorazione dei concetti.</p>
+          </div>
+          <a class="button button-quiet" href="https://fabiofurini.github.io/mathematical-analysis-1/interactive/" target="_blank" rel="noopener noreferrer">Apri il materiale interattivo <span aria-hidden="true">↗</span></a>
         </div>
       </section>
     </main>
