@@ -12,7 +12,7 @@
   const graphCanvas = $('#graph-canvas');
   const graphPanel = $('.canvas-wrap');
   const graphCtx = graphCanvas.getContext('2d');
-  const graphState = { base: 'square', A: 1, B: 1, h: 0, k: 0, scale: 34, xMin: -6, xMax: 6, yMin: -5, yMax: 5 };
+  const graphState = { base: 'square', A: 1, B: 1, x0: 0, k: 0, scale: 34, xMin: -6, xMax: 6, yMin: -5, yMax: 5 };
   const baseFunctions = {
     square: { label: 'x²', fn: (x) => x * x },
     abs: { label: '|x|', fn: (x) => Math.abs(x) },
@@ -45,7 +45,7 @@
     const toPx = (x, y) => [ox + x * s, oy - y * s];
     const fn = baseFunctions[graphState.base].fn;
     const transformed = (x) => {
-      const inner = graphState.B * (x - graphState.h);
+      const inner = graphState.B * (x - graphState.x0);
       const value = fn(inner);
       return graphState.A * value + graphState.k;
     };
@@ -99,9 +99,9 @@
     const base = baseFunctions[graphState.base].label;
     const A = graphState.A;
     const B = graphState.B;
-    const h = graphState.h;
+    const x0 = graphState.x0;
     const k = graphState.k;
-    const inner = B === 1 ? (h === 0 ? 'x' : `(x ${h > 0 ? '−' : '+'} ${Math.abs(h)})`) : `${fmt(B)}(x ${h > 0 ? '−' : '+'} ${Math.abs(h)})`;
+    const inner = B === 1 ? (x0 === 0 ? 'x' : `(x ${x0 > 0 ? '−' : '+'} ${Math.abs(x0)})`) : `${fmt(B)}(x ${x0 > 0 ? '−' : '+'} ${Math.abs(x0)})`;
     const outside = `${A === 1 ? '' : A === -1 ? '−' : fmt(A)}f(${inner})`;
     const shift = k === 0 ? '' : ` ${k > 0 ? '+' : '−'} ${Math.abs(k)}`;
     return `g(x) = ${outside}${shift}  ·  f(x) = ${base}`;
@@ -111,11 +111,11 @@
     graphState.base = $('#base-function').value;
     graphState.A = Number($('#vertical-scale').value);
     graphState.B = Number($('#horizontal-scale').value);
-    graphState.h = Number($('#horizontal-shift').value);
+    graphState.x0 = Number($('#horizontal-shift').value);
     graphState.k = Number($('#vertical-shift').value);
     $('#vertical-scale-value').textContent = fmt(graphState.A);
     $('#horizontal-scale-value').textContent = fmt(graphState.B);
-    $('#horizontal-shift-value').textContent = fmt(graphState.h);
+    $('#horizontal-shift-value').textContent = fmt(graphState.x0);
     $('#vertical-shift-value').textContent = fmt(graphState.k);
     $('#transformed-formula').textContent = formulaText();
     drawGraph();
