@@ -96,7 +96,7 @@ h2 { margin-bottom: 0; font-size: clamp(2.2rem, 4vw, 4rem); line-height: 1; }
 .lesson-more { padding-left: .5rem; color: var(--ink-soft); white-space: nowrap; font-size: .82rem; }
 
 .theory-grid { border-top: 1px solid var(--line); }
-.theory-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--line); }
+.theory-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--line); }
 .theory-card { min-height: 290px; padding: 1.5rem; background: var(--card); border-top: 4px solid transparent; }
 .theory-card.accent-red { border-top-color: var(--sapienza-red); }
 .theory-card.accent-gold { border-top-color: var(--sapienza-gold); }
@@ -130,6 +130,15 @@ input[type="range"] { width: 100%; height: 4px; margin: .8rem 0 0; accent-color:
 canvas { display: block; width: 100%; height: 100%; }
 .canvas-readout { position: absolute; right: .7rem; top: .7rem; padding: .35rem .55rem; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 6px; background: rgba(255,255,255,.88); font: .72rem var(--serif); pointer-events: none; }
 .interaction-note { margin: .9rem 0 0; color: var(--ink-soft); font-size: .77rem; }
+
+.sign-section, .periodic-section { border-top: 1px solid var(--line); }
+.sign-lab, .periodic-lab { padding: 1.4rem; }
+.sign-controls, .periodic-controls { display: grid; grid-template-columns: 1fr 1fr 1.35fr; align-items: end; gap: 1.4rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--line); }
+.sign-equation, .periodic-equation { padding: .8rem 1rem; border-radius: 9px; background: var(--sapienza-red-pale); }
+.sign-equation span, .sign-equation strong, .periodic-equation span, .periodic-equation strong { display: block; }
+.sign-equation span, .periodic-equation span { color: var(--ink-soft); font-size: .8rem; }
+.sign-equation strong, .periodic-equation strong { margin-top: .25rem; color: var(--sapienza-red); font: 1.15rem var(--serif); font-weight: 400; }
+.sign-canvas-wrap, .periodic-canvas-wrap { height: 330px; padding-top: 1rem; }
 
 .split-labs { padding-bottom: 3.5rem; }
 .composition-lab { padding: 1.4rem; }
@@ -198,6 +207,6 @@ canvas { display: block; width: 100%; height: 100%; }
   .header-inner, .section-shell, .footer-inner { width: min(100% - 30px, 1180px); }.header-inner { min-height: 68px; }.header-meta { gap: .7rem; }.eyebrow { display: none; }
   .hero { padding-top: 3.5rem; }.hero-lede { font-size: 1rem; }.hero-equation { min-height: 155px; }.topic-grid { font-size: .72rem; }
   .section-shell { padding-top: 3.5rem; padding-bottom: 3.5rem; }.section-heading { display: block; }.heading-note { margin-top: 1rem; }.theory-cards { grid-template-columns: 1fr; }.theory-card { min-height: 0; }
-  .lab-controls, .number-controls { grid-template-columns: 1fr; }.canvas-wrap { min-height: 360px; }.composition-topline, .composition-check { display: block; }.swap-button { margin-top: .8rem; }.composition-check input { margin: .6rem .4rem .6rem 0; }.composition-check output { display: block; margin: 0; }
+  .lab-controls, .number-controls, .sign-controls, .periodic-controls { grid-template-columns: 1fr; }.canvas-wrap { min-height: 360px; }.sign-canvas-wrap, .periodic-canvas-wrap { height: 280px; }.composition-topline, .composition-check { display: block; }.swap-button { margin-top: .8rem; }.composition-check input { margin: .6rem .4rem .6rem 0; }.composition-check output { display: block; margin: 0; }
   .number-line-wrap { height: 165px; }.footer-inner { flex-direction: column; }
 }

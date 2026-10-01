@@ -30,11 +30,11 @@
       <section class="hero section-shell" id="top">
         <div class="hero-copy">
           <p class="kicker"><span class="kicker-dot"></span> Lezione 01 · esercitazione</p>
-          <h1>Grafici di funzione<br /><em>e trasformazioni.</em></h1>
+          <h1>Funzioni<br /><em>e operazioni.</em></h1>
           <p class="lesson-meta"><strong>Lezione 2 ottobre 2026</strong><br />Prof.ssa Anna Livia Croella</p>
-          <p class="hero-lede">Grafici di funzione, trasformazioni, funzioni composte, modulo ed estremi: richiami teorici ed esercitazioni interattive sui principali concetti della lezione.</p>
+          <p class="hero-lede">Funzioni, operazioni, parte positiva e negativa, modulo, periodicità e composizione: richiami teorici ed esercitazioni interattive sui principali concetti della lezione.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#grafici">Apri l'esercitazione <span aria-hidden="true">↓</span></a>
+            <a class="button button-primary" href="#operazioni">Apri l'esercitazione <span aria-hidden="true">↓</span></a>
             <a class="button button-quiet" href="lezione-01.pdf" download>Scarica la lezione <span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -50,10 +50,11 @@
             <span>f(g(x))</span>
           </div>
           <div class="topic-grid">
-            <span><b>01</b> Grafici</span>
-            <span><b>02</b> Composizione</span>
-            <span><b>03</b> Modulo</span>
-            <span><b>04</b> sup / inf</span>
+            <span><b>01</b> Funzioni</span>
+            <span><b>02</b> Operazioni</span>
+            <span><b>03</b> Composizione</span>
+            <span><b>04</b> Segno e modulo</span>
+            <span><b>05</b> Periodicità</span>
           </div>
         </div>
       </section>
@@ -67,7 +68,7 @@
           <p class="heading-note">La teoria viene introdotta a lezione; questa pagina propone visualizzazioni, esercizi e verifiche.</p>
         </div>
         <div class="lesson-rail" aria-label="Lezioni del corso">
-          <button class="lesson-step active" type="button" data-scroll="#grafici"><span>01</span><strong>Grafici</strong><small>in corso</small></button>
+          <button class="lesson-step active" type="button" data-scroll="#operazioni"><span>01</span><strong>Funzioni</strong><small>in corso</small></button>
           <button class="lesson-step" type="button" disabled><span>02</span><strong>Limiti</strong><small>successiva</small></button>
           <button class="lesson-step" type="button" disabled><span>03</span><strong>Continuità</strong><small>prossimamente</small></button>
           <button class="lesson-step" type="button" disabled><span>04</span><strong>Derivate</strong><small>prossimamente</small></button>
@@ -81,43 +82,55 @@
             <p class="kicker">Richiami teorici</p>
             <h2 id="teoria-title">Sintesi dei concetti fondamentali.</h2>
           </div>
-          <p class="heading-note">Sintesi operativa dei paragrafi su funzioni, composte, modulo ed estremi.</p>
+          <p class="heading-note">Sintesi operativa dei concetti su funzioni, operazioni, segno, modulo, periodicità e composizione.</p>
         </div>
         <div class="theory-cards">
           <article class="theory-card accent-red">
             <span class="card-index">01</span>
-            <h3>Grafico</h3>
-            <p><span class="math">graf f = {(x, y) : y = f(x)}</span>. Ogni verticale interseca il grafico di una funzione al più una volta.</p>
-            <div class="card-tag">dominio → asse x · immagine → asse y</div>
+            <h3>Funzione</h3>
+            <p>Una funzione assegna a ogni elemento del dominio un unico valore. Il grafico rende visibili dominio e immagine.</p>
+            <div class="card-tag">dominio · immagine · grafico</div>
           </article>
           <article class="theory-card accent-gold">
             <span class="card-index">02</span>
-            <h3>Composta</h3>
-            <p><span class="math">(f ∘ g)(x) = f(g(x))</span>. Si applica prima <span class="math">g</span>, poi <span class="math">f</span>.</p>
-            <div class="card-tag">l’ordine conta · controlla il dominio</div>
+            <h3>Operazioni</h3>
+            <p><span class="math">(f ± g)(x)=f(x)±g(x)</span> e <span class="math">(fg)(x)=f(x)g(x)</span>. Il dominio è l’intersezione dei domini.</p>
+            <div class="card-tag">somma · differenza · prodotto · quoziente</div>
           </article>
           <article class="theory-card accent-ink">
             <span class="card-index">03</span>
-            <h3>Modulo</h3>
-            <p><span class="math">|x|</span> è la distanza di <span class="math">x</span> da 0. La parte del grafico sotto l’asse x si riflette sopra.</p>
-            <div class="card-tag">|x − a| ≤ r ⇔ x ∈ [a − r, a + r]</div>
+            <h3>Segno</h3>
+            <p><span class="math">f⁺=max(f,0)</span> e <span class="math">f⁻=max(−f,0)</span> separano le parti positiva e negativa di una funzione.</p>
+            <div class="card-tag"><span class="math">f=f⁺−f⁻</span> · <span class="math">|f|=f⁺+f⁻</span></div>
           </article>
           <article class="theory-card accent-red-soft">
             <span class="card-index">04</span>
-            <h3>sup / inf</h3>
-            <p><span class="math">sup A</span> è il più piccolo maggiorante; <span class="math">inf A</span> il più grande minorante. Non devono appartenere ad <span class="math">A</span>.</p>
-            <div class="card-tag">max ⇒ sup · min ⇒ inf</div>
+            <h3>Modulo</h3>
+            <p><span class="math">|x|</span> è la distanza di <span class="math">x</span> da 0. Il grafico di <span class="math">|f|</span> riflette sopra l’asse x la parte negativa.</p>
+            <div class="card-tag">distanza · riflessione · valore assoluto</div>
+          </article>
+          <article class="theory-card accent-gold">
+            <span class="card-index">05</span>
+            <h3>Periodicità</h3>
+            <p><span class="math">f(x+T)=f(x)</span> per ogni <span class="math">x</span>. Un periodo positivo fondamentale è il più piccolo periodo positivo.</p>
+            <div class="card-tag"><span class="math">sin x</span>, <span class="math">cos x</span> · periodo <span class="math">2π</span></div>
+          </article>
+          <article class="theory-card accent-ink">
+            <span class="card-index">06</span>
+            <h3>Composizione</h3>
+            <p><span class="math">(f ∘ g)(x)=f(g(x))</span>: si applica prima <span class="math">g</span>, poi <span class="math">f</span>. Il dominio va determinato con attenzione.</p>
+            <div class="card-tag">ordine delle operazioni · dominio</div>
           </article>
         </div>
       </section>
 
-      <section class="section-shell lab-section" id="grafici" aria-labelledby="grafici-title">
+      <section class="section-shell lab-section" id="operazioni" aria-labelledby="operazioni-title">
         <div class="section-heading">
           <div>
-            <p class="kicker">Esercitazione 01 · trasformazioni grafiche</p>
-            <h2 id="grafici-title">Trasformazioni del grafico di una funzione.</h2>
+            <p class="kicker">Esercitazione 01 · operazioni e trasformazioni</p>
+            <h2 id="operazioni-title">Operazioni sul grafico di una funzione.</h2>
           </div>
-          <p class="heading-note">Seleziona una funzione di riferimento e analizza la trasformazione <span class="math">g(x) = A · f(B(x − x₀)) + k</span>.</p>
+          <p class="heading-note">Seleziona una funzione di riferimento e analizza <span class="math">g(x) = A · f(B(x − x₀)) + k</span>, combinando trasformazioni verticali e orizzontali.</p>
         </div>
 
         <div class="lab-card graph-lab">
@@ -201,28 +214,58 @@
         </div>
       </section>
 
-      <section class="section-shell number-lab-section" id="modulo" aria-labelledby="modulo-title">
+      <section class="section-shell sign-section" id="segno" aria-labelledby="segno-title">
         <div class="section-heading">
           <div>
-            <p class="kicker">Esercitazione 03 · interpretazione geometrica</p>
-            <h2 id="modulo-title">Interpretazione geometrica del modulo.</h2>
+            <p class="kicker">Esercitazione 03 · segno e modulo</p>
+            <h2 id="segno-title">Parte positiva, parte negativa e modulo.</h2>
           </div>
-          <p class="heading-note">Varia centro e raggio per rappresentare geometricamente la disequazione come intervallo.</p>
+          <p class="heading-note">Seleziona una funzione e confronta il grafico di <span class="math">f</span>, <span class="math">f⁺</span>, <span class="math">f⁻</span> e <span class="math">|f|</span>.</p>
         </div>
-        <div class="lab-card number-lab">
-          <div class="number-controls">
-            <div class="control-block slider-block">
-              <div class="label-row"><label for="number-center">Centro a</label><output id="number-center-value">1</output></div>
-              <input id="number-center" type="range" min="-4" max="4" step="0.5" value="1" />
+        <div class="lab-card sign-lab">
+          <div class="sign-controls">
+            <div class="control-block">
+              <label for="sign-function">Funzione</label>
+              <select id="sign-function">
+                <option value="one-minus-square">f(x) = 1 − x²</option>
+                <option value="linear">f(x) = x − 1</option>
+                <option value="sine">f(x) = sin x</option>
+              </select>
             </div>
-            <div class="control-block slider-block">
-              <div class="label-row"><label for="number-radius">Raggio r</label><output id="number-radius-value">2</output></div>
-              <input id="number-radius" type="range" min="0.5" max="4" step="0.5" value="2" />
+            <div class="control-block">
+              <label for="sign-view">Rappresentazione</label>
+              <select id="sign-view">
+                <option value="original">f(x)</option>
+                <option value="positive">f⁺(x) = max(f(x), 0)</option>
+                <option value="negative">f⁻(x) = max(−f(x), 0)</option>
+                <option value="absolute">|f(x)|</option>
+              </select>
             </div>
-            <div class="number-equation"><span class="math">|x − a| ≤ r</span><strong id="number-interval">⇔ x ∈ [−1, 3]</strong></div>
+            <div class="sign-equation"><span class="math">f = f⁺ − f⁻</span><strong id="sign-formula">f(x) = 1 − x²</strong></div>
           </div>
-          <div class="number-line-wrap"><canvas id="number-line-canvas" aria-label="Retta reale interattiva per la disequazione con il modulo"></canvas></div>
-          <div class="number-facts"><span><i class="fact-dot dot-red"></i> centro <b id="fact-center">a = 1</b></span><span><i class="fact-dot dot-gold"></i> estremi <b id="fact-endpoints">−1 e 3</b></span><span><i class="fact-dot dot-ink"></i> lunghezza intervallo <b id="fact-length">4</b></span></div>
+          <div class="sign-canvas-wrap"><canvas id="sign-canvas" aria-label="Grafico interattivo della funzione e delle sue parti positiva, negativa e del modulo"></canvas></div>
+          <p class="interaction-note">La parte negativa viene annullata in <span class="math">f⁺</span>; in <span class="math">f⁻</span> viene cambiato di segno; in <span class="math">|f|</span> viene riflessa sopra l’asse x.</p>
+        </div>
+      </section>
+
+      <section class="section-shell periodic-section" id="periodicita" aria-labelledby="periodicita-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Esercitazione 04 · periodicità</p>
+            <h2 id="periodicita-title">Funzioni periodiche.</h2>
+          </div>
+          <p class="heading-note">Varia il parametro <span class="math">B</span> e osserva il periodo di <span class="math">f_B(x)=sin(Bx)</span>.</p>
+        </div>
+        <div class="lab-card periodic-lab">
+          <div class="periodic-controls">
+            <div class="control-block slider-block">
+              <div class="label-row"><label for="period-frequency">B · frequenza</label><output id="period-frequency-value">1</output></div>
+              <input id="period-frequency" type="range" min="0.5" max="4" step="0.5" value="1" />
+            </div>
+            <div class="periodic-equation"><span class="math">f_B(x)=sin(Bx)</span><strong id="period-value">T = 2π</strong></div>
+          </div>
+          <div class="periodic-canvas-wrap"><canvas id="periodic-canvas" aria-label="Grafico interattivo di una funzione sinusoidale periodica"></canvas></div>
+          <p class="interaction-note">Per <span class="math">B ≠ 0</span>, il periodo fondamentale è <span class="math">T = 2π/|B|</span>.</p>
         </div>
       </section>
 
@@ -235,35 +278,46 @@
           <p class="heading-note">Seleziona una risposta e verifica il procedimento mediante le definizioni e le proprietà richiamate.</p>
         </div>
         <div class="quiz-grid">
-          <article class="quiz-card" data-answer="a">
-            <span class="quiz-number">01</span>
-            <h3>Estremi di un insieme</h3>
-            <p>Per <span class="math">A = {1/n : n ≥ 1}</span> e <span class="math">B = A ∪ {0}</span>, quale affermazione è corretta?</p>
-            <div class="quiz-options">
-              <button type="button" data-choice="a">A · inf A = 0 senza minimo; inf B = min B = 0</button>
-              <button type="button" data-choice="b">B · min A = 0 e min B non esiste</button>
-              <button type="button" data-choice="c">C · inf A = inf B = 1</button>
-            </div>
-            <p class="quiz-feedback" aria-live="polite"></p>
-          </article>
           <article class="quiz-card" data-answer="b">
-            <span class="quiz-number">02</span>
-            <h3>Uguaglianza di funzioni</h3>
-            <p>Per <span class="math">f(x) = √(x²)</span> e <span class="math">g(x) = |x|</span>, quale affermazione è corretta?</p>
+            <span class="quiz-number">01</span>
+            <h3>Operazioni</h3>
+            <p>Le funzioni <span class="math">f(x)=cos²x</span> e <span class="math">g(x)=1−sin²x</span> sono uguali?</p>
             <div class="quiz-options">
-              <button type="button" data-choice="a">A · No: hanno domini naturali diversi</button>
-              <button type="button" data-choice="b">B · Sì: hanno dominio R e gli stessi valori</button>
+              <button type="button" data-choice="a">A · No: hanno espressioni diverse</button>
+              <button type="button" data-choice="b">B · Sì: hanno lo stesso dominio e gli stessi valori</button>
               <button type="button" data-choice="c">C · Sì, ma soltanto per x ≥ 0</button>
             </div>
             <p class="quiz-feedback" aria-live="polite"></p>
           </article>
           <article class="quiz-card" data-answer="a">
+            <span class="quiz-number">02</span>
+            <h3>Modulo e parità</h3>
+            <p>La funzione <span class="math">f(x)=|x|</span> è:</p>
+            <div class="quiz-options">
+              <button type="button" data-choice="a">A · pari</button>
+              <button type="button" data-choice="b">B · dispari</button>
+              <button type="button" data-choice="c">C · né pari né dispari</button>
+            </div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="b">
             <span class="quiz-number">03</span>
+            <h3>Funzione trigonometrica</h3>
+            <p>La funzione <span class="math">f(x)=−3sin(2x)</span> è:</p>
+            <div class="quiz-options">
+              <button type="button" data-choice="a">A · pari</button>
+              <button type="button" data-choice="b">B · dispari</button>
+              <button type="button" data-choice="c">C · né pari né dispari</button>
+            </div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="a">
+            <span class="quiz-number">04</span>
             <h3>Composizione</h3>
-            <p>Se <span class="math">f(x) = √x</span> e <span class="math">g(x) = x²</span>, quanto vale <span class="math">(f ∘ g)(x)</span>?</p>
+            <p>Se <span class="math">f(x)=√x</span> e <span class="math">g(x)=x²</span>, quanto vale <span class="math">(f∘g)(x)</span>?</p>
             <div class="quiz-options">
               <button type="button" data-choice="a">A · |x|, con dominio R</button>
-              <button type="button" data-choice="b">B · x, con dominio [0, +∞)</button>
+              <button type="button" data-choice="b">B · x, con dominio [0,+∞)</button>
               <button type="button" data-choice="c">C · x², con dominio R</button>
             </div>
             <p class="quiz-feedback" aria-live="polite"></p>
@@ -275,12 +329,12 @@
         <div class="closing-card">
           <div>
             <p class="kicker">Sintesi metodologica</p>
-            <h2 id="chiusura-title">Formula → dominio → grafico → verifica.</h2>
+            <h2 id="chiusura-title">Dominio → operazione → proprietà → verifica.</h2>
           </div>
           <div class="closing-list">
             <span><b>1</b> Determina il dominio naturale.</span>
-            <span><b>2</b> Scomponi la formula in trasformazioni elementari.</span>
-            <span><b>3</b> Utilizza il grafico per verificare estremi e soluzioni.</span>
+            <span><b>2</b> Applica l’operazione e analizza il segno della funzione.</span>
+            <span><b>3</b> Verifica periodicità, modulo e composizione.</span>
           </div>
         </div>
       </section>

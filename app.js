@@ -193,37 +193,91 @@
     renderComposition();
   }
 
-  const numberCanvas = $('#number-line-canvas');
-  const numberCtx = numberCanvas && numberCanvas.getContext('2d');
-  function drawNumberLine() {
-    if (!numberCanvas) return;
-    const rect = resizeCanvas(numberCanvas, numberCtx);
+  function drawSimpleGraph(canvas, context, curve, options = {}) {
+    if (!canvas || !context) return;
+    const rect = resizeCanvas(canvas, context);
     const w = rect.width; const h = rect.height;
-    const a = Number($('#number-center').value); const r = Number($('#number-radius').value);
-    const min = -6; const max = 6; const y = h * .55;
-    const px = (value) => 22 + ((value - min) / (max - min)) * (w - 44);
-    numberCtx.clearRect(0, 0, w, h);
-    numberCtx.strokeStyle = INK; numberCtx.lineWidth = 1.3;
-    numberCtx.beginPath(); numberCtx.moveTo(22, y); numberCtx.lineTo(w - 22, y); numberCtx.stroke();
-    numberCtx.fillStyle = INK; numberCtx.font = '11px ui-sans-serif, sans-serif';
-    for (let n = min; n <= max; n += 1) {
-      const x = px(n); numberCtx.beginPath(); numberCtx.moveTo(x, y - 6); numberCtx.lineTo(x, y + 6); numberCtx.stroke();
-      if (x > 15 && x < w - 15) numberCtx.fillText(String(n), x - 3, y + 25);
+    const xMin = options.xMin ?? -6; const xMax = options.xMax ?? 6;
+    const yMin = options.yMin ?? -4; const yMax = options.yMax ?? 4;
+    const toPx = (x, y) => [((x - xMin) / (xMax - xMin)) * w, h - ((y - yMin) / (yMax - yMin)) * h];
+    const xTicks = options.xTicks || Array.from({ length: Math.floor(xMax - xMin) + 1 }, (_, i) => xMin + i);
+    const yTicks = options.yTicks || Array.from({ length: Math.floor(yMax - yMin) + 1 }, (_, i) => yMin + i);
+    context.clearRect(0, 0, w, h);
+    context.fillStyle = '#fcfcfb'; context.fillRect(0, 0, w, h);
+    context.font = '11px ui-sans-serif, sans-serif'; context.fillStyle = '#848a91';
+    context.lineWidth = 1; context.strokeStyle = GRID;
+    xTicks.forEach((tick) => { const [px] = toPx(tick, 0); context.beginPath(); context.moveTo(px, 0); context.lineTo(px, h); context.stroke(); });
+    yTicks.forEach((tick) => { const [, py] = toPx(0, tick); context.beginPath(); context.moveTo(0, py); context.lineTo(w, py); context.stroke(); });
+    const xAxis = toPx(0, 0)[1]; const yAxis = toPx(0, 0)[0];
+    context.strokeStyle = INK; context.lineWidth = 1.3;
+    context.beginPath(); context.moveTo(0, xAxis); context.lineTo(w - 7, xAxis); context.stroke();
+    context.beginPath(); context.moveTo(yAxis, h); context.lineTo(yAxis, 7); context.stroke();
+    const xLabel = options.xLabel || ((tick) => String(tick));
+    xTicks.forEach((tick) => { if (Math.abs(tick) > 1e-8) { const [px] = toPx(tick, 0); if (px > 16 && px < w - 16) context.fillText(xLabel(tick), px - 8, xAxis + 17); } });
+    yTicks.forEach((tick) => { if (Math.abs(tick) > 1e-8) { const [, py] = toPx(0, tick); if (py > 14 && py < h - 10) context.fillText(String(tick), yAxis + 8, py + 4); } });
+    context.fillStyle = INK; context.fillText('x', w - 14, xAxis - 8); context.fillText('y', yAxis + 8, 14);
+
+    function drawCurve(target, color, dashed) {
+      context.beginPath(); context.strokeStyle = color; context.lineWidth = dashed ? 1.8 : 2.5;
+      context.setLineDash(dashed ? [5, 5] : []);
+      let drawing = false;
+      for (let px = 0; px <= w; px += 1.5) {
+        const x = xMin + (px / w) * (xMax - xMin); const y = target(x); const [tx, ty] = toPx(x, y);
+        const valid = Number.isFinite(y) && y > yMin - 20 && y < yMax + 20;
+        if (!valid) { drawing = false; continue; }
+        if (!drawing) { context.moveTo(tx, ty); drawing = true; } else context.lineTo(tx, ty);
+      }
+      context.stroke(); context.setLineDash([]);
     }
-    const left = Math.max(min, a - r); const right = Math.min(max, a + r);
-    numberCtx.strokeStyle = 'rgba(130,36,51,.28)'; numberCtx.lineWidth = 11; numberCtx.lineCap = 'round';
-    numberCtx.beginPath(); numberCtx.moveTo(px(left), y); numberCtx.lineTo(px(right), y); numberCtx.stroke();
-    numberCtx.lineCap = 'butt'; numberCtx.strokeStyle = RED; numberCtx.lineWidth = 2.2;
-    numberCtx.beginPath(); numberCtx.moveTo(px(left), y); numberCtx.lineTo(px(right), y); numberCtx.stroke();
-    [left, right].forEach((point) => { numberCtx.fillStyle = RED; numberCtx.beginPath(); numberCtx.arc(px(point), y, 6, 0, Math.PI * 2); numberCtx.fill(); });
-    numberCtx.fillStyle = GOLD; numberCtx.beginPath(); numberCtx.arc(px(a), y, 5, 0, Math.PI * 2); numberCtx.fill();
-    $('#number-center-value').textContent = fmt(a); $('#number-radius-value').textContent = fmt(r);
-    $('#number-interval').textContent = `⇔ x ∈ [${fmt(a - r)}, ${fmt(a + r)}]`;
-    $('#fact-center').textContent = `a = ${fmt(a)}`; $('#fact-endpoints').textContent = `${fmt(a - r)} e ${fmt(a + r)}`; $('#fact-length').textContent = fmt(2 * r);
+    if (options.baseCurve) drawCurve(options.baseCurve, MUTED, true);
+    drawCurve(curve, RED, false);
   }
-  if (numberCanvas) {
-    $('#number-center').addEventListener('input', drawNumberLine); $('#number-radius').addEventListener('input', drawNumberLine);
-    window.addEventListener('resize', drawNumberLine); drawNumberLine();
+
+  const signCanvas = $('#sign-canvas');
+  const signCtx = signCanvas && signCanvas.getContext('2d');
+  const signFunctions = {
+    'one-minus-square': { label: 'f(x) = 1 − x²', fn: (x) => 1 - x * x },
+    linear: { label: 'f(x) = x − 1', fn: (x) => x - 1 },
+    sine: { label: 'f(x) = sin x', fn: (x) => Math.sin(x) }
+  };
+  const signViews = {
+    original: { label: 'f(x)', fn: (value) => value },
+    positive: { label: 'f⁺(x) = max(f(x), 0)', fn: (value) => Math.max(value, 0) },
+    negative: { label: 'f⁻(x) = max(−f(x), 0)', fn: (value) => Math.max(-value, 0) },
+    absolute: { label: '|f(x)|', fn: (value) => Math.abs(value) }
+  };
+  function updateSignGraph() {
+    if (!signCanvas) return;
+    const base = signFunctions[$('#sign-function').value]; const view = signViews[$('#sign-view').value];
+    $('#sign-formula').textContent = `${view.label} · ${base.label}`;
+    const baseCurve = $('#sign-view').value === 'original' ? null : base.fn;
+    drawSimpleGraph(signCanvas, signCtx, (x) => view.fn(base.fn(x)), { baseCurve, xMin: -6, xMax: 6, yMin: -4, yMax: 4 });
+  }
+  if (signCanvas) {
+    $('#sign-function').addEventListener('change', updateSignGraph); $('#sign-view').addEventListener('change', updateSignGraph);
+    window.addEventListener('resize', updateSignGraph); updateSignGraph();
+  }
+
+  const periodicCanvas = $('#periodic-canvas');
+  const periodicCtx = periodicCanvas && periodicCanvas.getContext('2d');
+  function periodLabel(value) {
+    const period = 2 * Math.PI / Math.abs(value);
+    return value === 1 ? 'T = 2π' : `T = 2π/${fmt(value)} ≈ ${fmt(period)}`;
+  }
+  function updatePeriodicGraph() {
+    if (!periodicCanvas) return;
+    const B = Number($('#period-frequency').value);
+    $('#period-frequency-value').textContent = fmt(B); $('#period-value').textContent = periodLabel(B);
+    const pi = Math.PI;
+    drawSimpleGraph(periodicCanvas, periodicCtx, (x) => Math.sin(B * x), {
+      xMin: -2 * pi, xMax: 2 * pi, yMin: -1.5, yMax: 1.5,
+      xTicks: [-2 * pi, -pi, -pi / 2, 0, pi / 2, pi, 2 * pi], yTicks: [-1, 0, 1],
+      xLabel: (tick) => ({ [-2 * pi]: '−2π', [-pi]: '−π', [-pi / 2]: '−π/2', [pi / 2]: 'π/2', [pi]: 'π', [2 * pi]: '2π' }[tick] || '0')
+    });
+  }
+  if (periodicCanvas) {
+    $('#period-frequency').addEventListener('input', updatePeriodicGraph);
+    window.addEventListener('resize', updatePeriodicGraph); updatePeriodicGraph();
   }
 
   $$('.quiz-card').forEach((card) => {
