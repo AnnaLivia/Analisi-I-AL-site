@@ -143,56 +143,6 @@
     updateGraph();
   }
 
-  const compositions = {
-    'sqrt-square': {
-      f: 'f(x) = √x', g: 'g(x) = x² − 1', result: '√(x² − 1)',
-      domain: 'dominio: x ≤ −1 oppure x ≥ 1',
-      forward: (x) => ({ inner: x * x - 1, value: Math.sqrt(x * x - 1), innerText: fmt(x * x - 1), valueText: `√${fmt(x * x - 1)} ≈ ${fmt(Math.sqrt(x * x - 1))}` }),
-      reverse: { f: 'f(x) = x² − 1', g: 'g(x) = √x', result: 'x − 1', domain: 'dominio: x ≥ 0', calc: (x) => ({ inner: Math.sqrt(x), value: Math.sqrt(x) ** 2 - 1, innerText: `√${fmt(x)}`, valueText: `${fmt(x)} − 1 = ${fmt(x - 1)}` }) }
-    },
-    'square-shift': {
-      f: 'f(x) = x²', g: 'g(x) = x + 1', result: '(x + 1)²', domain: 'dominio: ℝ',
-      forward: (x) => ({ inner: x + 1, value: (x + 1) ** 2, innerText: fmt(x + 1), valueText: `(${fmt(x)} + 1)² = ${fmt((x + 1) ** 2)}` }),
-      reverse: { f: 'f(x) = x + 1', g: 'g(x) = x²', result: 'x² + 1', domain: 'dominio: ℝ', calc: (x) => ({ inner: x * x, value: x * x + 1, innerText: fmt(x * x), valueText: `${fmt(x * x)} + 1 = ${fmt(x * x + 1)}` }) }
-    },
-    'abs-linear': {
-      f: 'f(x) = |x|', g: 'g(x) = 2x − 3', result: '|2x − 3|', domain: 'dominio: ℝ',
-      forward: (x) => ({ inner: 2 * x - 3, value: Math.abs(2 * x - 3), innerText: fmt(2 * x - 3), valueText: `|${fmt(2 * x - 3)}| = ${fmt(Math.abs(2 * x - 3))}` }),
-      reverse: { f: 'f(x) = 2x − 3', g: 'g(x) = |x|', result: '2|x| − 3', domain: 'dominio: ℝ', calc: (x) => ({ inner: Math.abs(x), value: 2 * Math.abs(x) - 3, innerText: `|${fmt(x)}|`, valueText: `2 · ${fmt(Math.abs(x))} − 3 = ${fmt(2 * Math.abs(x) - 3)}` }) }
-    }
-  };
-  let compositionSwapped = false;
-
-  function renderComposition() {
-    const data = compositions[$('#composition-example').value];
-    const current = compositionSwapped ? data.reverse : data;
-    $('#composition-f').textContent = current.f;
-    $('#composition-g').textContent = current.g;
-    $('#composition-result').textContent = current.result;
-    $('#composition-domain').textContent = current.domain;
-    updateCompositionOutput();
-  }
-  function updateCompositionOutput() {
-    const data = compositions[$('#composition-example').value];
-    const current = compositionSwapped ? data.reverse : data;
-    const x = Number($('#composition-x').value);
-    if (!Number.isFinite(x)) return;
-    const calculated = compositionSwapped ? current.calc(x) : current.forward(x);
-    if (!Number.isFinite(calculated.value)) {
-      $('#composition-output').textContent = `${current.g.split(' = ')[0]}(${fmt(x)}) = ${calculated.innerText} · non appartiene al dominio di f`;
-      return;
-    }
-    const gName = current.g.split(' = ')[0];
-    const fName = current.f.split(' = ')[0];
-    $('#composition-output').textContent = `${gName}(${fmt(x)}) = ${calculated.innerText} · ${fName}(${calculated.innerText}) = ${calculated.valueText}`;
-  }
-  if ($('#composition-example')) {
-    $('#composition-example').addEventListener('change', () => { compositionSwapped = false; renderComposition(); });
-    $('#swap-composition').addEventListener('click', () => { compositionSwapped = !compositionSwapped; renderComposition(); });
-    $('#composition-x').addEventListener('input', updateCompositionOutput);
-    renderComposition();
-  }
-
   function drawSimpleGraph(canvas, context, curve, options = {}) {
     if (!canvas || !context) return;
     const rect = resizeCanvas(canvas, context);

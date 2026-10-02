@@ -32,10 +32,10 @@
           <p class="kicker"><span class="kicker-dot"></span> Lezione 01 · esercitazione</p>
           <h1>Funzioni<br /><em>e operazioni.</em></h1>
           <p class="lesson-meta"><strong>Lezione 2 ottobre 2026</strong><br />Prof.ssa Anna Livia Croella</p>
-          <p class="hero-lede">Funzioni, operazioni, parte positiva e negativa, modulo, periodicità e composizione: richiami teorici ed esercitazioni interattive sui principali concetti della lezione.</p>
+          <p class="hero-lede">Funzioni, operazioni, parte positiva e negativa, modulo e periodicità: richiami teorici ed esercitazioni interattive sui principali concetti della lezione.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#operazioni">Apri l'esercitazione <span aria-hidden="true">↓</span></a>
-            <button class="button button-quiet button-disabled" type="button" disabled>Esportazione LIM</button>
+            <a class="button button-quiet" href="lim/">Apri l'esportazione LIM <span aria-hidden="true">↗</span></a>
           </div>
         </div>
         <div class="hero-card" aria-label="Mappa dei contenuti della lezione">
@@ -47,14 +47,13 @@
           <div class="hero-equation" aria-hidden="true">
             <span>y = f(x)</span>
             <span class="equation-arrow">→</span>
-            <span>f(g(x))</span>
+            <span>|f(x)|</span>
           </div>
           <div class="topic-grid">
             <span><b>01</b> Funzioni</span>
             <span><b>02</b> Operazioni</span>
-            <span><b>03</b> Composizione</span>
-            <span><b>04</b> Segno e modulo</span>
-            <span><b>05</b> Periodicità</span>
+            <span><b>03</b> Segno e modulo</span>
+            <span><b>04</b> Periodicità</span>
           </div>
         </div>
       </section>
@@ -82,7 +81,7 @@
             <p class="kicker">Richiami teorici</p>
             <h2 id="teoria-title">Sintesi dei concetti fondamentali.</h2>
           </div>
-          <p class="heading-note">Sintesi operativa dei concetti su funzioni, operazioni, segno, modulo, periodicità e composizione.</p>
+          <p class="heading-note">Sintesi operativa dei concetti su funzioni, operazioni, segno, modulo e periodicità.</p>
         </div>
         <div class="theory-cards">
           <article class="theory-card accent-red">
@@ -114,12 +113,6 @@
             <h3>Periodicità</h3>
             <p><span class="math">f(x+T)=f(x)</span> per ogni <span class="math">x</span>. Un periodo positivo fondamentale è il più piccolo periodo positivo.</p>
             <div class="card-tag"><span class="math">sin x</span>, <span class="math">cos x</span> · periodo <span class="math">2π</span></div>
-          </article>
-          <article class="theory-card accent-ink">
-            <span class="card-index">06</span>
-            <h3>Composizione</h3>
-            <p><span class="math">(f ∘ g)(x)=f(g(x))</span>: si applica prima <span class="math">g</span>, poi <span class="math">f</span>. Il dominio va determinato con attenzione.</p>
-            <div class="card-tag">ordine delle operazioni · dominio</div>
           </article>
         </div>
       </section>
@@ -174,43 +167,6 @@
             </div>
             <p class="interaction-note">Passa sul grafico per leggere le coordinate. Trascina i cursori: <strong>A</strong> cambia verticalmente, <strong>B</strong> orizzontalmente; <strong>x₀</strong> e <strong>k</strong> traslano.</p>
           </div>
-        </div>
-      </section>
-
-      <section class="section-shell split-labs" id="composizione" aria-labelledby="composizione-title">
-        <div class="section-heading">
-          <div>
-            <p class="kicker">Esercitazione 02 · composizione di funzioni</p>
-            <h2 id="composizione-title">Composizione di funzioni.</h2>
-          </div>
-          <p class="heading-note">La composizione applica prima <span class="math">g</span> e poi <span class="math">f</span>; l’immagine di <span class="math">g</span> deve appartenere al dominio di <span class="math">f</span>.</p>
-        </div>
-
-        <div class="lab-card composition-lab">
-          <div class="composition-topline">
-            <div>
-              <span class="mini-label">Seleziona un esempio</span>
-              <select id="composition-example">
-                <option value="sqrt-square">f(x) = √x · g(x) = x² − 1</option>
-                <option value="square-shift">f(x) = x² · g(x) = x + 1</option>
-                <option value="abs-linear">f(x) = |x| · g(x) = 2x − 3</option>
-              </select>
-            </div>
-            <button class="swap-button" id="swap-composition" type="button">Scambia f e g ↔</button>
-          </div>
-          <div class="composition-stage">
-            <div class="function-node node-g"><span class="node-label">1ª applicazione</span><strong id="composition-g">g(x) = x² − 1</strong><small>applicazione di g</small></div>
-            <div class="stage-arrow"><span>g(x)</span><b>→</b></div>
-            <div class="function-node node-f"><span class="node-label">2ª applicazione</span><strong id="composition-f">f(x) = √x</strong><small>applicazione di f</small></div>
-            <div class="stage-arrow"><span>f(g(x))</span><b>→</b></div>
-            <div class="result-node"><span class="node-label">risultato</span><strong id="composition-result">√(x² − 1)</strong><small id="composition-domain">dominio: x ≤ −1 oppure x ≥ 1</small></div>
-          </div>
-          <div class="composition-check">
-            <label for="composition-x">Valuta la composizione in x</label>
-            <input id="composition-x" type="number" value="2" step="0.5" />
-            <output id="composition-output">g(2) = 3 · f(3) = √3 ≈ 1.73</output>
-          </div>
-          <p class="interaction-note">In generale <span class="math">f ∘ g ≠ g ∘ f</span>. Usa “Scambia f e g” per esaminare l’ordine opposto e il relativo dominio.</p>
         </div>
       </section>
 
@@ -311,19 +267,8 @@
             </div>
             <p class="quiz-feedback" aria-live="polite"></p>
           </article>
-          <article class="quiz-card" data-answer="a">
-            <span class="quiz-number">04</span>
-            <h3>Composizione</h3>
-            <p>Se <span class="math">f(x)=√x</span> e <span class="math">g(x)=x²</span>, quanto vale <span class="math">(f∘g)(x)</span>?</p>
-            <div class="quiz-options">
-              <button type="button" data-choice="a">A · |x|, con dominio R</button>
-              <button type="button" data-choice="b">B · x, con dominio [0,+∞)</button>
-              <button type="button" data-choice="c">C · x², con dominio R</button>
-            </div>
-            <p class="quiz-feedback" aria-live="polite"></p>
-          </article>
           <article class="quiz-card" data-answer="c">
-            <span class="quiz-number">05</span>
+            <span class="quiz-number">04</span>
             <h3>Parte positiva</h3>
             <p>Quale definizione è corretta per la parte positiva di <span class="math">f</span>?</p>
             <div class="quiz-options">
@@ -334,7 +279,7 @@
             <p class="quiz-feedback" aria-live="polite"></p>
           </article>
           <article class="quiz-card" data-answer="b">
-            <span class="quiz-number">06</span>
+            <span class="quiz-number">05</span>
             <h3>Periodicità</h3>
             <p>Qual è il periodo fondamentale di <span class="math">f(x)=sin(2x)</span>?</p>
             <div class="quiz-options">
@@ -356,7 +301,7 @@
           <div class="closing-list">
             <span><b>1</b> Determina il dominio naturale.</span>
             <span><b>2</b> Applica l’operazione e analizza il segno della funzione.</span>
-            <span><b>3</b> Verifica periodicità, modulo e composizione.</span>
+            <span><b>3</b> Verifica periodicità, modulo e proprietà della funzione.</span>
           </div>
         </div>
       </section>
