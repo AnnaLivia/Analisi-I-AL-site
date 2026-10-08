@@ -201,123 +201,37 @@
     renderForm();
   }
 
-  const hierarchyFunctions = [
-    { key: 'log', label: 'log n', color: RED, fn: (x) => Math.log(x) },
-    { key: 'linear', label: 'n', color: GOLD, fn: (x) => x },
-    { key: 'exp', label: '2^n', labelHtml: '2<sup>n</sup>', color: '#356a52', fn: (x) => 2 ** x },
-    { key: 'factorial', label: 'n!', color: '#315a85', fn: (x) => { let result = 1; for (let index = 2; index <= x; index += 1) result *= index; return result; } }
-  ];
-
-  function formatPlotValue(value) {
-    if (value === 0) return '0';
-    if (Math.abs(value) >= 1000) return value.toExponential(2);
-    return fmt(value, 2);
+  function log10Factorial(n) {
+    let result = 0;
+    for (let index = 2; index <= n; index += 1) result += Math.log10(index);
+    return result;
   }
 
-  function drawHierarchyChart(n) {
-    const canvas = $('#hierarchy-canvas');
-    if (!canvas) return;
-    const context = canvas.getContext('2d');
-    const rect = resizeCanvas(canvas, context);
-    const width = rect.width;
-    const height = rect.height;
-    const xMin = 2;
-    const xMax = Number($('#hierarchy-n').max) || 20;
-    const selectedN = Math.min(xMax, Math.max(xMin, n));
-    const left = 52;
-    const right = width < 520 ? 142 : 184;
-    const top = 24;
-    const bottom = 42;
-    const yMin = 0;
-    const rawMax = Math.max(...hierarchyFunctions.map((entry) => entry.fn(xMax)));
-    const yMax = Math.max(1, rawMax * 1.08);
-    const toX = (x) => left + ((x - xMin) / Math.max(1, xMax - xMin)) * (width - left - right);
-    const toY = (value) => top + ((yMax - value) / (yMax - yMin)) * (height - top - bottom);
-
-    context.clearRect(0, 0, width, height);
-    context.fillStyle = '#fcfcfb';
-    context.fillRect(0, 0, width, height);
-    context.font = '11px ui-sans-serif, sans-serif';
-    context.fillStyle = MUTED;
-    context.strokeStyle = GRID;
-    context.lineWidth = 1;
-    for (let step = 0; step <= 5; step += 1) {
-      const value = (yMax * step) / 5;
-      const py = toY(value);
-      context.beginPath(); context.moveTo(left, py); context.lineTo(width - right, py); context.stroke();
-      context.fillText(formatPlotValue(value), 7, py + 4);
-    }
-    context.strokeStyle = INK;
-    context.beginPath(); context.moveTo(left, toY(yMin)); context.lineTo(width - right, toY(yMin)); context.stroke();
-    context.beginPath(); context.moveTo(left, toY(yMin)); context.lineTo(left, top); context.stroke();
-    context.fillStyle = MUTED;
-    context.fillText('n', width - right - 8, height - 11);
-    context.fillText('f(n)', 7, 14);
-    context.fillText(String(xMin), left - 3, height - 11);
-    if (xMax > xMin) context.fillText(String(Math.round((xMin + xMax) / 2)), toX((xMin + xMax) / 2) - 5, height - 11);
-    context.fillText(String(xMax), width - right - 12, height - 11);
-
-    const selectedX = toX(selectedN);
-    context.save();
-    context.setLineDash([5, 5]);
-    context.strokeStyle = '#9b8b69';
-    context.beginPath(); context.moveTo(selectedX, top); context.lineTo(selectedX, toY(yMin)); context.stroke();
-    context.restore();
-    context.fillStyle = INK;
-    context.fillText(`n = ${selectedN}`, Math.min(selectedX + 6, width - right - 34), top - 7);
-
-    const series = hierarchyFunctions.map((entry) => ({
-      ...entry,
-      values: Array.from({ length: xMax - xMin + 1 }, (_, index) => {
-        const x = xMin + index;
-        return { x, value: entry.fn(x) };
-      })
-    }));
-
-    series.forEach((entry) => {
-      context.strokeStyle = entry.color;
-      context.lineWidth = 2.4;
-      context.beginPath();
-      entry.values.forEach((point, index) => {
-        const px = toX(point.x);
-        const py = toY(point.value);
-        if (index === 0) context.moveTo(px, py); else context.lineTo(px, py);
-      });
-      context.stroke();
-    });
-
-    const labelX = width - right + 10;
-    const labelStep = Math.min(28, (height - top - bottom - 20) / 3);
-    series.forEach((entry, index) => {
-      const point = entry.values.find((candidate) => candidate.x === selectedN);
-      const markerX = toX(point.x);
-      const markerY = toY(point.value);
-      const labelY = top + 16 + index * labelStep;
-      context.strokeStyle = entry.color;
-      context.lineWidth = 1;
-      context.beginPath(); context.moveTo(markerX, markerY); context.lineTo(labelX - 5, labelY - 4); context.stroke();
-      context.fillStyle = entry.color;
-      context.beginPath(); context.arc(markerX, markerY, 5.5, 0, 2 * Math.PI); context.fill();
-      context.fillStyle = '#fcfcfb';
-      context.beginPath(); context.arc(markerX, markerY, 2, 0, 2 * Math.PI); context.fill();
-      context.fillText(`${entry.label} = ${formatPlotValue(point.value)}`, labelX, labelY);
-    });
+  function scientificFromLog(logValue) {
+    if (logValue < 6) return fmt(10 ** logValue, 2);
+    const exponent = Math.floor(logValue);
+    return `${fmt(10 ** (logValue - exponent), 2)} · 10^${exponent}`;
   }
 
   function renderHierarchy() {
     const n = Number($('#hierarchy-n').value);
-    const entries = hierarchyFunctions.map((entry) => ({ label: entry.label, value: entry.fn(n) }));
+    const entries = [
+      { label: 'log n', logValue: Math.log10(Math.log(n)) },
+      { label: 'n', logValue: Math.log10(n) },
+      { label: '2ⁿ', logValue: n * Math.log10(2) },
+      { label: 'n!', logValue: log10Factorial(n) }
+    ];
+    const maxLog = entries[entries.length - 1].logValue;
     $('#hierarchy-n-value').textContent = n;
     $('#hierarchy-n-inline').textContent = n;
     $('#hierarchy-rows').innerHTML = entries.map((entry) => {
-      return `<div class="hierarchy-row"><span class="hierarchy-label">${entry.labelHtml || entry.label}</span><span class="hierarchy-value">${formatPlotValue(entry.value)}</span></div>`;
+      const width = Math.max(4, (entry.logValue / maxLog) * 100);
+      return `<div class="hierarchy-row"><span class="hierarchy-label">${entry.label}</span><div class="hierarchy-track"><div class="hierarchy-bar" style="width:${width}%"></div></div><span class="hierarchy-value">${scientificFromLog(entry.logValue)}</span></div>`;
     }).join('');
-    drawHierarchyChart(n);
   }
 
   if ($('#hierarchy-n')) {
     $('#hierarchy-n').addEventListener('input', renderHierarchy);
-    window.addEventListener('resize', renderHierarchy);
     renderHierarchy();
   }
 

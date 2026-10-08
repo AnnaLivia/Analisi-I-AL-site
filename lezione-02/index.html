@@ -185,25 +185,18 @@
             <p class="kicker">Esercitazione 03 · velocità di crescita</p>
             <h2 id="gerarchie-title">Gerarchie di crescita.</h2>
           </div>
-          <p class="heading-note">Confronta graficamente le velocità di crescita delle principali famiglie di successioni.</p>
+          <p class="heading-note">Confronta le velocità di crescita delle principali famiglie di successioni.</p>
         </div>
         <div class="lesson02-card hierarchy-lab">
           <div class="hierarchy-controls">
             <div class="control-block slider-block">
-              <div class="label-row"><label for="hierarchy-n">Indice n</label><output id="hierarchy-n-value">10</output></div>
-              <input id="hierarchy-n" type="range" min="2" max="20" step="1" value="10" />
+              <div class="label-row"><label for="hierarchy-n">Indice n</label><output id="hierarchy-n-value">20</output></div>
+              <input id="hierarchy-n" type="range" min="4" max="80" step="1" value="20" />
             </div>
-          <div class="hierarchy-formula"><span class="math">log n ≪ n ≪ 2<sup>n</sup> ≪ n!</span><strong>n = <span id="hierarchy-n-inline">10</span></strong></div>
-          </div>
-          <div class="hierarchy-chart-wrap"><canvas id="hierarchy-canvas" aria-label="Grafico cartesiano con le funzioni logaritmica, lineare, esponenziale e fattoriale"></canvas></div>
-          <div class="hierarchy-legend" aria-label="Legenda del grafico">
-            <span><i class="legend-swatch swatch-log"></i>log n</span>
-            <span><i class="legend-swatch swatch-linear"></i>n</span>
-            <span><i class="legend-swatch swatch-exp"></i>2<sup>n</sup></span>
-            <span><i class="legend-swatch swatch-factorial"></i>n!</span>
+          <div class="hierarchy-formula"><span class="math">log n ≪ n ≪ 2<sup>n</sup> ≪ n!</span><strong>n = <span id="hierarchy-n-inline">20</span></strong></div>
           </div>
           <div class="hierarchy-rows" id="hierarchy-rows" aria-live="polite"></div>
-          <p class="interaction-note">Nel piano cartesiano sono rappresentate tutte le funzioni della gerarchia. Scegliendo n, la verticale e i punti evidenziati mostrano i corrispondenti valori f(n).</p>
+          <p class="interaction-note">Le barre rappresentano <span class="math">log<sub>10</sub></span> del valore: la scala comprime numeri enormi per rendere leggibile il confronto.</p>
         </div>
       </section>
 
