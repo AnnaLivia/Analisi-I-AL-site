@@ -95,7 +95,7 @@
           <article class="theory-card accent-gold">
             <span class="card-index">02</span>
             <h3>Forme indeterminate</h3>
-            <p><span class="math">∞/∞</span>, <span class="math">∞−∞</span>, <span class="math">0/0</span> e <span class="math">0·∞</span> non sono risultati: chiedono una trasformazione.</p>
+            <p><span class="math"><span class="fraction"><span>∞</span><span>∞</span></span></span>, <span class="math">∞−∞</span>, <span class="math"><span class="fraction"><span>0</span><span>0</span></span></span> e <span class="math">0·∞</span> non sono risultati: chiedono una trasformazione.</p>
             <div class="card-tag">semplifica · razionalizza · confronta</div>
           </article>
           <article class="theory-card accent-ink">
@@ -120,10 +120,10 @@
             <div class="control-block">
               <label for="sequence-select">Successione</label>
               <select id="sequence-select">
-                <option value="inverse">aₙ = 1 + 3/n</option>
-                <option value="ratio">aₙ = (2n + 1)/(n + 3)</option>
-                <option value="radical">aₙ = √(n² + n) − n</option>
-                <option value="oscillating">aₙ = (−1)ⁿ</option>
+                <option value="inverse">Successione razionale · limite finito</option>
+                <option value="ratio">Rapporto di polinomi · limite finito</option>
+                <option value="radical">Differenza di radicali · razionalizzazione</option>
+                <option value="oscillating">Successione oscillante · limite inesistente</option>
               </select>
             </div>
             <div class="control-block slider-block">
@@ -131,13 +131,14 @@
               <input id="sequence-n" type="range" min="2" max="1000" step="1" value="20" />
             </div>
             <div class="sequence-result">
+              <span class="sequence-formula" id="sequence-formula">a<sub>n</sub> = 1 + <span class="fraction"><span>3</span><span>n</span></span></span>
               <span class="mini-label">Valore del termine</span>
-              <strong id="sequence-value">a₂₀ = 1.15</strong>
+              <strong id="sequence-value">a<sub>20</sub> = 1.15</strong>
               <small id="sequence-limit">limite: 1</small>
             </div>
           </div>
           <div class="sequence-canvas-wrap"><canvas id="sequence-canvas" aria-label="Grafico dei termini della successione e del suo limite"></canvas></div>
-          <p class="interaction-note" id="sequence-note">I termini si avvicinano a 1: la distanza dal limite è circa 3/n.</p>
+          <p class="interaction-note" id="sequence-note">I termini si avvicinano a 1: la distanza dal limite è circa <span class="fraction"><span>3</span><span>n</span></span>.</p>
         </div>
       </section>
 
@@ -154,19 +155,19 @@
             <div class="control-block">
               <label for="form-select">Forma</label>
               <select id="form-select">
-                <option value="infinity-over-infinity">∞/∞</option>
+                <option value="infinity-over-infinity">Quoziente di infiniti</option>
                 <option value="infinity-minus-infinity">∞ − ∞</option>
-                <option value="zero-over-zero">0/0</option>
+                <option value="zero-over-zero">Quoziente di infinitesimi</option>
                 <option value="zero-times-infinity">0 · ∞</option>
               </select>
             </div>
-            <div class="indeterminate-badge" id="form-badge">∞/∞</div>
+            <div class="indeterminate-badge" id="form-badge"><span class="fraction"><span>∞</span><span>∞</span></span></div>
           </div>
           <div class="indeterminate-content">
             <div>
               <span class="mini-label">Esempio</span>
               <h3 id="form-title">Un quoziente di infiniti</h3>
-              <p class="formula-large" id="form-expression">lim (3n² + 1)/(n² − 2)</p>
+              <p class="formula-large" id="form-expression">lim<sub>n→∞</sub> <span class="fraction"><span>3n² + 1</span><span>n² − 2</span></span></p>
             </div>
             <div class="steps-panel">
               <span class="mini-label">Passaggio decisivo</span>
@@ -194,15 +195,26 @@
             </div>
             <div class="hierarchy-formula"><span class="math">log n ≪ n ≪ 2ⁿ ≪ n!</span><strong>n = <span id="hierarchy-n-inline">20</span></strong></div>
           </div>
-          <div class="hierarchy-chart-wrap"><canvas id="hierarchy-canvas" aria-label="Grafico comparativo delle funzioni logaritmica, lineare, esponenziale e fattoriale"></canvas></div>
-          <div class="hierarchy-legend" aria-label="Legenda del grafico">
-            <span><i class="legend-swatch swatch-log"></i>log n</span>
-            <span><i class="legend-swatch swatch-linear"></i>n</span>
-            <span><i class="legend-swatch swatch-exp"></i>2ⁿ</span>
-            <span><i class="legend-swatch swatch-factorial"></i>n!</span>
+          <div class="hierarchy-plots" aria-label="Grafici cartesiani delle funzioni della gerarchia">
+            <figure class="hierarchy-plot">
+              <figcaption>f(n) = log n</figcaption>
+              <canvas id="plot-log" aria-label="Grafico cartesiano della funzione logaritmo"></canvas>
+            </figure>
+            <figure class="hierarchy-plot">
+              <figcaption>f(n) = n</figcaption>
+              <canvas id="plot-linear" aria-label="Grafico cartesiano della funzione identità"></canvas>
+            </figure>
+            <figure class="hierarchy-plot">
+              <figcaption>f(n) = 2ⁿ</figcaption>
+              <canvas id="plot-exp" aria-label="Grafico cartesiano della funzione esponenziale"></canvas>
+            </figure>
+            <figure class="hierarchy-plot">
+              <figcaption>f(n) = n!</figcaption>
+              <canvas id="plot-factorial" aria-label="Grafico cartesiano della funzione fattoriale"></canvas>
+            </figure>
           </div>
           <div class="hierarchy-rows" id="hierarchy-rows" aria-live="polite"></div>
-          <p class="interaction-note">Il grafico utilizza l'ordinata <span class="math">log₁₀</span> del valore; le barre riportano lo stesso confronto all'indice selezionato.</p>
+          <p class="interaction-note">Ogni pannello utilizza una propria scala verticale per mostrare con chiarezza il grafico cartesiano della funzione.</p>
         </div>
       </section>
 
@@ -218,14 +230,14 @@
           <article class="quiz-card" data-answer="b">
             <span class="quiz-number">01</span>
             <h3>Limite elementare</h3>
-            <p>Quanto vale <span class="math">lim 1/n</span> per <span class="math">n → +∞</span>?</p>
+            <p>Quanto vale <span class="math">lim <span class="fraction"><span>1</span><span>n</span></span></span> per <span class="math">n → +∞</span>?</p>
             <div class="quiz-options"><button type="button" data-choice="a">A · 1</button><button type="button" data-choice="b">B · 0</button><button type="button" data-choice="c">C · +∞</button></div>
             <p class="quiz-feedback" aria-live="polite"></p>
           </article>
           <article class="quiz-card" data-answer="c">
             <span class="quiz-number">02</span>
             <h3>Forma indeterminata</h3>
-            <p>La forma <span class="math">∞/∞</span> indica:</p>
+            <p>La forma <span class="math"><span class="fraction"><span>∞</span><span>∞</span></span></span> indica:</p>
             <div class="quiz-options"><button type="button" data-choice="a">A · che il limite vale 1</button><button type="button" data-choice="b">B · che il limite non esiste</button><button type="button" data-choice="c">C · che serve una trasformazione</button></div>
             <p class="quiz-feedback" aria-live="polite"></p>
           </article>
@@ -253,7 +265,7 @@
           <article class="quiz-card" data-answer="c">
             <span class="quiz-number">06</span>
             <h3>Termine dominante</h3>
-            <p>In <span class="math">(3n²+1)/(n²−2)</span>, quale termine domina?</p>
+            <p>In <span class="math"><span class="fraction"><span>3n²+1</span><span>n²−2</span></span></span>, quale termine domina?</p>
             <div class="quiz-options"><button type="button" data-choice="a">A · le costanti</button><button type="button" data-choice="b">B · i termini di primo grado</button><button type="button" data-choice="c">C · i termini di grado 2</button></div>
             <p class="quiz-feedback" aria-live="polite"></p>
           </article>

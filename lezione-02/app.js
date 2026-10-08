@@ -16,6 +16,8 @@
     return Number(value.toFixed(digits)).toString().replace('-', '−');
   }
 
+  const frac = (numerator, denominator) => `<span class="fraction"><span>${numerator}</span><span>${denominator}</span></span>`;
+
   function resizeCanvas(canvas, context) {
     const rect = canvas.getBoundingClientRect();
     const ratio = Math.max(1, window.devicePixelRatio || 1);
@@ -29,24 +31,28 @@
     inverse: {
       fn: (n) => 1 + 3 / n,
       limit: 1,
+      formula: `a<sub>n</sub> = 1 + ${frac('3', 'n')}`,
       label: 'limite: 1',
-      note: 'I termini si avvicinano a 1: la distanza dal limite è circa 3/n.'
+      note: `I termini si avvicinano a 1: la distanza dal limite è circa ${frac('3', 'n')}.`
     },
     ratio: {
       fn: (n) => (2 * n + 1) / (n + 3),
       limit: 2,
+      formula: `a<sub>n</sub> = ${frac('2n + 1', 'n + 3')}`,
       label: 'limite: 2',
       note: 'Dividendo numeratore e denominatore per n, restano i coefficienti dei termini dominanti.'
     },
     radical: {
       fn: (n) => n / (Math.sqrt(n * n + n) + n),
       limit: 0.5,
-      label: 'limite: 1/2',
+      formula: 'a<sub>n</sub> = √(n² + n) − n',
+      label: `limite: ${frac('1', '2')}`,
       note: 'La razionalizzazione trasforma la differenza di infiniti in un quoziente semplice.'
     },
     oscillating: {
       fn: (n) => (n % 2 === 0 ? 1 : -1),
       limit: null,
+      formula: 'a<sub>n</sub> = (−1)ⁿ',
       label: 'limite: non esiste',
       note: 'I termini pari valgono 1 e quelli dispari −1: la successione oscilla e non si avvicina a un unico numero.'
     }
@@ -130,10 +136,11 @@
     const n = Number($('#sequence-n').value);
     const value = sequence.fn(n);
     const indexLabel = String(n);
+    $('#sequence-formula').innerHTML = sequence.formula;
     $('#sequence-n-value').textContent = n;
     $('#sequence-value').innerHTML = `a<sub>${indexLabel}</sub> = ${fmt(value)}`;
-    $('#sequence-limit').textContent = sequence.label;
-    $('#sequence-note').textContent = sequence.note;
+    $('#sequence-limit').innerHTML = sequence.label;
+    $('#sequence-note').innerHTML = sequence.note;
     drawSequence();
   }
 
@@ -146,34 +153,34 @@
 
   const indeterminateForms = {
     'infinity-over-infinity': {
-      badge: '∞/∞',
+      badge: frac('∞', '∞'),
       title: 'Un quoziente di infiniti',
-      expression: 'limₙ→∞ (3n² + 1)/(n² − 2)',
-      steps: ['Metti in evidenza n² al numeratore e al denominatore.', 'Semplifica il fattore n²: (3 + 1/n²)/(1 − 2/n²).', 'Passa al limite: 3/1 = 3.'],
+      expression: `lim<sub>n→∞</sub> ${frac('3n² + 1', 'n² − 2')}`,
+      steps: ['Metti in evidenza n² al numeratore e al denominatore.', `Semplifica il fattore n²: ${frac(`3 + ${frac('1', 'n²')}`, `1 − ${frac('2', 'n²')}`)}.`, 'Passa al limite: 3.'],
       result: 'Risultato: 3',
       note: 'La potenza dominante è n²: i termini di grado inferiore diventano trascurabili.'
     },
     'infinity-minus-infinity': {
       badge: '∞ − ∞',
       title: 'Una differenza di infiniti',
-      expression: 'limₙ→∞ (√(n² + n) − n)',
-      steps: ['Moltiplica e dividi per il coniugato.', 'Ottieni n/(√(n²+n) + n).', 'Dividi per n: 1/(√(1+1/n)+1) → 1/2.'],
-      result: 'Risultato: 1/2',
+      expression: 'lim<sub>n→∞</sub> (√(n² + n) − n)',
+      steps: ['Moltiplica e dividi per il coniugato.', `Ottieni ${frac('n', '√(n²+n) + n')}.`, `Raccogli n al denominatore: ${frac('1', `√(1 + ${frac('1', 'n')}) + 1`)} → ${frac('1', '2')}.`],
+      result: `Risultato: ${frac('1', '2')}`,
       note: 'La razionalizzazione elimina la differenza e rende visibile il limite.'
     },
     'zero-over-zero': {
-      badge: '0/0',
+      badge: frac('0', '0'),
       title: 'Un quoziente di infinitesimi',
-      expression: 'limₙ→∞ sin(1/n)/(1/n)',
-      steps: ['Poni t = 1/n: allora t → 0.', 'Riconosci il limite fondamentale sin t/t.', 'Concludi: il limite vale 1.'],
+      expression: `lim<sub>n→∞</sub> ${frac(`sin(${frac('1', 'n')})`, frac('1', 'n'))}`,
+      steps: [`Poni t = ${frac('1', 'n')}: allora t → 0.`, `Riconosci il limite fondamentale ${frac('sin t', 't')}.`, 'Concludi: il limite vale 1.'],
       result: 'Risultato: 1',
-      note: 'La forma 0/0 non è il risultato: qui si riconduce al limite fondamentale del seno.'
+      note: `La forma ${frac('0', '0')} non è il risultato: qui si riconduce al limite fondamentale del seno.`
     },
     'zero-times-infinity': {
       badge: '0 · ∞',
       title: 'Un prodotto tra zero e infinito',
-      expression: 'limₙ→∞ n · sin(1/n²)',
-      steps: ['Usa |sin u| ≤ |u|.', 'Quindi |n sin(1/n²)| ≤ n/n² = 1/n.', 'Per il teorema del confronto, il limite è 0.'],
+      expression: `lim<sub>n→∞</sub> n · sin(${frac('1', 'n²')})`,
+      steps: ['Usa |sin u| ≤ |u|.', `Quindi |n · sin(${frac('1', 'n²')})| ≤ ${frac('1', 'n')}.`, 'Per il teorema del confronto, il limite è 0.'],
       result: 'Risultato: 0',
       note: 'Il prodotto è indeterminato, ma una stima semplice lo confronta con una successione che tende a zero.'
     }
@@ -181,12 +188,12 @@
 
   function renderForm() {
     const form = indeterminateForms[$('#form-select').value];
-    $('#form-badge').textContent = form.badge;
+    $('#form-badge').innerHTML = form.badge;
     $('#form-title').textContent = form.title;
-    $('#form-expression').textContent = form.expression;
+    $('#form-expression').innerHTML = form.expression;
     $('#form-steps').innerHTML = form.steps.map((step) => `<li>${step}</li>`).join('');
-    $('#form-result').textContent = form.result;
-    $('#form-note').textContent = form.note;
+    $('#form-result').innerHTML = form.result;
+    $('#form-note').innerHTML = form.note;
   }
 
   if ($('#form-select')) {
@@ -194,40 +201,35 @@
     renderForm();
   }
 
-  function log10Factorial(n) {
-    let result = 0;
-    for (let index = 2; index <= n; index += 1) result += Math.log10(index);
-    return result;
-  }
-
-  function scientificFromLog(logValue) {
-    if (logValue < 6) return fmt(10 ** logValue, 2);
-    const exponent = Math.floor(logValue);
-    return `${fmt(10 ** (logValue - exponent), 2)} · 10^${exponent}`;
-  }
-
   const hierarchyFunctions = [
-    { label: 'log n', color: RED, logValue: (x) => Math.log10(Math.log(x)) },
-    { label: 'n', color: GOLD, logValue: (x) => Math.log10(x) },
-    { label: '2ⁿ', color: '#356a52', logValue: (x) => x * Math.log10(2) },
-    { label: 'n!', color: '#315a85', logValue: (x) => log10Factorial(Math.floor(x)) }
+    { key: 'log', label: 'log n', color: RED, fn: (x) => Math.log(x) },
+    { key: 'linear', label: 'n', color: GOLD, fn: (x) => x },
+    { key: 'exp', label: '2ⁿ', color: '#356a52', fn: (x) => 2 ** x },
+    { key: 'factorial', label: 'n!', color: '#315a85', fn: (x) => { let result = 1; for (let index = 2; index <= x; index += 1) result *= index; return result; } }
   ];
 
-  function drawHierarchyChart(n) {
-    const canvas = $('#hierarchy-canvas');
+  function formatPlotValue(value) {
+    if (value === 0) return '0';
+    if (Math.abs(value) >= 1000) return value.toExponential(2);
+    return fmt(value, 2);
+  }
+
+  function drawHierarchyPlot(canvas, entry, n) {
     if (!canvas) return;
     const context = canvas.getContext('2d');
     const rect = resizeCanvas(canvas, context);
     const width = rect.width;
     const height = rect.height;
-    const xMin = 4;
-    const xMax = Math.max(12, n);
+    const xMin = 1;
+    const xMax = Math.max(2, n);
+    const values = [];
+    for (let x = xMin; x <= xMax; x += 1) values.push(entry.fn(x));
     const yMin = 0;
-    const yMax = Math.max(2, log10Factorial(xMax));
-    const left = 52;
-    const right = 20;
+    const yMax = Math.max(1, Math.max(...values) * 1.12);
+    const left = 48;
+    const right = 16;
     const top = 20;
-    const bottom = 34;
+    const bottom = 30;
     const toX = (x) => left + ((x - xMin) / Math.max(1, xMax - xMin)) * (width - left - right);
     const toY = (value) => top + ((yMax - value) / (yMax - yMin)) * (height - top - bottom);
 
@@ -242,46 +244,44 @@
       const value = yMin + ((yMax - yMin) * step) / 4;
       const py = toY(value);
       context.beginPath(); context.moveTo(left, py); context.lineTo(width - right, py); context.stroke();
-      context.fillText(fmt(value, 1), 8, py + 4);
+      context.fillText(formatPlotValue(value), 5, py + 4);
     }
     context.strokeStyle = INK;
     context.beginPath(); context.moveTo(left, height - bottom); context.lineTo(width - right, height - bottom); context.stroke();
+    context.beginPath(); context.moveTo(left, height - bottom); context.lineTo(left, top); context.stroke();
     context.fillStyle = MUTED;
-    context.fillText('n', width - right - 8, height - 10);
-    context.fillText('log₁₀ valore', 8, 13);
-    context.fillText(String(xMin), left - 4, height - 10);
-    context.fillText(String(xMax), width - right - 18, height - 10);
+    context.fillText('n', width - right - 8, height - 9);
+    context.fillText('f(n)', 7, 13);
+    context.fillText(String(xMin), left - 3, height - 9);
+    context.fillText(String(xMax), width - right - 16, height - 9);
 
-    hierarchyFunctions.forEach((entry) => {
-      context.strokeStyle = entry.color;
-      context.lineWidth = 2.3;
-      context.beginPath();
-      for (let step = 0; step <= 100; step += 1) {
-        const x = xMin + ((xMax - xMin) * step) / 100;
-        const px = toX(x);
-        const py = toY(entry.logValue(x));
-        if (step === 0) context.moveTo(px, py); else context.lineTo(px, py);
-      }
-      context.stroke();
+    context.strokeStyle = entry.color;
+    context.lineWidth = 2.4;
+    context.beginPath();
+    values.forEach((value, index) => {
+      const px = toX(xMin + index);
+      const py = toY(value);
+      if (index === 0) context.moveTo(px, py); else context.lineTo(px, py);
     });
+    context.stroke();
+    context.fillStyle = entry.color;
+    context.beginPath(); context.arc(toX(xMax), toY(entry.fn(xMax)), 4, 0, 2 * Math.PI); context.fill();
   }
 
   function renderHierarchy() {
     const n = Number($('#hierarchy-n').value);
-    const entries = hierarchyFunctions.map((entry) => ({ label: entry.label, logValue: entry.logValue(n) }));
-    const maxLog = entries[entries.length - 1].logValue;
+    const entries = hierarchyFunctions.map((entry) => ({ label: entry.label, value: entry.fn(n) }));
     $('#hierarchy-n-value').textContent = n;
     $('#hierarchy-n-inline').textContent = n;
     $('#hierarchy-rows').innerHTML = entries.map((entry) => {
-      const width = Math.max(4, (entry.logValue / maxLog) * 100);
-      return `<div class="hierarchy-row"><span class="hierarchy-label">${entry.label}</span><div class="hierarchy-track"><div class="hierarchy-bar" style="width:${width}%"></div></div><span class="hierarchy-value">${scientificFromLog(entry.logValue)}</span></div>`;
+      return `<div class="hierarchy-row"><span class="hierarchy-label">${entry.label}</span><span class="hierarchy-value">${formatPlotValue(entry.value)}</span></div>`;
     }).join('');
-    drawHierarchyChart(n);
+    hierarchyFunctions.forEach((entry) => drawHierarchyPlot($(`#plot-${entry.key}`), entry, n));
   }
 
   if ($('#hierarchy-n')) {
     $('#hierarchy-n').addEventListener('input', renderHierarchy);
-    window.addEventListener('resize', () => drawHierarchyChart(Number($('#hierarchy-n').value)));
+    window.addEventListener('resize', renderHierarchy);
     renderHierarchy();
   }
 
