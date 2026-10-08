@@ -34,10 +34,15 @@
 .hierarchy-formula { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: .8rem 1rem; border-radius: 9px; background: var(--sapienza-red-pale); }
 .hierarchy-formula .math { color: var(--sapienza-red); font-size: 1.25rem; }
 .hierarchy-formula strong { color: var(--ink-soft); font-size: .82rem; font-weight: 600; }
-.hierarchy-plots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; padding: 1.4rem 1.4rem .4rem; }
-.hierarchy-plot { min-width: 0; margin: 0; }
-.hierarchy-plot figcaption { margin-bottom: .5rem; color: var(--ink-soft); font: 1rem var(--serif); }
-.hierarchy-plot canvas { display: block; width: 100%; height: 230px; border: 1px solid var(--line); border-radius: 10px; background: #fcfcfb; }
+.hierarchy-chart-wrap { height: 440px; padding: 1.4rem 1.4rem 0; }
+.hierarchy-chart-wrap canvas { display: block; width: 100%; height: 100%; border: 1px solid var(--line); border-radius: 12px; background: #fcfcfb; }
+.hierarchy-legend { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; padding: 1rem 1.4rem 0; color: var(--ink-soft); font-size: .78rem; }
+.hierarchy-legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.legend-swatch { display: inline-block; width: 20px; height: 3px; border-radius: 99px; }
+.swatch-log { background: #822433; }
+.swatch-linear { background: #b99345; }
+.swatch-exp { background: #356a52; }
+.swatch-factorial { background: #315a85; }
 .hierarchy-rows { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; padding: 1rem 1.4rem .4rem; }
 .hierarchy-row { display: flex; flex-direction: column; gap: .15rem; padding: .75rem .8rem; border: 1px solid var(--line); border-radius: 9px; background: #faf8f2; }
 .hierarchy-label { color: var(--sapienza-red); font: 1.05rem var(--serif); }
@@ -55,8 +60,8 @@
   .indeterminate-controls .control-block { width: 100%; }
   .indeterminate-badge { margin-top: 1rem; }
   .sequence-canvas-wrap { height: 290px; padding-right: .8rem; padding-left: .8rem; }
-  .hierarchy-plots { grid-template-columns: 1fr; padding-right: .8rem; padding-left: .8rem; }
-  .hierarchy-plot canvas { height: 220px; }
+  .hierarchy-chart-wrap { height: 340px; padding-right: .8rem; padding-left: .8rem; }
+  .hierarchy-legend { padding-right: .8rem; padding-left: .8rem; }
   .lesson02-card > .interaction-note { padding-right: .8rem; padding-left: .8rem; }
   .indeterminate-content { padding: 1.5rem .8rem; }
   .hierarchy-rows { grid-template-columns: 1fr 1fr; padding-right: .8rem; padding-left: .8rem; }

@@ -101,7 +101,7 @@
           <article class="theory-card accent-ink">
             <span class="card-index">03</span>
             <h3>Gerarchie</h3>
-            <p>Il confronto <span class="math">log n ≪ n^α ≪ aⁿ ≪ n!</span> ordina velocità di crescita diverse, con <span class="math">α&gt;0</span> e <span class="math">a&gt;1</span>.</p>
+            <p>Il confronto <span class="math">log n ≪ n<sup>α</sup> ≪ a<sup>n</sup> ≪ n!</span> ordina velocità di crescita diverse, con <span class="math">α&gt;0</span> e <span class="math">a&gt;1</span>.</p>
             <div class="card-tag">logaritmi · potenze · esponenziali · fattoriali</div>
           </article>
         </div>
@@ -190,31 +190,20 @@
         <div class="lesson02-card hierarchy-lab">
           <div class="hierarchy-controls">
             <div class="control-block slider-block">
-              <div class="label-row"><label for="hierarchy-n">Indice n</label><output id="hierarchy-n-value">20</output></div>
-              <input id="hierarchy-n" type="range" min="4" max="80" step="1" value="20" />
+              <div class="label-row"><label for="hierarchy-n">Indice n</label><output id="hierarchy-n-value">10</output></div>
+              <input id="hierarchy-n" type="range" min="2" max="20" step="1" value="10" />
             </div>
-            <div class="hierarchy-formula"><span class="math">log n ≪ n ≪ 2ⁿ ≪ n!</span><strong>n = <span id="hierarchy-n-inline">20</span></strong></div>
+          <div class="hierarchy-formula"><span class="math">log n ≪ n ≪ 2<sup>n</sup> ≪ n!</span><strong>n = <span id="hierarchy-n-inline">10</span></strong></div>
           </div>
-          <div class="hierarchy-plots" aria-label="Grafici cartesiani delle funzioni della gerarchia">
-            <figure class="hierarchy-plot">
-              <figcaption>f(n) = log n</figcaption>
-              <canvas id="plot-log" aria-label="Grafico cartesiano della funzione logaritmo"></canvas>
-            </figure>
-            <figure class="hierarchy-plot">
-              <figcaption>f(n) = n</figcaption>
-              <canvas id="plot-linear" aria-label="Grafico cartesiano della funzione identità"></canvas>
-            </figure>
-            <figure class="hierarchy-plot">
-              <figcaption>f(n) = 2ⁿ</figcaption>
-              <canvas id="plot-exp" aria-label="Grafico cartesiano della funzione esponenziale"></canvas>
-            </figure>
-            <figure class="hierarchy-plot">
-              <figcaption>f(n) = n!</figcaption>
-              <canvas id="plot-factorial" aria-label="Grafico cartesiano della funzione fattoriale"></canvas>
-            </figure>
+          <div class="hierarchy-chart-wrap"><canvas id="hierarchy-canvas" aria-label="Grafico cartesiano con le funzioni logaritmica, lineare, esponenziale e fattoriale"></canvas></div>
+          <div class="hierarchy-legend" aria-label="Legenda del grafico">
+            <span><i class="legend-swatch swatch-log"></i>log n</span>
+            <span><i class="legend-swatch swatch-linear"></i>n</span>
+            <span><i class="legend-swatch swatch-exp"></i>2<sup>n</sup></span>
+            <span><i class="legend-swatch swatch-factorial"></i>n!</span>
           </div>
           <div class="hierarchy-rows" id="hierarchy-rows" aria-live="polite"></div>
-          <p class="interaction-note">Ogni pannello utilizza una propria scala verticale per mostrare con chiarezza il grafico cartesiano della funzione.</p>
+          <p class="interaction-note">L'asse verticale è in scala logaritmica. Il punto evidenziato e la relativa etichetta mostrano il valore di ciascuna funzione nell'indice selezionato.</p>
         </div>
       </section>
 
