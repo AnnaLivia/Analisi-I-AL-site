@@ -1,0 +1,56 @@
+.lesson-02-page .hero-card { transform: rotate(-1.1deg); }
+.lesson-02-page .hero-card .hero-equation span:last-child { color: #e4c674; }
+.lesson-02-page .theory-card p { min-height: 122px; }
+.lesson02-section { border-top: 1px solid var(--line); }
+.lesson02-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+.lesson02-controls { display: grid; align-items: end; gap: 1.25rem; padding: 1.4rem; background: #f0eeea; }
+.sequence-controls { grid-template-columns: minmax(210px, 1.2fr) minmax(180px, 1fr) minmax(180px, .8fr); }
+.sequence-result { min-height: 74px; padding: .8rem 1rem; border-radius: 10px; background: var(--sapienza-red-pale); }
+.sequence-result .mini-label { display: block; color: var(--ink-soft); }
+.sequence-result strong, .sequence-result small { display: block; }
+.sequence-result strong { margin-top: .2rem; color: var(--sapienza-red); font: 1.35rem var(--serif); font-weight: 400; }
+.sequence-result small { margin-top: .15rem; color: var(--ink-soft); font-size: .76rem; }
+.sequence-canvas-wrap { height: 390px; padding: 1rem 1.4rem 0; }
+.sequence-canvas-wrap canvas { width: 100%; height: 100%; border: 1px solid var(--line); border-radius: 12px; background: #fcfcfb; }
+.lesson02-card > .interaction-note { padding: 0 1.4rem 1.4rem; }
+
+.indeterminate-controls { display: flex; align-items: end; justify-content: space-between; gap: 1rem; padding: 1.4rem; border-bottom: 1px solid var(--line); background: #f0eeea; }
+.indeterminate-controls .control-block { width: min(100%, 340px); }
+.indeterminate-badge { min-width: 125px; padding: .75rem 1rem; color: white; border-radius: 9px; background: var(--sapienza-red); font: 1.25rem var(--serif); text-align: center; }
+.indeterminate-content { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; padding: 2.1rem 1.4rem; }
+.indeterminate-content h3 { margin: .45rem 0 .75rem; font: clamp(1.7rem, 3vw, 2.6rem) var(--serif); font-weight: 400; }
+.formula-large { margin: 0; color: var(--sapienza-red); font: clamp(1.25rem, 2.5vw, 2rem) var(--serif); }
+.steps-panel { padding: 1.1rem 1.25rem; border-left: 3px solid var(--sapienza-gold); background: #faf8f2; }
+.steps-panel ol { display: grid; gap: .6rem; margin: .7rem 0 1rem; padding-left: 1.25rem; color: var(--ink-soft); font-size: .92rem; }
+.steps-panel li::marker { color: var(--sapienza-red); font-weight: 800; }
+.form-result { padding: .7rem .8rem; color: var(--sapienza-red); border-top: 1px solid var(--line); font: 1.08rem var(--serif); }
+
+.hierarchy-controls { display: grid; grid-template-columns: minmax(240px, .75fr) 1.25fr; align-items: end; gap: 2rem; padding: 1.4rem; border-bottom: 1px solid var(--line); background: #f0eeea; }
+.hierarchy-formula { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: .8rem 1rem; border-radius: 9px; background: var(--sapienza-red-pale); }
+.hierarchy-formula .math { color: var(--sapienza-red); font-size: 1.25rem; }
+.hierarchy-formula strong { color: var(--ink-soft); font-size: .82rem; font-weight: 600; }
+.hierarchy-rows { display: grid; gap: 1rem; padding: 1.7rem 1.4rem .4rem; }
+.hierarchy-row { display: grid; grid-template-columns: 110px minmax(0, 1fr) 130px; align-items: center; gap: 1rem; }
+.hierarchy-label { font: 1.05rem var(--serif); }
+.hierarchy-track { height: 18px; overflow: hidden; border-radius: 999px; background: #ece9e2; }
+.hierarchy-bar { height: 100%; min-width: 3px; border-radius: inherit; background: linear-gradient(90deg, var(--sapienza-gold), var(--sapienza-red)); transition: width .25s ease; }
+.hierarchy-value { color: var(--ink-soft); font-size: .78rem; text-align: right; }
+
+@media (max-width: 880px) {
+  .sequence-controls, .hierarchy-controls { grid-template-columns: 1fr 1fr; }
+  .sequence-result { grid-column: 1 / -1; }
+  .indeterminate-content { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .sequence-controls, .hierarchy-controls { grid-template-columns: 1fr; }
+  .sequence-result { grid-column: auto; }
+  .indeterminate-controls { display: block; }
+  .indeterminate-controls .control-block { width: 100%; }
+  .indeterminate-badge { margin-top: 1rem; }
+  .sequence-canvas-wrap { height: 290px; padding-right: .8rem; padding-left: .8rem; }
+  .lesson02-card > .interaction-note { padding-right: .8rem; padding-left: .8rem; }
+  .indeterminate-content { padding: 1.5rem .8rem; }
+  .hierarchy-rows { padding-right: .8rem; padding-left: .8rem; }
+  .hierarchy-row { grid-template-columns: 72px minmax(0, 1fr); gap: .55rem; }
+  .hierarchy-value { grid-column: 2; text-align: left; }
+}

@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Analisi 1 — Lezione 02: limiti di successioni, forme indeterminate e gerarchie di infiniti." />
+    <meta name="theme-color" content="#822433" />
+    <title>Analisi 1 · Lezione 02</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="lesson-02-page">
+    <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Analisi 1, torna alla lezione 01">
+          <span class="brand-mark" aria-hidden="true">Σ</span>
+          <span>
+            <strong>Analisi 1</strong>
+            <small>Sapienza · Analisi 1</small>
+          </span>
+        </a>
+        <div class="header-meta">
+          <a class="book-link" href="../">Lezione 01</a>
+          <span class="eyebrow">A.A. 2026/27</span>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenuto">
+      <section class="hero section-shell" id="top">
+        <div class="hero-copy">
+          <p class="kicker"><span class="kicker-dot"></span> Lezione 02 · esercitazione</p>
+          <h1>Limiti di<br /><em>successioni.</em></h1>
+          <p class="lesson-meta"><strong>Lezione 8 ottobre 2026</strong><br />Prof.ssa Anna Livia Croella</p>
+          <p class="hero-lede">Limiti di successioni, forme indeterminate e gerarchie di infiniti: osserva il comportamento per <span class="math">n → +∞</span> e impara a scegliere la trasformazione utile.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#successioni">Apri l'esercitazione <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="../">Torna alla lezione 01 <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Mappa dei contenuti della lezione">
+          <div class="hero-card-top">
+            <span class="status-dot"></span>
+            <span>Contenuti della lezione</span>
+            <span class="hero-card-number">02 / 14</span>
+          </div>
+          <div class="hero-equation" aria-hidden="true">
+            <span>n → ∞</span>
+            <span class="equation-arrow">→</span>
+            <span>aₙ → L</span>
+          </div>
+          <div class="topic-grid">
+            <span><b>01</b> Successioni</span>
+            <span><b>02</b> Limiti</span>
+            <span><b>03</b> Forme indeterminate</span>
+            <span><b>04</b> Gerarchie</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="lesson-map section-shell" aria-labelledby="percorso-title">
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="kicker">Il percorso</p>
+            <h2 id="percorso-title">Struttura del corso.</h2>
+          </div>
+          <p class="heading-note">La teoria viene introdotta a lezione; questa pagina propone visualizzazioni, trasformazioni e verifiche.</p>
+        </div>
+        <div class="lesson-rail" aria-label="Lezioni del corso">
+          <a class="lesson-step" href="../"><span>01</span><strong>Funzioni</strong><small>precedente</small></a>
+          <a class="lesson-step active" href="#successioni"><span>02</span><strong>Limiti</strong><small>in corso</small></a>
+          <button class="lesson-step" type="button" disabled><span>03</span><strong>Continuità</strong><small>prossimamente</small></button>
+          <button class="lesson-step" type="button" disabled><span>04</span><strong>Derivate</strong><small>prossimamente</small></button>
+          <span class="lesson-more">… altre 10 lezioni</span>
+        </div>
+      </section>
+
+      <section class="section-shell theory-grid" id="teoria" aria-labelledby="teoria-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Richiami teorici</p>
+            <h2 id="teoria-title">Le idee da portare con sé.</h2>
+          </div>
+          <p class="heading-note">Un limite descrive il comportamento dei termini quando l'indice cresce senza bound.</p>
+        </div>
+        <div class="theory-cards">
+          <article class="theory-card accent-red">
+            <span class="card-index">01</span>
+            <h3>Limite</h3>
+            <p>Scrivere <span class="math">aₙ → L</span> significa che i valori di <span class="math">aₙ</span> si avvicinano a <span class="math">L</span> per <span class="math">n</span> abbastanza grande.</p>
+            <div class="card-tag">comportamento asintotico · n → +∞</div>
+          </article>
+          <article class="theory-card accent-gold">
+            <span class="card-index">02</span>
+            <h3>Forme indeterminate</h3>
+            <p><span class="math">∞/∞</span>, <span class="math">∞−∞</span>, <span class="math">0/0</span> e <span class="math">0·∞</span> non sono risultati: chiedono una trasformazione.</p>
+            <div class="card-tag">semplifica · razionalizza · confronta</div>
+          </article>
+          <article class="theory-card accent-ink">
+            <span class="card-index">03</span>
+            <h3>Gerarchie</h3>
+            <p>Il confronto <span class="math">log n ≪ n^α ≪ aⁿ ≪ n!</span> ordina velocità di crescita diverse, con <span class="math">α&gt;0</span> e <span class="math">a&gt;1</span>.</p>
+            <div class="card-tag">logaritmi · potenze · esponenziali · fattoriali</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell lesson02-section" id="successioni" aria-labelledby="successioni-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Esercitazione 01 · limite di una successione</p>
+            <h2 id="successioni-title">Avvicinati al limite.</h2>
+          </div>
+          <p class="heading-note">Scegli una successione e fai crescere <span class="math">n</span>. Il grafico mostra gli ultimi termini e, quando esiste, la retta del limite.</p>
+        </div>
+        <div class="lesson02-card sequence-lab">
+          <div class="lesson02-controls sequence-controls">
+            <div class="control-block">
+              <label for="sequence-select">Successione</label>
+              <select id="sequence-select">
+                <option value="inverse">aₙ = 1 + 3/n</option>
+                <option value="ratio">aₙ = (2n + 1)/(n + 3)</option>
+                <option value="radical">aₙ = √(n² + n) − n</option>
+                <option value="oscillating">aₙ = (−1)ⁿ</option>
+              </select>
+            </div>
+            <div class="control-block slider-block">
+              <div class="label-row"><label for="sequence-n">Indice n</label><output id="sequence-n-value">20</output></div>
+              <input id="sequence-n" type="range" min="2" max="1000" step="1" value="20" />
+            </div>
+            <div class="sequence-result">
+              <span class="mini-label">Termine selezionato</span>
+              <strong id="sequence-value">a₂₀ = 1.15</strong>
+              <small id="sequence-limit">limite: 1</small>
+            </div>
+          </div>
+          <div class="sequence-canvas-wrap"><canvas id="sequence-canvas" aria-label="Grafico dei termini della successione e del suo limite"></canvas></div>
+          <p class="interaction-note" id="sequence-note">I termini si avvicinano a 1: la distanza dal limite è circa 3/n.</p>
+        </div>
+      </section>
+
+      <section class="section-shell lesson02-section" id="forme" aria-labelledby="forme-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Esercitazione 02 · forme indeterminate</p>
+            <h2 id="forme-title">La forma non è il risultato.</h2>
+          </div>
+          <p class="heading-note">Seleziona la forma e osserva quale passaggio la trasforma in un limite calcolabile.</p>
+        </div>
+        <div class="lesson02-card indeterminate-lab">
+          <div class="indeterminate-controls">
+            <div class="control-block">
+              <label for="form-select">Forma</label>
+              <select id="form-select">
+                <option value="infinity-over-infinity">∞/∞</option>
+                <option value="infinity-minus-infinity">∞ − ∞</option>
+                <option value="zero-over-zero">0/0</option>
+                <option value="zero-times-infinity">0 · ∞</option>
+              </select>
+            </div>
+            <div class="indeterminate-badge" id="form-badge">∞/∞</div>
+          </div>
+          <div class="indeterminate-content">
+            <div>
+              <span class="mini-label">Esempio</span>
+              <h3 id="form-title">Un quoziente di infiniti</h3>
+              <p class="formula-large" id="form-expression">lim (3n² + 1)/(n² − 2)</p>
+            </div>
+            <div class="steps-panel">
+              <span class="mini-label">Passaggio decisivo</span>
+              <ol id="form-steps"></ol>
+              <div class="form-result" id="form-result">Risultato: 3</div>
+            </div>
+          </div>
+          <p class="interaction-note" id="form-note">Dividere numeratore e denominatore per la potenza dominante di n rende visibili i termini che sopravvivono.</p>
+        </div>
+      </section>
+
+      <section class="section-shell lesson02-section" id="gerarchie" aria-labelledby="gerarchie-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Esercitazione 03 · velocità di crescita</p>
+            <h2 id="gerarchie-title">Chi cresce più velocemente?</h2>
+          </div>
+          <p class="heading-note">Muovi <span class="math">n</span> e confronta le quattro famiglie sulla scala logaritmica.</p>
+        </div>
+        <div class="lesson02-card hierarchy-lab">
+          <div class="hierarchy-controls">
+            <div class="control-block slider-block">
+              <div class="label-row"><label for="hierarchy-n">Indice n</label><output id="hierarchy-n-value">20</output></div>
+              <input id="hierarchy-n" type="range" min="4" max="80" step="1" value="20" />
+            </div>
+            <div class="hierarchy-formula"><span class="math">log n ≪ n ≪ 2ⁿ ≪ n!</span><strong>n = <span id="hierarchy-n-inline">20</span></strong></div>
+          </div>
+          <div class="hierarchy-rows" id="hierarchy-rows" aria-live="polite"></div>
+          <p class="interaction-note">Le barre rappresentano <span class="math">log₁₀</span> del valore: la scala comprime numeri enormi per rendere leggibile il confronto.</p>
+        </div>
+      </section>
+
+      <section class="section-shell quiz-section" id="verifica" aria-labelledby="verifica-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Verifica formativa</p>
+            <h2 id="verifica-title">Sei pronto a riconoscere il limite?</h2>
+          </div>
+          <p class="heading-note">Scegli una risposta: ogni scheda restituisce un breve feedback sul procedimento.</p>
+        </div>
+        <div class="quiz-grid">
+          <article class="quiz-card" data-answer="b">
+            <span class="quiz-number">01</span>
+            <h3>Limite elementare</h3>
+            <p>Quanto vale <span class="math">lim 1/n</span> per <span class="math">n → +∞</span>?</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · 1</button><button type="button" data-choice="b">B · 0</button><button type="button" data-choice="c">C · +∞</button></div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="c">
+            <span class="quiz-number">02</span>
+            <h3>Forma indeterminata</h3>
+            <p>La forma <span class="math">∞/∞</span> indica:</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · che il limite vale 1</button><button type="button" data-choice="b">B · che il limite non esiste</button><button type="button" data-choice="c">C · che serve una trasformazione</button></div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="a">
+            <span class="quiz-number">03</span>
+            <h3>Razionalizzazione</h3>
+            <p>Per <span class="math">√(n²+n)−n</span>, quale passaggio è utile?</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · moltiplicare per il coniugato</button><button type="button" data-choice="b">B · sostituire subito n=0</button><button type="button" data-choice="c">C · elevare tutto al quadrato</button></div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="b">
+            <span class="quiz-number">04</span>
+            <h3>Gerarchia</h3>
+            <p>Quale cresce più velocemente per <span class="math">n → +∞</span>?</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · log n</button><button type="button" data-choice="b">B · 2ⁿ</button><button type="button" data-choice="c">C · n</button></div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="a">
+            <span class="quiz-number">05</span>
+            <h3>Confronto</h3>
+            <p>Quale relazione è corretta?</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · log n ≪ n</button><button type="button" data-choice="b">B · n ≪ log n</button><button type="button" data-choice="c">C · log n e n hanno la stessa crescita</button></div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="c">
+            <span class="quiz-number">06</span>
+            <h3>Termine dominante</h3>
+            <p>In <span class="math">(3n²+1)/(n²−2)</span>, quale termine domina?</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · le costanti</button><button type="button" data-choice="b">B · i termini di primo grado</button><button type="button" data-choice="c">C · i termini di grado 2</button></div>
+            <p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell closing-section" aria-labelledby="chiusura-title">
+        <div class="closing-card">
+          <div>
+            <p class="kicker">Sintesi metodologica</p>
+            <h2 id="chiusura-title">Osserva → trasforma → confronta.</h2>
+          </div>
+          <div class="closing-list">
+            <span><b>1</b> Individua il comportamento di numeratore e denominatore.</span>
+            <span><b>2</b> Riconosci la forma e scegli una trasformazione.</span>
+            <span><b>3</b> Usa le gerarchie per confrontare la crescita.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>Analisi 1 · Esercitazioni</span>
+        <span>Materiale didattico · Sapienza Università di Roma</span>
+        <a href="#top">torna su ↑</a>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
