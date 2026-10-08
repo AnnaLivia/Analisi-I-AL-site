@@ -228,11 +228,11 @@
     const right = width < 520 ? 142 : 184;
     const top = 24;
     const bottom = 42;
-    const yMin = -1;
-    const rawMax = Math.max(...hierarchyFunctions.map((entry) => Math.log10(entry.fn(xMax))));
-    const yMax = Math.max(4, Math.ceil(rawMax / 4) * 4);
+    const yMin = 0;
+    const rawMax = Math.max(...hierarchyFunctions.map((entry) => entry.fn(xMax)));
+    const yMax = Math.max(1, rawMax * 1.08);
     const toX = (x) => left + ((x - xMin) / Math.max(1, xMax - xMin)) * (width - left - right);
-    const toY = (logValue) => top + ((yMax - logValue) / (yMax - yMin)) * (height - top - bottom);
+    const toY = (value) => top + ((yMax - value) / (yMax - yMin)) * (height - top - bottom);
 
     context.clearRect(0, 0, width, height);
     context.fillStyle = '#fcfcfb';
@@ -241,19 +241,18 @@
     context.fillStyle = MUTED;
     context.strokeStyle = GRID;
     context.lineWidth = 1;
-    const tickStep = yMax <= 8 ? 2 : 4;
-    for (let exponent = 0; exponent <= yMax; exponent += tickStep) {
-      const py = toY(exponent);
+    for (let step = 0; step <= 5; step += 1) {
+      const value = (yMax * step) / 5;
+      const py = toY(value);
       context.beginPath(); context.moveTo(left, py); context.lineTo(width - right, py); context.stroke();
-      context.fillText(`10^${exponent}`, 7, py + 4);
+      context.fillText(formatPlotValue(value), 7, py + 4);
     }
-    context.fillText('10^-1', 7, toY(yMin) + 4);
     context.strokeStyle = INK;
     context.beginPath(); context.moveTo(left, toY(yMin)); context.lineTo(width - right, toY(yMin)); context.stroke();
     context.beginPath(); context.moveTo(left, toY(yMin)); context.lineTo(left, top); context.stroke();
     context.fillStyle = MUTED;
     context.fillText('n', width - right - 8, height - 11);
-    context.fillText('f(n), scala log10', 7, 14);
+    context.fillText('f(n)', 7, 14);
     context.fillText(String(xMin), left - 3, height - 11);
     if (xMax > xMin) context.fillText(String(Math.round((xMin + xMax) / 2)), toX((xMin + xMax) / 2) - 5, height - 11);
     context.fillText(String(xMax), width - right - 12, height - 11);
@@ -271,7 +270,7 @@
       ...entry,
       values: Array.from({ length: xMax - xMin + 1 }, (_, index) => {
         const x = xMin + index;
-        return { x, value: entry.fn(x), logValue: Math.log10(entry.fn(x)) };
+        return { x, value: entry.fn(x) };
       })
     }));
 
@@ -281,7 +280,7 @@
       context.beginPath();
       entry.values.forEach((point, index) => {
         const px = toX(point.x);
-        const py = toY(point.logValue);
+        const py = toY(point.value);
         if (index === 0) context.moveTo(px, py); else context.lineTo(px, py);
       });
       context.stroke();
@@ -292,7 +291,7 @@
     series.forEach((entry, index) => {
       const point = entry.values.find((candidate) => candidate.x === selectedN);
       const markerX = toX(point.x);
-      const markerY = toY(point.logValue);
+      const markerY = toY(point.value);
       const labelY = top + 16 + index * labelStep;
       context.strokeStyle = entry.color;
       context.lineWidth = 1;
