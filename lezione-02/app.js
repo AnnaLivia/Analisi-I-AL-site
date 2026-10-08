@@ -222,7 +222,8 @@
     const width = rect.width;
     const height = rect.height;
     const xMin = 2;
-    const xMax = Math.max(xMin, n);
+    const xMax = Number($('#hierarchy-n').max) || 20;
+    const selectedN = Math.min(xMax, Math.max(xMin, n));
     const left = 52;
     const right = width < 520 ? 142 : 184;
     const top = 24;
@@ -257,6 +258,15 @@
     if (xMax > xMin) context.fillText(String(Math.round((xMin + xMax) / 2)), toX((xMin + xMax) / 2) - 5, height - 11);
     context.fillText(String(xMax), width - right - 12, height - 11);
 
+    const selectedX = toX(selectedN);
+    context.save();
+    context.setLineDash([5, 5]);
+    context.strokeStyle = '#9b8b69';
+    context.beginPath(); context.moveTo(selectedX, top); context.lineTo(selectedX, toY(yMin)); context.stroke();
+    context.restore();
+    context.fillStyle = INK;
+    context.fillText(`n = ${selectedN}`, Math.min(selectedX + 6, width - right - 34), top - 7);
+
     const series = hierarchyFunctions.map((entry) => ({
       ...entry,
       values: Array.from({ length: xMax - xMin + 1 }, (_, index) => {
@@ -280,7 +290,7 @@
     const labelX = width - right + 10;
     const labelStep = Math.min(28, (height - top - bottom - 20) / 3);
     series.forEach((entry, index) => {
-      const point = entry.values[entry.values.length - 1];
+      const point = entry.values.find((candidate) => candidate.x === selectedN);
       const markerX = toX(point.x);
       const markerY = toY(point.logValue);
       const labelY = top + 16 + index * labelStep;
@@ -288,7 +298,9 @@
       context.lineWidth = 1;
       context.beginPath(); context.moveTo(markerX, markerY); context.lineTo(labelX - 5, labelY - 4); context.stroke();
       context.fillStyle = entry.color;
-      context.beginPath(); context.arc(markerX, markerY, 4.5, 0, 2 * Math.PI); context.fill();
+      context.beginPath(); context.arc(markerX, markerY, 5.5, 0, 2 * Math.PI); context.fill();
+      context.fillStyle = '#fcfcfb';
+      context.beginPath(); context.arc(markerX, markerY, 2, 0, 2 * Math.PI); context.fill();
       context.fillText(`${entry.label} = ${formatPlotValue(point.value)}`, labelX, labelY);
     });
   }

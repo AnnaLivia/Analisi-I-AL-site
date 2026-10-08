@@ -120,10 +120,10 @@
             <div class="control-block">
               <label for="sequence-select">Successione</label>
               <select id="sequence-select">
-                <option value="inverse">Successione razionale · limite finito</option>
-                <option value="ratio">Rapporto di polinomi · limite finito</option>
-                <option value="radical">Differenza di radicali · razionalizzazione</option>
-                <option value="oscillating">Successione oscillante · limite inesistente</option>
+                <option value="inverse">aₙ = 1 + 3/n</option>
+                <option value="ratio">aₙ = (2n + 1)/(n + 3)</option>
+                <option value="radical">aₙ = √(n² + n) − n</option>
+                <option value="oscillating">aₙ = (−1)ⁿ</option>
               </select>
             </div>
             <div class="control-block slider-block">
@@ -155,9 +155,9 @@
             <div class="control-block">
               <label for="form-select">Forma</label>
               <select id="form-select">
-                <option value="infinity-over-infinity">Quoziente di infiniti</option>
+                <option value="infinity-over-infinity">∞/∞</option>
                 <option value="infinity-minus-infinity">∞ − ∞</option>
-                <option value="zero-over-zero">Quoziente di infinitesimi</option>
+                <option value="zero-over-zero">0/0</option>
                 <option value="zero-times-infinity">0 · ∞</option>
               </select>
             </div>
@@ -203,7 +203,7 @@
             <span><i class="legend-swatch swatch-factorial"></i>n!</span>
           </div>
           <div class="hierarchy-rows" id="hierarchy-rows" aria-live="polite"></div>
-          <p class="interaction-note">L'asse verticale è in scala logaritmica. Il punto evidenziato e la relativa etichetta mostrano il valore di ciascuna funzione nell'indice selezionato.</p>
+          <p class="interaction-note">Nel piano cartesiano sono rappresentate tutte le funzioni della gerarchia. Scegliendo n, la verticale e i punti evidenziati mostrano i corrispondenti valori f(n); l'asse verticale è in scala logaritmica per rendere confrontabili le crescite.</p>
         </div>
       </section>
 
