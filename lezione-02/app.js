@@ -107,7 +107,7 @@
       context.beginPath(); context.moveTo(left, limitY); context.lineTo(width - right, limitY); context.stroke();
       context.restore();
       context.fillStyle = RED;
-      context.fillText(`L = ${fmt(sequence.limit)}`, width - right - 62, limitY - 8);
+      context.fillText(`ℓ = ${fmt(sequence.limit)}`, width - right - 62, limitY - 8);
     }
 
     context.strokeStyle = GOLD;
@@ -129,9 +129,9 @@
     const sequence = sequences[$('#sequence-select').value];
     const n = Number($('#sequence-n').value);
     const value = sequence.fn(n);
-    const subscript = String(n).replace(/[0-9]/g, (digit) => '₀₁₂₃₄₅₆₇₈₉'[digit]);
+    const indexLabel = String(n);
     $('#sequence-n-value').textContent = n;
-    $('#sequence-value').textContent = `a${subscript} = ${fmt(value)}`;
+    $('#sequence-value').innerHTML = `a<sub>${indexLabel}</sub> = ${fmt(value)}`;
     $('#sequence-limit').textContent = sequence.label;
     $('#sequence-note').textContent = sequence.note;
     drawSequence();
@@ -149,7 +149,7 @@
       badge: '∞/∞',
       title: 'Un quoziente di infiniti',
       expression: 'limₙ→∞ (3n² + 1)/(n² − 2)',
-      steps: ['Dividi numeratore e denominatore per n².', 'Ottieni (3 + 1/n²)/(1 − 2/n²).', 'Passa al limite: 3/1 = 3.'],
+      steps: ['Metti in evidenza n² al numeratore e al denominatore.', 'Semplifica il fattore n²: (3 + 1/n²)/(1 − 2/n²).', 'Passa al limite: 3/1 = 3.'],
       result: 'Risultato: 3',
       note: 'La potenza dominante è n²: i termini di grado inferiore diventano trascurabili.'
     },
@@ -206,14 +206,69 @@
     return `${fmt(10 ** (logValue - exponent), 2)} · 10^${exponent}`;
   }
 
+  const hierarchyFunctions = [
+    { label: 'log n', color: RED, logValue: (x) => Math.log10(Math.log(x)) },
+    { label: 'n', color: GOLD, logValue: (x) => Math.log10(x) },
+    { label: '2ⁿ', color: '#356a52', logValue: (x) => x * Math.log10(2) },
+    { label: 'n!', color: '#315a85', logValue: (x) => log10Factorial(Math.floor(x)) }
+  ];
+
+  function drawHierarchyChart(n) {
+    const canvas = $('#hierarchy-canvas');
+    if (!canvas) return;
+    const context = canvas.getContext('2d');
+    const rect = resizeCanvas(canvas, context);
+    const width = rect.width;
+    const height = rect.height;
+    const xMin = 4;
+    const xMax = Math.max(12, n);
+    const yMin = 0;
+    const yMax = Math.max(2, log10Factorial(xMax));
+    const left = 52;
+    const right = 20;
+    const top = 20;
+    const bottom = 34;
+    const toX = (x) => left + ((x - xMin) / Math.max(1, xMax - xMin)) * (width - left - right);
+    const toY = (value) => top + ((yMax - value) / (yMax - yMin)) * (height - top - bottom);
+
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = '#fcfcfb';
+    context.fillRect(0, 0, width, height);
+    context.font = '11px ui-sans-serif, sans-serif';
+    context.fillStyle = MUTED;
+    context.strokeStyle = GRID;
+    context.lineWidth = 1;
+    for (let step = 0; step <= 4; step += 1) {
+      const value = yMin + ((yMax - yMin) * step) / 4;
+      const py = toY(value);
+      context.beginPath(); context.moveTo(left, py); context.lineTo(width - right, py); context.stroke();
+      context.fillText(fmt(value, 1), 8, py + 4);
+    }
+    context.strokeStyle = INK;
+    context.beginPath(); context.moveTo(left, height - bottom); context.lineTo(width - right, height - bottom); context.stroke();
+    context.fillStyle = MUTED;
+    context.fillText('n', width - right - 8, height - 10);
+    context.fillText('log₁₀ valore', 8, 13);
+    context.fillText(String(xMin), left - 4, height - 10);
+    context.fillText(String(xMax), width - right - 18, height - 10);
+
+    hierarchyFunctions.forEach((entry) => {
+      context.strokeStyle = entry.color;
+      context.lineWidth = 2.3;
+      context.beginPath();
+      for (let step = 0; step <= 100; step += 1) {
+        const x = xMin + ((xMax - xMin) * step) / 100;
+        const px = toX(x);
+        const py = toY(entry.logValue(x));
+        if (step === 0) context.moveTo(px, py); else context.lineTo(px, py);
+      }
+      context.stroke();
+    });
+  }
+
   function renderHierarchy() {
     const n = Number($('#hierarchy-n').value);
-    const entries = [
-      { label: 'log n', logValue: Math.log10(Math.log(n)) },
-      { label: 'n', logValue: Math.log10(n) },
-      { label: '2ⁿ', logValue: n * Math.log10(2) },
-      { label: 'n!', logValue: log10Factorial(n) }
-    ];
+    const entries = hierarchyFunctions.map((entry) => ({ label: entry.label, logValue: entry.logValue(n) }));
     const maxLog = entries[entries.length - 1].logValue;
     $('#hierarchy-n-value').textContent = n;
     $('#hierarchy-n-inline').textContent = n;
@@ -221,10 +276,12 @@
       const width = Math.max(4, (entry.logValue / maxLog) * 100);
       return `<div class="hierarchy-row"><span class="hierarchy-label">${entry.label}</span><div class="hierarchy-track"><div class="hierarchy-bar" style="width:${width}%"></div></div><span class="hierarchy-value">${scientificFromLog(entry.logValue)}</span></div>`;
     }).join('');
+    drawHierarchyChart(n);
   }
 
   if ($('#hierarchy-n')) {
     $('#hierarchy-n').addEventListener('input', renderHierarchy);
+    window.addEventListener('resize', () => drawHierarchyChart(Number($('#hierarchy-n').value)));
     renderHierarchy();
   }
 

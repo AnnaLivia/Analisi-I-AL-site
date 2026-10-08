@@ -22,7 +22,7 @@
           </span>
         </a>
         <div class="header-meta">
-          <a class="book-link" href="../">Lezione 01</a>
+          <a class="book-link" href="../lim/Lezione%202.pdf" download>Scarica la LIM</a>
           <span class="eyebrow">A.A. 2026/27</span>
         </div>
       </div>
@@ -33,8 +33,8 @@
         <div class="hero-copy">
           <p class="kicker"><span class="kicker-dot"></span> Lezione 02 · esercitazione</p>
           <h1>Limiti di<br /><em>successioni.</em></h1>
-          <p class="lesson-meta"><strong>Lezione 8 ottobre 2026</strong><br />Prof.ssa Anna Livia Croella</p>
-          <p class="hero-lede">Limiti di successioni, forme indeterminate e gerarchie di infiniti: osserva il comportamento per <span class="math">n → +∞</span> e impara a scegliere la trasformazione utile.</p>
+          <p class="lesson-meta"><strong>Lezione 9 ottobre 2026</strong><br />Prof.ssa Anna Livia Croella</p>
+          <p class="hero-lede">Studio dei limiti di successioni, risoluzione delle forme indeterminate e confronto tra velocità di crescita per <span class="math">n → +∞</span>.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#successioni">Apri l'esercitazione <span aria-hidden="true">↓</span></a>
             <a class="button button-quiet" href="../">Torna alla lezione 01 <span aria-hidden="true">↗</span></a>
@@ -49,7 +49,7 @@
           <div class="hero-equation" aria-hidden="true">
             <span>n → ∞</span>
             <span class="equation-arrow">→</span>
-            <span>aₙ → L</span>
+            <span>a<sub>n</sub> → ℓ</span>
           </div>
           <div class="topic-grid">
             <span><b>01</b> Successioni</span>
@@ -81,7 +81,7 @@
         <div class="section-heading">
           <div>
             <p class="kicker">Richiami teorici</p>
-            <h2 id="teoria-title">Le idee da portare con sé.</h2>
+          <h2 id="teoria-title">Sintesi dei concetti fondamentali.</h2>
           </div>
           <p class="heading-note">Un limite descrive il comportamento dei termini quando l'indice cresce senza bound.</p>
         </div>
@@ -89,7 +89,7 @@
           <article class="theory-card accent-red">
             <span class="card-index">01</span>
             <h3>Limite</h3>
-            <p>Scrivere <span class="math">aₙ → L</span> significa che i valori di <span class="math">aₙ</span> si avvicinano a <span class="math">L</span> per <span class="math">n</span> abbastanza grande.</p>
+            <p>Scrivere <span class="math">a<sub>n</sub> → ℓ</span> significa che i valori di <span class="math">a<sub>n</sub></span> si avvicinano a <span class="math">ℓ</span> per <span class="math">n</span> abbastanza grande.</p>
             <div class="card-tag">comportamento asintotico · n → +∞</div>
           </article>
           <article class="theory-card accent-gold">
@@ -111,9 +111,9 @@
         <div class="section-heading">
           <div>
             <p class="kicker">Esercitazione 01 · limite di una successione</p>
-            <h2 id="successioni-title">Avvicinati al limite.</h2>
+            <h2 id="successioni-title">Studio numerico del limite.</h2>
           </div>
-          <p class="heading-note">Scegli una successione e fai crescere <span class="math">n</span>. Il grafico mostra gli ultimi termini e, quando esiste, la retta del limite.</p>
+          <p class="heading-note">Seleziona una successione e varia l'indice <span class="math">n</span>. Il grafico mostra gli ultimi termini e, quando esiste, la retta del limite.</p>
         </div>
         <div class="lesson02-card sequence-lab">
           <div class="lesson02-controls sequence-controls">
@@ -131,7 +131,7 @@
               <input id="sequence-n" type="range" min="2" max="1000" step="1" value="20" />
             </div>
             <div class="sequence-result">
-              <span class="mini-label">Termine selezionato</span>
+              <span class="mini-label">Valore del termine</span>
               <strong id="sequence-value">a₂₀ = 1.15</strong>
               <small id="sequence-limit">limite: 1</small>
             </div>
@@ -145,7 +145,7 @@
         <div class="section-heading">
           <div>
             <p class="kicker">Esercitazione 02 · forme indeterminate</p>
-            <h2 id="forme-title">La forma non è il risultato.</h2>
+            <h2 id="forme-title">Risolvere le forme indeterminate.</h2>
           </div>
           <p class="heading-note">Seleziona la forma e osserva quale passaggio la trasforma in un limite calcolabile.</p>
         </div>
@@ -182,9 +182,9 @@
         <div class="section-heading">
           <div>
             <p class="kicker">Esercitazione 03 · velocità di crescita</p>
-            <h2 id="gerarchie-title">Chi cresce più velocemente?</h2>
+            <h2 id="gerarchie-title">Gerarchie di crescita.</h2>
           </div>
-          <p class="heading-note">Muovi <span class="math">n</span> e confronta le quattro famiglie sulla scala logaritmica.</p>
+          <p class="heading-note">Confronta graficamente le velocità di crescita delle principali famiglie di successioni.</p>
         </div>
         <div class="lesson02-card hierarchy-lab">
           <div class="hierarchy-controls">
@@ -194,8 +194,15 @@
             </div>
             <div class="hierarchy-formula"><span class="math">log n ≪ n ≪ 2ⁿ ≪ n!</span><strong>n = <span id="hierarchy-n-inline">20</span></strong></div>
           </div>
+          <div class="hierarchy-chart-wrap"><canvas id="hierarchy-canvas" aria-label="Grafico comparativo delle funzioni logaritmica, lineare, esponenziale e fattoriale"></canvas></div>
+          <div class="hierarchy-legend" aria-label="Legenda del grafico">
+            <span><i class="legend-swatch swatch-log"></i>log n</span>
+            <span><i class="legend-swatch swatch-linear"></i>n</span>
+            <span><i class="legend-swatch swatch-exp"></i>2ⁿ</span>
+            <span><i class="legend-swatch swatch-factorial"></i>n!</span>
+          </div>
           <div class="hierarchy-rows" id="hierarchy-rows" aria-live="polite"></div>
-          <p class="interaction-note">Le barre rappresentano <span class="math">log₁₀</span> del valore: la scala comprime numeri enormi per rendere leggibile il confronto.</p>
+          <p class="interaction-note">Il grafico utilizza l'ordinata <span class="math">log₁₀</span> del valore; le barre riportano lo stesso confronto all'indice selezionato.</p>
         </div>
       </section>
 
@@ -203,7 +210,7 @@
         <div class="section-heading">
           <div>
             <p class="kicker">Verifica formativa</p>
-            <h2 id="verifica-title">Sei pronto a riconoscere il limite?</h2>
+            <h2 id="verifica-title">Esercizi di verifica.</h2>
           </div>
           <p class="heading-note">Scegli una risposta: ogni scheda restituisce un breve feedback sul procedimento.</p>
         </div>
@@ -257,7 +264,7 @@
         <div class="closing-card">
           <div>
             <p class="kicker">Sintesi metodologica</p>
-            <h2 id="chiusura-title">Osserva → trasforma → confronta.</h2>
+            <h2 id="chiusura-title">Procedura per il calcolo dei limiti.</h2>
           </div>
           <div class="closing-list">
             <span><b>1</b> Individua il comportamento di numeratore e denominatore.</span>
