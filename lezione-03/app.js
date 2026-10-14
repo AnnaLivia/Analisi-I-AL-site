@@ -116,14 +116,14 @@
   const workedExamples = {
     'sine-over': {
       expression: 'lim<sub>n→∞</sub> n · sin(1/n)',
-      context: 'È il caso diretto del limite fondamentale del seno con <span class="math">u<sub>n</sub>=1/n</span>.',
+      context: 'È il caso diretto del limite fondamentale del seno con <span class="math">a<sub>n</sub>=1/n</span>.',
       steps: ['Scrivi <span class="math">n = 1/(1/n)</span>.', 'Ottieni <span class="math">sin(1/n)/(1/n)</span>.', 'L’argomento <span class="math">1/n</span> tende a 0, quindi il rapporto tende a 1.'],
       result: 'Risultato: <span class="math">1</span>.'
     },
     cosine: {
       expression: 'lim<sub>n→∞</sub> n<sup>2</sup> · [1 − cos(3/n)]',
       context: 'Il coseno va usato al secondo ordine: la quantità rilevante è <span class="math">(3/n)²/2</span>.',
-      steps: ['Poni <span class="math">u<sub>n</sub>=3/n→0</span>.', 'Usa <span class="math">1−cos u<sub>n</sub>∼u<sub>n</sub>²/2</span>.', 'Allora <span class="math">n²[1−cos(3/n)]∼n²·9/(2n²)</span>.'],
+      steps: ['Poni <span class="math">a<sub>n</sub>=3/n→0</span>.', 'Usa <span class="math">1−cos a<sub>n</sub>∼a<sub>n</sub>²/2</span>.', 'Allora <span class="math">n²[1−cos(3/n)]∼n²·9/(2n²)</span>.'],
       result: 'Risultato: <span class="math">9/2</span>.'
     },
     quotient: {
