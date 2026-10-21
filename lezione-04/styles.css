@@ -1,0 +1,69 @@
+.lesson-04-page .hero-card { transform: rotate(-1deg); }
+.lesson-04-page .hero-card .hero-equation span:last-child { color: #e4c674; }
+.series-equation { gap: .55rem; font-size: clamp(1.55rem, 3.3vw, 3.1rem); }
+.series-equation sup, .series-equation sub { font-size: .46em; }
+
+.series-intro, .reference-section, .positive-section, .partials-section, .worked-section { border-top: 1px solid var(--line); }
+.series-definition { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(250px, .7fr); overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+.definition-copy { padding: 2rem; }
+.definition-copy .mini-label, .definition-check .mini-label { color: var(--sapienza-red); }
+.definition-copy p { max-width: 710px; margin: 1rem 0 0; color: var(--ink-soft); }
+.definition-formula { margin: 1.25rem 0; color: var(--sapienza-red); font: clamp(1.65rem, 3vw, 2.5rem) var(--serif); }
+.definition-formula sub, .definition-formula sup { font-size: .52em; }
+.definition-check { display: flex; flex-direction: column; justify-content: center; padding: 2rem; color: white; background: var(--ink); }
+.definition-check .mini-label { color: #e4c674; }
+.definition-check strong { margin-top: 1rem; color: white; font: 1.45rem var(--serif); font-weight: 400; }
+.definition-check p { margin: .25rem 0 0; color: rgba(255,255,255,.7); font-size: .86rem; }
+.check-divider { height: 1px; margin: 1.4rem 0 0; background: rgba(255,255,255,.2); }
+
+.series-cards { grid-template-columns: repeat(3, 1fr); }
+.series-cards .theory-card { min-height: 300px; }
+.series-cards .theory-card p { min-height: 125px; }
+
+.criteria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.criterion-card { min-height: 335px; padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+.criterion-card.featured { border-top: 4px solid var(--sapienza-gold); background: #fffdfa; }
+.criterion-number { display: grid; place-items: center; width: 29px; height: 29px; color: white; border-radius: 50%; background: var(--sapienza-red); font-size: .76rem; font-weight: 800; }
+.criterion-card h3 { margin: 1.8rem 0 .9rem; font: 1.6rem var(--serif); }
+.criterion-card p { color: var(--ink-soft); font-size: .9rem; }
+.criterion-card p + p { padding-top: .9rem; border-top: 1px solid var(--line); }
+
+.partials-lab, .telescope-worked { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+.partials-controls { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(220px, 1fr) minmax(245px, .9fr); align-items: end; gap: 1.3rem; padding: 1.4rem; border-bottom: 1px solid var(--line); background: #f0eeea; }
+.partials-result { min-height: 83px; padding: .75rem 1rem; border-radius: 10px; background: var(--sapienza-red-pale); }
+.partials-result .mini-label, .partials-result strong, .partials-result output, .partials-result small { display: block; }
+.partials-result strong { margin-top: .2rem; color: var(--sapienza-red); font: 1.02rem var(--serif); font-weight: 400; }
+.partials-result output { margin-top: .12rem; color: var(--ink); font: 1.25rem var(--serif); }
+.partials-result small { margin-top: .1rem; color: var(--ink-soft); font-size: .76rem; }
+.partials-canvas-wrap { height: 370px; padding: 1.2rem 1.4rem 0; }
+.partials-canvas-wrap canvas { width: 100%; height: 100%; border: 1px solid var(--line); border-radius: 12px; background: #fcfcfb; }
+.partials-lab > .interaction-note { padding: 0 1.4rem 1.4rem; }
+
+.telescope-worked { display: grid; grid-template-columns: minmax(260px, .75fr) minmax(0, 1.65fr); }
+.telescope-formula { display: flex; flex-direction: column; justify-content: center; padding: 2rem; color: white; background: var(--ink); }
+.telescope-formula .mini-label { color: #e4c674; }
+.telescope-formula strong { margin-top: .8rem; color: white; font: clamp(1.35rem, 2.5vw, 2rem) var(--serif); font-weight: 400; }
+.telescope-formula strong sub, .telescope-formula strong sup { font-size: .55em; }
+.telescope-steps { display: grid; gap: 1px; background: var(--line); }
+.telescope-steps > div { display: grid; grid-template-columns: 38px 1fr; align-items: center; gap: .8rem; padding: 1rem 1.4rem; color: var(--ink-soft); background: var(--card); font-size: .9rem; }
+.telescope-steps b { display: grid; place-items: center; width: 26px; height: 26px; color: var(--sapienza-red); border: 1px solid var(--sapienza-gold); border-radius: 50%; font-size: .72rem; }
+
+@media (max-width: 920px) {
+  .series-definition, .telescope-worked { grid-template-columns: 1fr; }
+  .series-cards, .criteria-grid { grid-template-columns: 1fr; }
+  .series-cards .theory-card, .criterion-card { min-height: 0; }
+  .series-cards .theory-card p { min-height: 0; }
+  .partials-controls { grid-template-columns: 1fr 1fr; }
+  .partials-result { grid-column: 1 / -1; }
+}
+
+@media (max-width: 620px) {
+  .lesson-04-page .hero-card { transform: none; }
+  .definition-copy, .definition-check { padding: 1.4rem; }
+  .partials-controls { grid-template-columns: 1fr; }
+  .partials-result { grid-column: auto; }
+  .partials-canvas-wrap { height: 285px; padding-right: .8rem; padding-left: .8rem; }
+  .partials-lab > .interaction-note { padding-right: .8rem; padding-left: .8rem; }
+  .telescope-formula { padding: 1.45rem; }
+  .telescope-steps > div { padding: 1rem; }
+}
