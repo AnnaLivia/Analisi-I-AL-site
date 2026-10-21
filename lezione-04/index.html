@@ -31,14 +31,14 @@
           <p class="kicker"><span class="kicker-dot"></span> Lezione 04 · esercitazione</p>
           <h1>Serie<br /><em>numeriche.</em></h1>
           <p class="lesson-meta"><strong>Lezioni 22 e 23 ottobre 2026</strong><br />Prof.ssa Anna Livia Croella</p>
-          <p class="hero-lede">Un recap essenziale: somme parziali, serie armonica e telescopiche, poi i criteri per serie a termini positivi.</p>
+          <p class="hero-lede">Richiamo teorico sulle somme parziali, sulle serie armonica e telescopiche e sui criteri per serie a termini positivi.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#visualizza">Visualizza le somme parziali <span aria-hidden="true">↓</span></a>
-            <a class="button button-quiet" href="#verifica">Fai gli esercizi <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="#verifica">Esercizi di riepilogo <span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div class="hero-card" aria-label="Formula chiave sulle serie">
-          <div class="hero-card-top"><span class="status-dot"></span><span>Idea chiave</span><span class="hero-card-number">04 / 14</span></div>
+          <div class="hero-card-top"><span class="status-dot"></span><span>Definizione</span><span class="hero-card-number">04 / 14</span></div>
           <div class="hero-equation series-equation" aria-hidden="true">
             <span>s<sub>n</sub></span><span class="equation-arrow">=</span><span>Σ<sub>k=1</sub><sup>n</sup> a<sub>k</sub></span>
           </div>
@@ -67,7 +67,7 @@
 
       <section class="section-shell series-intro" id="recap" aria-labelledby="recap-title">
         <div class="section-heading">
-          <div><p class="kicker">Recap essenziale</p><h2 id="recap-title">Una serie si studia attraverso le sue somme parziali.</h2></div>
+          <div><p class="kicker">Richiamo teorico</p><h2 id="recap-title">Una serie si studia attraverso le sue somme parziali.</h2></div>
           <p class="heading-note">Usiamo <span class="math">k</span> come indice della somma e <span class="math">s<sub>n</sub></span> per la somma dei primi <span class="math">n</span> termini.</p>
         </div>
         <div class="series-definition">
@@ -90,8 +90,8 @@
 
       <section class="section-shell reference-section" aria-labelledby="riferimenti-title">
         <div class="section-heading">
-          <div><p class="kicker">Tre riferimenti</p><h2 id="riferimenti-title">Riconoscere la struttura.</h2></div>
-          <p class="heading-note">Le serie modello permettono di scegliere il confronto più utile senza calcolare somme impossibili.</p>
+          <div><p class="kicker">Serie di riferimento</p><h2 id="riferimenti-title">Riconoscere la struttura.</h2></div>
+          <p class="heading-note">Le serie di riferimento consentono di individuare il metodo di studio appropriato senza calcolare esplicitamente la somma.</p>
         </div>
         <div class="theory-cards series-cards">
           <article class="theory-card accent-red">
@@ -101,13 +101,13 @@
           </article>
           <article class="theory-card accent-gold">
             <span class="card-index">02</span><h3>Telescopica</h3>
-            <p>Se i termini sono differenze consecutive, nelle somme parziali quasi tutto si cancella. Ad esempio <span class="math">1/[k(k+1)] = 1/k − 1/(k+1)</span>.</p>
+            <p>Se i termini sono differenze consecutive, nelle somme parziali si verificano cancellazioni successive. Ad esempio <span class="math">1/[k(k+1)] = 1/k − 1/(k+1)</span>.</p>
             <div class="card-tag">cancellazioni</div>
           </article>
           <article class="theory-card accent-ink">
-            <span class="card-index">03</span><h3>p-serie</h3>
-            <p><span class="math">Σ 1/k<sup>p</sup></span> converge per <span class="math">p &gt; 1</span> e diverge per <span class="math">p ≤ 1</span>. In particolare l’armonica ha <span class="math">p=1</span>.</p>
-            <div class="card-tag">serie di confronto</div>
+            <span class="card-index">03</span><h3>Geometrica</h3>
+            <p>La serie <span class="math">Σ<sub>k=0</sub><sup>+∞</sup>q<sup>k</sup></span> converge se <span class="math">|q|&lt;1</span> e la sua somma vale <span class="math">1/(1−q)</span>. Per <span class="math">|q|≥1</span> diverge.</p>
+            <div class="card-tag">serie modello</div>
           </article>
         </div>
       </section>
@@ -128,21 +128,21 @@
             <span class="criterion-number">B</span>
             <h3>Confronto asintotico</h3>
             <p>Se <span class="math">a<sub>k</sub>/b<sub>k</sub> → L</span>, con <span class="math">0 &lt; L &lt; +∞</span>, le due serie hanno lo stesso carattere.</p>
-            <p>Le equivalenze della lezione precedente sono quindi uno strumento diretto per confrontare con una <span class="math">p</span>-serie.</p>
+            <p>Le equivalenze della lezione precedente costituiscono quindi uno strumento diretto per il confronto con una serie di riferimento.</p>
           </article>
           <article class="criterion-card">
             <span class="criterion-number">C</span>
-            <h3>Rapporto</h3>
-            <p>Per termini positivi, se <span class="math">a<sub>k+1</sub>/a<sub>k</sub> → ℓ &lt; 1</span>, la serie converge; se il limite è maggiore di <span class="math">1</span>, diverge.</p>
-            <p>Quando il limite vale <span class="math">1</span>, il criterio non decide.</p>
+            <h3>Criterio della radice</h3>
+            <p>Per termini positivi, poniamo <span class="math">q = lim<sub>k→+∞</sub>&nbsp;√[k]{a<sub>k</sub>}</span>. Se <span class="math">q&lt;1</span> la serie converge; se <span class="math">q&gt;1</span> diverge.</p>
+            <p>Quando <span class="math">q=1</span>, il criterio non consente di concludere.</p>
           </article>
         </div>
       </section>
 
       <section class="section-shell partials-section" id="visualizza" aria-labelledby="visualizza-title">
         <div class="section-heading">
-          <div><p class="kicker">Laboratorio · somme parziali</p><h2 id="visualizza-title">La serie prende forma nel grafico di s<sub>n</sub>.</h2></div>
-          <p class="heading-note">Cambia la serie e aumenta il numero di termini: la linea tratteggiata indica il limite quando esiste.</p>
+          <div><p class="kicker">Laboratorio · somme parziali</p><h2 id="visualizza-title">Andamento grafico delle somme parziali s<sub>n</sub>.</h2></div>
+          <p class="heading-note">Selezionare una serie e incrementare il numero di termini: la linea tratteggiata indica il limite quando esiste.</p>
         </div>
         <div class="partials-lab">
           <div class="partials-controls">
@@ -170,27 +170,12 @@
         </div>
       </section>
 
-      <section class="section-shell worked-section" aria-labelledby="telescopica-title">
-        <div class="section-heading">
-          <div><p class="kicker">Un esempio guidato</p><h2 id="telescopica-title">La cancellazione rende visibile il limite.</h2></div>
-          <p class="heading-note">Nelle serie telescopiche bisogna scrivere una somma parziale, non soltanto osservare il termine generale.</p>
-        </div>
-        <div class="telescope-worked">
-          <div class="telescope-formula"><span class="mini-label">Serie</span><strong>Σ<sub>k=1</sub><sup>+∞</sup> 1/[k(k+1)]</strong></div>
-          <div class="telescope-steps">
-            <div><b>1</b><span>Decomponi: <span class="math">1/[k(k+1)] = 1/k − 1/(k+1)</span>.</span></div>
-            <div><b>2</b><span>Scrivi <span class="math">s<sub>n</sub> = 1 − 1/(n+1)</span>: tutti i termini intermedi si cancellano.</span></div>
-            <div><b>3</b><span>Poiché <span class="math">1/(n+1) → 0</span>, si ha <span class="math">s<sub>n</sub> → 1</span>.</span></div>
-          </div>
-        </div>
-      </section>
-
       <section class="section-shell quiz-section" id="verifica" aria-labelledby="verifica-title">
-        <div class="section-heading"><div><p class="kicker">Verifica formativa</p><h2 id="verifica-title">Esercizi di recap.</h2></div><p class="heading-note">Scegli il criterio adatto: prima controlla sempre il termine generale.</p></div>
+        <div class="section-heading"><div><p class="kicker">Verifica formativa</p><h2 id="verifica-title">Esercizi di riepilogo.</h2></div><p class="heading-note">Individuare il criterio pertinente, verificando preliminarmente il comportamento del termine generale.</p></div>
         <div class="quiz-grid">
           <article class="quiz-card" data-answer="b"><span class="quiz-number">01</span><h3>Armonica</h3><p>La serie <span class="math">Σ 1/k</span> è:</p><div class="quiz-options"><button type="button" data-choice="a">A · convergente perché 1/k → 0</button><button type="button" data-choice="b">B · divergente</button><button type="button" data-choice="c">C · telescopica</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
           <article class="quiz-card" data-answer="a"><span class="quiz-number">02</span><h3>Telescopica</h3><p>Per <span class="math">a<sub>k</sub>=1/[k(k+1)]</span>, quale è la somma parziale?</p><div class="quiz-options"><button type="button" data-choice="a">A · s<sub>n</sub>=n/(n+1)</button><button type="button" data-choice="b">B · s<sub>n</sub>=1/n</button><button type="button" data-choice="c">C · s<sub>n</sub>=n</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
-          <article class="quiz-card" data-answer="c"><span class="quiz-number">03</span><h3>p-serie</h3><p>La serie <span class="math">Σ 1/k<sup>2</sup></span> è:</p><div class="quiz-options"><button type="button" data-choice="a">A · divergente</button><button type="button" data-choice="b">B · indeterminata</button><button type="button" data-choice="c">C · convergente</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="c"><span class="quiz-number">03</span><h3>Criterio della radice</h3><p>Se <span class="math">a<sub>k</sub>≥0</span> e <span class="math">lim<sub>k→+∞</sub>&nbsp;√[k]{a<sub>k</sub>}=q</span>, quale condizione garantisce la convergenza?</p><div class="quiz-options"><button type="button" data-choice="a">A · q &gt; 1</button><button type="button" data-choice="b">B · q = 1</button><button type="button" data-choice="c">C · q &lt; 1</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
           <article class="quiz-card" data-answer="a"><span class="quiz-number">04</span><h3>Confronto diretto</h3><p>Se <span class="math">0≤a<sub>k</sub>≤1/k<sup>2</sup></span>, allora <span class="math">Σa<sub>k</sub></span>:</p><div class="quiz-options"><button type="button" data-choice="a">A · converge</button><button type="button" data-choice="b">B · diverge</button><button type="button" data-choice="c">C · non è definita</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
           <article class="quiz-card" data-answer="b"><span class="quiz-number">05</span><h3>Equivalenza</h3><p>Se <span class="math">a<sub>k</sub>∼3/k</span> e <span class="math">a<sub>k</sub>≥0</span>, la serie <span class="math">Σa<sub>k</sub></span>:</p><div class="quiz-options"><button type="button" data-choice="a">A · converge</button><button type="button" data-choice="b">B · diverge</button><button type="button" data-choice="c">C · è telescopica</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
           <article class="quiz-card" data-answer="c"><span class="quiz-number">06</span><h3>Logaritmo</h3><p>La serie <span class="math">Σ log(1+1/k<sup>2</sup>)</span> è:</p><div class="quiz-options"><button type="button" data-choice="a">A · armonica</button><button type="button" data-choice="b">B · divergente perché compare log</button><button type="button" data-choice="c">C · convergente</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
@@ -202,8 +187,8 @@
           <div><p class="kicker">Sintesi metodologica</p><h2 id="chiusura-title">Termine → struttura → confronto.</h2></div>
           <div class="closing-list">
             <span><b>1</b> Controlla se <span class="math">a<sub>k</sub>→0</span>.</span>
-            <span><b>2</b> Cerca una telescopica, una geometrica o una <span class="math">p</span>-serie.</span>
-            <span><b>3</b> Per termini positivi, scegli il verso corretto del confronto.</span>
+            <span><b>2</b> Individuare una serie telescopica, geometrica o un criterio di convergenza.</span>
+            <span><b>3</b> Per termini positivi, applica il verso corretto del confronto.</span>
           </div>
         </div>
       </section>

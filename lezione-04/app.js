@@ -156,11 +156,11 @@
         $$('.quiz-options button', card).forEach((option) => option.classList.remove('selected', 'wrong'));
         button.classList.add('selected');
         if (button.dataset.choice === answer) {
-          feedback.textContent = 'Corretto: hai scelto il criterio giusto.';
+          feedback.textContent = 'Risposta corretta: il criterio indicato è applicabile.';
           feedback.classList.add('correct');
         } else {
           button.classList.add('wrong');
-          feedback.textContent = 'Non ancora: controlla il termine generale e la serie di confronto.';
+          feedback.textContent = 'Risposta non corretta: verificare il termine generale e il criterio pertinente.';
           feedback.classList.remove('correct');
         }
       });
