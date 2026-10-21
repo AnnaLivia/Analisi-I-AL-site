@@ -20,7 +20,7 @@
 .series-cards .theory-card { min-height: 300px; }
 .series-cards .theory-card p { min-height: 125px; }
 
-.criteria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.criteria-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 .criterion-card { min-height: 335px; padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
 .criterion-card.featured { border-top: 4px solid var(--sapienza-gold); background: #fffdfa; }
 .criterion-number { display: grid; place-items: center; width: 29px; height: 29px; color: white; border-radius: 50%; background: var(--sapienza-red); font-size: .76rem; font-weight: 800; }
@@ -46,6 +46,10 @@
   .series-cards .theory-card p { min-height: 0; }
   .partials-controls { grid-template-columns: 1fr 1fr; }
   .partials-result { grid-column: 1 / -1; }
+}
+
+@media (min-width: 621px) and (max-width: 1080px) {
+  .criteria-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 620px) {
