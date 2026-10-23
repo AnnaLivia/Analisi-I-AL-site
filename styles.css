@@ -94,6 +94,7 @@ h2 { margin-bottom: 0; font-size: clamp(2.2rem, 4vw, 4rem); line-height: 1; }
 .lesson-step strong { font: 1.1rem var(--serif); }
 .lesson-step small { margin-top: .15rem; font-size: .68rem; opacity: .68; }
 .lesson-more { padding-left: .5rem; color: var(--ink-soft); white-space: nowrap; font-size: .82rem; }
+.lesson-download { margin: 1rem 0 0; }
 
 .theory-grid { border-top: 1px solid var(--line); }
 .theory-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--line); }
