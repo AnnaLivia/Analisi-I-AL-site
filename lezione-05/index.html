@@ -114,10 +114,10 @@
             </table>
           </div>
           <aside class="operation-note" aria-label="Avvertenza metodologica">
-            <span class="mini-label">Precisione</span>
-            <h3>La somma conserva l’informazione meno precisa.</h3>
-            <p>Se <span class="math">f=o(x<sup>α</sup>)</span>, allora <span class="math">f=o(x<sup>β</sup>)</span> per <span class="math">β&lt;α</span> quando <span class="math">x→0<sup>+</sup></span>, e per <span class="math">β&gt;α</span> quando <span class="math">x→+∞</span>.</p>
-            <p class="math operation-example">o(x<sup>2</sup>) − o(x) = o(x) &nbsp; per x→0.</p>
+            <span class="mini-label">Somma di resti</span>
+            <h3>La regola dipende dal limite considerato.</h3>
+            <p>Se <span class="math">f=o(x<sup>α</sup>)</span> e <span class="math">g=o(x<sup>β</sup>)</span>, allora <span class="math">f±g=o(x<sup>min{α,β}</sup>)</span> per <span class="math">x→0<sup>+</sup></span>, mentre <span class="math">f±g=o(x<sup>max{α,β}</sup>)</span> per <span class="math">x→+∞</span>.</p>
+            <p class="math operation-example">o(x<sup>2</sup>) − o(x) = o(x) &nbsp; per x→0<sup>+</sup>.</p>
           </aside>
         </div>
       </section>
@@ -194,7 +194,7 @@
             <p>Per <span class="math">x→0<sup>+</sup></span>, l’espressione <span class="math">x<sup>3</sup>o(x<sup>2</sup>)</span> è:</p>
             <div class="quiz-options"><button type="button" data-choice="a">A · o(x²)</button><button type="button" data-choice="b">B · o(x³)</button><button type="button" data-choice="c">C · o(x⁵)</button></div><p class="quiz-feedback" aria-live="polite"></p>
           </article>
-          <article class="quiz-card" data-answer="a" data-explanation="Per x→0 la relazione o(x²) è più precisa di o(x); nella somma resta l’informazione meno precisa.">
+          <article class="quiz-card" data-answer="a" data-explanation="Per x→0⁺, la regola della somma dà o(x^min{2,1})=o(x).">
             <span class="quiz-number">04</span><h3>Somma</h3>
             <p>Per <span class="math">x→0</span>, quale semplificazione è corretta?</p>
             <div class="quiz-options"><button type="button" data-choice="a">A · o(x²)−o(x)=o(x)</button><button type="button" data-choice="b">B · o(x²)−o(x)=o(x²)</button><button type="button" data-choice="c">C · o(x²)−o(x)=0</button></div><p class="quiz-feedback" aria-live="polite"></p>
