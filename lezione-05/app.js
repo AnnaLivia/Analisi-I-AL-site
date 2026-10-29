@@ -45,6 +45,96 @@
     };
   }
 
+  function drawArrow(context, fromX, fromY, toX, toY, color) {
+    const angle = Math.atan2(toY - fromY, toX - fromX);
+    const length = 8;
+    context.strokeStyle = color;
+    context.fillStyle = color;
+    context.lineWidth = 2.2;
+    context.beginPath(); context.moveTo(fromX, fromY); context.lineTo(toX, toY); context.stroke();
+    context.beginPath();
+    context.moveTo(toX, toY);
+    context.lineTo(toX - length * Math.cos(angle - Math.PI / 6), toY - length * Math.sin(angle - Math.PI / 6));
+    context.lineTo(toX - length * Math.cos(angle + Math.PI / 6), toY - length * Math.sin(angle + Math.PI / 6));
+    context.closePath(); context.fill();
+  }
+
+  function drawPowerFamily() {
+    const canvas = $('#power-family-canvas');
+    if (!canvas) return;
+    const context = canvas.getContext('2d');
+    const { width, height } = resizeCanvas(canvas, context);
+    const left = 44;
+    const right = 22;
+    const top = 20;
+    const bottom = 34;
+    const plotWidth = Math.max(1, width - left - right);
+    const plotHeight = Math.max(1, height - top - bottom);
+    const xMax = 4;
+    const yMax = 10;
+    const mapX = (x) => left + (x / xMax) * plotWidth;
+    const mapY = (y) => top + ((yMax - y) / yMax) * plotHeight;
+    const powers = [
+      { exponent: 3, label: 'x³', color: '#9c3035', labelAt: 1.7 },
+      { exponent: 2, label: 'x²', color: '#3677aa', labelAt: 2.25 },
+      { exponent: 1, label: 'x', color: '#438456', labelAt: 3.1 },
+      { exponent: .5, label: '√x = x⁰·⁵', color: '#c27b46', labelAt: 3.3 },
+      { exponent: 1 / 3, label: '∛x = x¹⁄³', color: '#59616a', labelAt: 3.3 }
+    ];
+
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = 'rgba(255,255,255,.84)';
+    context.fillRect(0, 0, width, height);
+    context.strokeStyle = '#cfe8ef';
+    context.lineWidth = 1;
+    for (let x = 0; x <= xMax; x += .5) {
+      const screenX = mapX(x);
+      context.beginPath(); context.moveTo(screenX, top); context.lineTo(screenX, height - bottom); context.stroke();
+    }
+    for (let y = 0; y <= yMax; y += 1) {
+      const screenY = mapY(y);
+      context.beginPath(); context.moveTo(left, screenY); context.lineTo(width - right, screenY); context.stroke();
+    }
+    context.strokeStyle = '#1b2027';
+    context.lineWidth = 1.2;
+    context.beginPath(); context.moveTo(left, height - bottom); context.lineTo(width - right, height - bottom); context.stroke();
+    context.beginPath(); context.moveTo(left, height - bottom); context.lineTo(left, top); context.stroke();
+    context.fillStyle = '#4b555f';
+    context.font = '11px ui-sans-serif, sans-serif';
+    [1, 2, 3, 4].forEach((x) => context.fillText(String(x), mapX(x) - 3, height - 16));
+    [2, 4, 6, 8, 10].forEach((y) => context.fillText(String(y), 18, mapY(y) + 4));
+    context.fillText('x', width - right - 4, height - 7);
+    context.fillText('y', left - 14, top + 2);
+
+    context.save();
+    context.beginPath(); context.rect(left, top, plotWidth, plotHeight); context.clip();
+    powers.forEach((power) => {
+      context.strokeStyle = power.color;
+      context.lineWidth = 2.7;
+      context.lineCap = 'round';
+      context.beginPath();
+      for (let index = 0; index <= 160; index += 1) {
+        const x = (index / 160) * xMax;
+        const y = x ** power.exponent;
+        const screenX = mapX(x);
+        const screenY = mapY(y);
+        if (index === 0) context.moveTo(screenX, screenY); else context.lineTo(screenX, screenY);
+      }
+      context.stroke();
+      const arrowEndX = Math.min(xMax, (yMax * .93) ** (1 / power.exponent));
+      const arrowStartX = Math.max(.02, arrowEndX - .12);
+      drawArrow(context, mapX(arrowStartX), mapY(arrowStartX ** power.exponent), mapX(arrowEndX), mapY(arrowEndX ** power.exponent), power.color);
+    });
+    context.restore();
+    powers.forEach((power) => {
+      const x = power.labelAt;
+      const y = x ** power.exponent;
+      context.fillStyle = power.color;
+      context.font = '600 14px Georgia, serif';
+      context.fillText(power.label, mapX(x) + 7, Math.max(top + 16, mapY(y) - 7));
+    });
+  }
+
   function drawHierarchy() {
     const canvas = $('#hierarchy-canvas');
     if (!canvas) return;
@@ -141,7 +231,8 @@
   }
 
   ['#x0', '#alpha', '#base'].forEach((selector) => $(selector).addEventListener('input', updateComparison));
-  window.addEventListener('resize', drawHierarchy);
+  window.addEventListener('resize', () => { drawPowerFamily(); drawHierarchy(); });
+  drawPowerFamily();
   updateComparison();
 
   $$('.quiz-card').forEach((card) => {

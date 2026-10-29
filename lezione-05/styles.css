@@ -27,6 +27,15 @@
 .operation-note p { color: rgba(255,255,255,.73); font-size: .88rem; }
 .operation-note .operation-example { margin: 1.1rem 0 0; color: #e4c674; font-size: 1rem; }
 
+.power-family-board { display: grid; grid-template-columns: minmax(0, 1.32fr) minmax(270px, .68fr); overflow: hidden; margin-bottom: 1rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+.power-canvas-wrap { min-height: 395px; padding: 1rem; background-color: #fbfdfd; background-image: linear-gradient(#d9edf3 1px, transparent 1px), linear-gradient(90deg, #d9edf3 1px, transparent 1px); background-size: 18px 18px; }
+.power-canvas-wrap canvas { width: 100%; height: 100%; border: 1px solid rgba(179, 211, 220, .7); border-radius: 10px; background: rgba(255,255,255,.78); }
+.power-family-note { display: flex; flex-direction: column; justify-content: center; padding: 2rem; border-left: 1px solid var(--line); }
+.power-family-note .mini-label { color: var(--sapienza-red); }
+.power-family-note h3 { margin: .9rem 0 1rem; font: clamp(1.8rem, 3vw, 2.65rem) var(--serif); line-height: 1.03; }
+.power-family-note p { color: var(--ink-soft); font-size: .91rem; }
+.power-family-note .power-rule { margin: 1.35rem 0; padding: .85rem .9rem; color: var(--sapienza-red); border-left: 3px solid var(--sapienza-gold); background: #f6f0e5; font: 1.08rem var(--serif); }
+
 .hierarchy-board { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
 .hierarchy-controls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; padding: 1.35rem 1.45rem; border-bottom: 1px solid var(--line); background: #f2f0eb; }
 .hierarchy-controls .control-block { min-width: 0; }
@@ -59,10 +68,13 @@
   .symbol-grid { grid-template-columns: 1fr 1fr; }
   .operations-layout { grid-template-columns: 1fr; }
   .operation-note { min-height: 220px; }
+  .power-family-board { grid-template-columns: 1fr; }
+  .power-family-note { border-top: 1px solid var(--line); border-left: 0; }
 }
 
 @media (max-width: 760px) {
   .hierarchy-controls, .comparison-grid { grid-template-columns: 1fr; }
+  .power-canvas-wrap { min-height: 320px; }
   .hierarchy-canvas-wrap { height: 340px; padding-right: .8rem; padding-left: .8rem; }
   .hierarchy-board > .interaction-note { padding-right: .8rem; padding-left: .8rem; }
   .local-values { grid-template-columns: 1fr; }
@@ -73,6 +85,8 @@
   .symbol-grid, .landau-quiz-grid { grid-template-columns: 1fr; }
   .symbol-card { min-height: 0; }
   .hierarchy-controls { padding: 1.15rem; }
+  .power-canvas-wrap { min-height: 275px; padding: .65rem; }
+  .power-family-note { padding: 1.35rem; }
   .local-panel, .asymptotic-panel { min-height: 0; padding: 1.35rem; }
   .asymptotic-chain { gap: .4rem; font-size: 1.05rem; }
 }
