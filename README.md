@@ -10,4 +10,4 @@ La Lezione 03, dedicata al recap dei limiti notevoli e ai limiti trigonometrici 
 
 La Lezione 04 propone un richiamo sulle serie numeriche: somme parziali, armonica, telescopiche, geometrica e criteri per termini positivi (confronto diretto, confronto asintotico, criterio della radice e criterio del rapporto), con visualizzazione grafica. È disponibile in [`lezione-04/`](lezione-04/).
 
-La Lezione 05 introduce i simboli di Landau, le relative operazioni e la gerarchia di infiniti fra logaritmi, potenze, esponenziali, fattoriali e funzioni del tipo `x^x`. Include una visualizzazione interattiva e sei quesiti di verifica sui limiti asintotici. È disponibile in [`lezione-05/`](lezione-05/).
+La Lezione 05 introduce il simbolo di Landau `o(·)`, le relative regole di calcolo e la gerarchia di infiniti fra logaritmi, potenze, esponenziali, fattoriali e funzioni del tipo `x^x`. Include una visualizzazione interattiva e sei quesiti di verifica sui limiti asintotici. È disponibile in [`lezione-05/`](lezione-05/).

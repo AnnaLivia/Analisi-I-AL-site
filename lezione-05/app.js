@@ -136,7 +136,7 @@
     const ordered = Object.entries(values).sort(([, first], [, second]) => first - second);
     $('#local-values').innerHTML = ordered.map(([key, value]) => `<li><span>${labels[key]}</span><strong>${formatNumber(value)}</strong></li>`).join('');
     $('#local-order').textContent = `Ordinamento in x₀: ${ordered.map(([key]) => labels[key]).join(' ≤ ')}.`;
-    $('#asymptotic-result').innerHTML = `log x = o(x<sup>${formatDecimal(alpha)}</sup>) = o(${formatDecimal(base)}<sup>x</sup>) = o(x!) = o(x<sup>x</sup>)`;
+    $('#asymptotic-result').innerHTML = `log x = o(x<sup>${formatDecimal(alpha)}</sup>); x<sup>${formatDecimal(alpha)}</sup> = o(${formatDecimal(base)}<sup>x</sup>); ${formatDecimal(base)}<sup>x</sup> = o(x!); x! = o(x<sup>x</sup>)`;
     drawHierarchy();
   }
 

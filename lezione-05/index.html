@@ -43,8 +43,8 @@
             <span>f = o(g)</span><span class="equation-arrow">⇔</span><span>lim<sub>x→+∞</sub>&nbsp;f/g = 0</span>
           </div>
           <div class="topic-grid">
-            <span><b>01</b> O, o, Θ, ∼</span>
-            <span><b>02</b> Operazioni</span>
+            <span><b>01</b> o(·), ≺</span>
+            <span><b>02</b> Algebra di o(·)</span>
             <span><b>03</b> Gerarchie</span>
             <span><b>04</b> Limiti</span>
           </div>
@@ -68,56 +68,56 @@
 
       <section class="section-shell landau-intro" id="definizioni" aria-labelledby="definizioni-title">
         <div class="section-heading">
-          <div><p class="kicker">Definizioni</p><h2 id="definizioni-title">Quattro relazioni, quattro livelli di informazione.</h2></div>
+          <div><p class="kicker">Notazione di Landau</p><h2 id="definizioni-title">Il simbolo o(·) esprime una trascurabilità relativa.</h2></div>
           <p class="heading-note">Siano <span class="math">f,g</span> definite definitivamente e sia <span class="math">g</span> non nulla definitivamente.</p>
         </div>
         <div class="symbol-grid">
           <article class="symbol-card accent-red">
-            <span class="card-index">O</span><h3>Dominazione</h3>
-            <p><span class="math">f = O(g)</span> se esistono <span class="math">C&gt;0</span> e <span class="math">x<sub>0</sub></span> tali che <span class="math">|f(x)| ≤ C|g(x)|</span> per ogni <span class="math">x ≥ x<sub>0</sub></span>.</p>
-            <div class="card-tag">maggiorazione definitiva</div>
+            <span class="card-index">o</span><h3>Definizione</h3>
+            <p><span class="math">f(x)=o(g(x))</span> per <span class="math">x→x<sub>0</sub></span> se <span class="math">lim<sub>x→x<sub>0</sub></sub>f(x)/g(x)=0</span>.</p>
+            <div class="card-tag">rapporto infinitesimo</div>
           </article>
           <article class="symbol-card accent-gold">
-            <span class="card-index">o</span><h3>Trascurabilità</h3>
-            <p><span class="math">f = o(g)</span> se <span class="math">lim<sub>x→+∞</sub> f(x)/g(x)=0</span>. Il rapporto rende quantitativa la perdita di ordine.</p>
-            <div class="card-tag">scala stretta</div>
+            <span class="card-index">1</span><h3>Il caso o(1)</h3>
+            <p><span class="math">h(x)=o(1)</span> per <span class="math">x→x<sub>0</sub></span> indica una generica funzione infinitesima. Di conseguenza, <span class="math">x·o(1)</span> è infinitesima rispetto a <span class="math">x</span>.</p>
+            <div class="card-tag">infinitesimo generico</div>
           </article>
           <article class="symbol-card accent-ink">
-            <span class="card-index">Θ</span><h3>Ordine comune</h3>
-            <p><span class="math">f = Θ(g)</span> se <span class="math">f=O(g)</span> e <span class="math">g=O(f)</span>: le due funzioni differiscono al più per fattori costanti.</p>
-            <div class="card-tag">confronto bilaterale</div>
+            <span class="card-index">≺</span><h3>Confronto</h3>
+            <p>La notazione <span class="math">f≺g</span> per <span class="math">x→x<sub>0</sub></span> equivale a <span class="math">f=o(g)</span>. Per infiniti indica ordine inferiore; per infinitesimi l’ordine è invertito.</p>
+            <div class="card-tag">confronto relativo</div>
           </article>
           <article class="symbol-card accent-red">
-            <span class="card-index">∼</span><h3>Equivalenza</h3>
-            <p><span class="math">f ∼ g</span> se <span class="math">lim<sub>x→+∞</sub> f(x)/g(x)=1</span>. In particolare, <span class="math">f∼g ⇒ f=Θ(g)</span>.</p>
-            <div class="card-tag">rapporto unitario</div>
+            <span class="card-index">∼</span><h3>Stesso ordine</h3>
+            <p>Se <span class="math">lim<sub>x→x<sub>0</sub></sub>f(x)/g(x)=ℓ∈ℝ∖{0}</span>, allora <span class="math">f(x)∼ℓg(x)</span>; nei casi di infiniti o infinitesimi, le funzioni sono dello stesso ordine.</p>
+            <div class="card-tag">rapporto non nullo</div>
           </article>
         </div>
       </section>
 
       <section class="section-shell operations-section" id="operazioni" aria-labelledby="operazioni-title">
         <div class="section-heading">
-          <div><p class="kicker">Calcolo asintotico</p><h2 id="operazioni-title">Regole di composizione.</h2></div>
-          <p class="heading-note">Le relazioni sono considerate nel limite per <span class="math">x→+∞</span>; i rapporti coinvolti sono assunti definiti definitivamente.</p>
+          <div><p class="kicker">Algebra di o(·)</p><h2 id="operazioni-title">Regole di composizione e precisione.</h2></div>
+          <p class="heading-note">Le formule valgono per <span class="math">x→0<sup>+</sup></span> oppure per <span class="math">x→+∞</span>, con <span class="math">α,β∈ℝ</span>.</p>
         </div>
         <div class="operations-layout">
           <div class="operations-table-wrap">
             <table class="operations-table">
-              <caption>Conseguenze operative delle definizioni</caption>
-              <thead><tr><th scope="col">Ipotesi</th><th scope="col">Conclusione</th><th scope="col">Motivazione</th></tr></thead>
+              <caption>Regole aritmetiche per o(·)</caption>
+              <thead><tr><th scope="col">Operazione</th><th scope="col">Risultato</th><th scope="col">Interpretazione</th></tr></thead>
               <tbody>
-                <tr><td><span class="math">f=O(g), h=O(k)</span></td><td><span class="math">fh=O(gk)</span></td><td>Il prodotto di due rapporti limitati è limitato.</td></tr>
-                <tr><td><span class="math">f=o(g), h=O(k)</span></td><td><span class="math">fh=o(gk)</span></td><td>Un fattore infinitesimo moltiplicato per uno limitato resta infinitesimo.</td></tr>
-                <tr><td><span class="math">f=o(g)</span></td><td><span class="math">f+g ∼ g</span></td><td><span class="math">(f+g)/g = 1+f/g → 1</span>.</td></tr>
-                <tr><td><span class="math">f∼g, h∼k</span></td><td><span class="math">fh∼gk</span></td><td>I rapporti tendono entrambi a <span class="math">1</span>.</td></tr>
+                <tr><td><span class="math">c∈ℝ∖{0}</span></td><td><span class="math">o(cx<sup>α</sup>)=c·o(x<sup>α</sup>)=o(x<sup>α</sup>)</span></td><td>Una costante non nulla non modifica l’ordine dell’infinitesimo.</td></tr>
+                <tr><td><span class="math">o(x<sup>α</sup>)±o(x<sup>α</sup>)</span></td><td><span class="math">o(x<sup>α</sup>)</span></td><td>La classe è stabile rispetto a somma e differenza.</td></tr>
+                <tr><td><span class="math">x<sup>β</sup>o(x<sup>α</sup>)</span></td><td><span class="math">o(x<sup>α+β</sup>)</span></td><td>Il prodotto trasferisce la potenza al termine di riferimento.</td></tr>
+                <tr><td><span class="math">o(x<sup>α</sup>)o(x<sup>β</sup>)</span></td><td><span class="math">o(x<sup>α+β</sup>)</span></td><td>Il prodotto di due rapporti infinitesimi resta infinitesimo.</td></tr>
               </tbody>
             </table>
           </div>
           <aside class="operation-note" aria-label="Avvertenza metodologica">
-            <span class="mini-label">Avvertenza</span>
-            <h3>Il confronto puntuale non è asintotico.</h3>
-            <p>L’ineguaglianza osservata in un punto fissato non determina una relazione di Landau. Occorre un’affermazione valida definitivamente, oppure il limite del rapporto.</p>
-            <p class="math operation-example">log x = o(x<sup>α</sup>) &nbsp; per ogni α&gt;0.</p>
+            <span class="mini-label">Precisione</span>
+            <h3>La somma conserva l’informazione meno precisa.</h3>
+            <p>Se <span class="math">f=o(x<sup>α</sup>)</span>, allora <span class="math">f=o(x<sup>β</sup>)</span> per <span class="math">β&lt;α</span> quando <span class="math">x→0<sup>+</sup></span>, e per <span class="math">β&gt;α</span> quando <span class="math">x→+∞</span>.</p>
+            <p class="math operation-example">o(x<sup>2</sup>) − o(x) = o(x) &nbsp; per x→0.</p>
           </aside>
         </div>
       </section>
@@ -156,9 +156,9 @@
           <article class="asymptotic-panel" aria-labelledby="infinito-title">
             <span class="mini-label">Regime asintotico</span>
             <h3 id="infinito-title">Per <span class="math">x→+∞</span>.</h3>
-            <p class="asymptotic-chain"><span>log x</span><b>= o</b><span>x<sup>α</sup></span><b>= o</b><span>a<sup>x</sup></span><b>= o</b><span>x!</span><b>= o</b><span>x<sup>x</sup></span></p>
+            <p class="asymptotic-chain"><span>log x</span><b>≺</b><span>x<sup>α</sup></span><b>≺</b><span>a<sup>x</sup></span><b>≺</b><span>x!</span><b>≺</b><span>x<sup>x</sup></span></p>
             <p>La catena vale per ogni <span class="math">α&gt;0</span> e <span class="math">a&gt;1</span>. Essa è un’affermazione sui limiti dei rapporti, non sull’ordinamento in un valore prefissato.</p>
-            <div class="asymptotic-result" id="asymptotic-result">log x = o(x<sup>1,2</sup>) = o(1,7<sup>x</sup>) = o(x!) = o(x<sup>x</sup>)</div>
+            <div class="asymptotic-result" id="asymptotic-result">log x = o(x<sup>1,2</sup>); x<sup>1,2</sup> = o(1,7<sup>x</sup>); 1,7<sup>x</sup> = o(x!); x! = o(x<sup>x</sup>)</div>
           </article>
         </div>
       </section>
@@ -169,35 +169,35 @@
           <p class="heading-note">Ogni conclusione deve essere giustificata dal limite di un rapporto o da una relazione asintotica nota.</p>
         </div>
         <div class="quiz-grid landau-quiz-grid">
-          <article class="quiz-card" data-answer="b" data-explanation="Il rapporto tende a zero: il logaritmo è trascurabile rispetto a ogni potenza positiva.">
-            <span class="quiz-number">01</span><h3>Logaritmo e potenze</h3>
-            <p><span class="math">lim<sub>x→+∞</sub> log x / x<sup>2/3</sup></span> vale:</p>
-            <div class="quiz-options"><button type="button" data-choice="a">A · +∞</button><button type="button" data-choice="b">B · 0</button><button type="button" data-choice="c">C · 1</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          <article class="quiz-card" data-answer="a" data-explanation="È precisamente la definizione: il rapporto f(x)/g(x) deve tendere a zero.">
+            <span class="quiz-number">01</span><h3>Definizione</h3>
+            <p>Se <span class="math">f(x)=o(g(x))</span> per <span class="math">x→x<sub>0</sub></span>, allora <span class="math">lim f(x)/g(x)</span> vale:</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · 0</button><button type="button" data-choice="b">B · 1</button><button type="button" data-choice="c">C · un reale non nullo</button></div><p class="quiz-feedback" aria-live="polite"></p>
           </article>
-          <article class="quiz-card" data-answer="c" data-explanation="Dividendo per n⁴ si ottiene 1 + 3 log(n)/n², che tende a 1.">
-            <span class="quiz-number">02</span><h3>Termine dominante</h3>
-            <p>Per <span class="math">f(n)=n<sup>4</sup>+3n<sup>2</sup>log n</span>, quale relazione è corretta?</p>
-            <div class="quiz-options"><button type="button" data-choice="a">A · f=o(n⁴)</button><button type="button" data-choice="b">B · f=O(n²log n)</button><button type="button" data-choice="c">C · f∼n⁴</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          <article class="quiz-card" data-answer="b" data-explanation="Il limite notevole eˣ−1−x=o(x) per x→0 fornisce esattamente questa scrittura.">
+            <span class="quiz-number">02</span><h3>Esponenziale</h3>
+            <p>Quale sviluppo ha la precisione richiesta per <span class="math">x→0</span>?</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · e<sup>x</sup>=1+x+o(x²)</button><button type="button" data-choice="b">B · e<sup>x</sup>=1+x+o(x)</button><button type="button" data-choice="c">C · e<sup>x</sup>=1+x²+o(x)</button></div><p class="quiz-feedback" aria-live="polite"></p>
           </article>
-          <article class="quiz-card" data-answer="a" data-explanation="La fattoriale domina ogni esponenziale a base fissata maggiore di uno.">
-            <span class="quiz-number">03</span><h3>Esponenziale e fattoriale</h3>
-            <p><span class="math">lim<sub>n→+∞</sub> 2<sup>n</sup>/n!</span> vale:</p>
-            <div class="quiz-options"><button type="button" data-choice="a">A · 0</button><button type="button" data-choice="b">B · 1</button><button type="button" data-choice="c">C · +∞</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          <article class="quiz-card" data-answer="c" data-explanation="Si applica la regola x^β o(x^α)=o(x^(α+β)), con α=2 e β=3.">
+            <span class="quiz-number">03</span><h3>Prodotto</h3>
+            <p>Per <span class="math">x→0<sup>+</sup></span>, l’espressione <span class="math">x<sup>3</sup>o(x<sup>2</sup>)</span> è:</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · o(x²)</button><button type="button" data-choice="b">B · o(x³)</button><button type="button" data-choice="c">C · o(x⁵)</button></div><p class="quiz-feedback" aria-live="polite"></p>
           </article>
-          <article class="quiz-card" data-answer="c" data-explanation="Dalla formula di Stirling segue n!/nⁿ ∼ √(2πn)e⁻ⁿ, dunque il rapporto tende a zero.">
-            <span class="quiz-number">04</span><h3>Fattoriale e potenza</h3>
-            <p>Quale relazione descrive correttamente <span class="math">n!</span> e <span class="math">n<sup>n</sup></span>?</p>
-            <div class="quiz-options"><button type="button" data-choice="a">A · n! ∼ nⁿ</button><button type="button" data-choice="b">B · nⁿ=o(n!)</button><button type="button" data-choice="c">C · n!=o(nⁿ)</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          <article class="quiz-card" data-answer="a" data-explanation="Per x→0 la relazione o(x²) è più precisa di o(x); nella somma resta l’informazione meno precisa.">
+            <span class="quiz-number">04</span><h3>Somma</h3>
+            <p>Per <span class="math">x→0</span>, quale semplificazione è corretta?</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · o(x²)−o(x)=o(x)</button><button type="button" data-choice="b">B · o(x²)−o(x)=o(x²)</button><button type="button" data-choice="c">C · o(x²)−o(x)=0</button></div><p class="quiz-feedback" aria-live="polite"></p>
           </article>
-          <article class="quiz-card" data-answer="b" data-explanation="Si ha (fh)/(gk)=(f/g)(h/k): un fattore tende a zero e l’altro resta limitato.">
-            <span class="quiz-number">05</span><h3>Prodotti</h3>
-            <p>Se <span class="math">f=o(g)</span> e <span class="math">h=O(k)</span>, allora:</p>
-            <div class="quiz-options"><button type="button" data-choice="a">A · fh=Θ(gk)</button><button type="button" data-choice="b">B · fh=o(gk)</button><button type="button" data-choice="c">C · fh∼gk</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          <article class="quiz-card" data-answer="b" data-explanation="Poiché 1−cos x∼x²/2, il rapporto (1−cos x)/x tende a zero.">
+            <span class="quiz-number">05</span><h3>Infinitesimi</h3>
+            <p>Per <span class="math">x→0</span>, quale relazione sussiste fra <span class="math">1−cos x</span> e <span class="math">x</span>?</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · 1−cos x∼x</button><button type="button" data-choice="b">B · 1−cos x=o(x)</button><button type="button" data-choice="c">C · x=o(1−cos x)</button></div><p class="quiz-feedback" aria-live="polite"></p>
           </article>
-          <article class="quiz-card" data-answer="a" data-explanation="La formula di Stirling implica log(n!) = n log n − n + O(log n), quindi il rapporto con n log n tende a 1.">
-            <span class="quiz-number">06</span><h3>Logaritmo della fattoriale</h3>
-            <p>Quale equivalenza è corretta per <span class="math">n→+∞</span>?</p>
-            <div class="quiz-options"><button type="button" data-choice="a">A · log(n!)∼n log n</button><button type="button" data-choice="b">B · log(n!)∼n²</button><button type="button" data-choice="c">C · log(n!)=o(n)</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          <article class="quiz-card" data-answer="c" data-explanation="Per ogni α&gt;0, il logaritmo è un infinito di ordine inferiore rispetto alla potenza xᵅ.">
+            <span class="quiz-number">06</span><h3>Gerarchia</h3>
+            <p>Per <span class="math">α&gt;0</span>, il limite <span class="math">lim<sub>x→+∞</sub>log x/x<sup>α</sup></span> vale:</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · +∞</button><button type="button" data-choice="b">B · 1</button><button type="button" data-choice="c">C · 0</button></div><p class="quiz-feedback" aria-live="polite"></p>
           </article>
         </div>
       </section>
