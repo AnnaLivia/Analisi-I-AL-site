@@ -70,16 +70,18 @@
     const bottom = 34;
     const plotWidth = Math.max(1, width - left - right);
     const plotHeight = Math.max(1, height - top - bottom);
+    const xMin = -.6;
     const xMax = 4;
+    const yMin = -2;
     const yMax = 10;
-    const mapX = (x) => left + (x / xMax) * plotWidth;
-    const mapY = (y) => top + ((yMax - y) / yMax) * plotHeight;
+    const mapX = (x) => left + ((x - xMin) / (xMax - xMin)) * plotWidth;
+    const mapY = (y) => top + ((yMax - y) / (yMax - yMin)) * plotHeight;
     const powers = [
-      { exponent: 3, label: 'x³', color: '#9c3035', labelAt: 1.7 },
-      { exponent: 2, label: 'x²', color: '#3677aa', labelAt: 2.25 },
-      { exponent: 1, label: 'x', color: '#438456', labelAt: 3.1 },
-      { exponent: .5, label: '√x = x⁰·⁵', color: '#c27b46', labelAt: 3.3 },
-      { exponent: 1 / 3, label: '∛x = x¹⁄³', color: '#59616a', labelAt: 3.3 }
+      { exponent: 3, label: 'x³', color: '#9c3035', labelAt: 1.7, evaluate: (x) => x ** 3 },
+      { exponent: 2, label: 'x²', color: '#3677aa', labelAt: 2.25, evaluate: (x) => x ** 2 },
+      { exponent: 1, label: 'x', color: '#438456', labelAt: 3.1, evaluate: (x) => x },
+      { exponent: .5, label: '√x = x⁰·⁵', color: '#c27b46', labelAt: 3.3, evaluate: (x) => x < 0 ? null : Math.sqrt(x) },
+      { exponent: 1 / 3, label: '∛x = x¹⁄³', color: '#59616a', labelAt: 3.3, evaluate: (x) => Math.cbrt(x) }
     ];
 
     context.clearRect(0, 0, width, height);
@@ -87,24 +89,31 @@
     context.fillRect(0, 0, width, height);
     context.strokeStyle = '#cfe8ef';
     context.lineWidth = 1;
-    for (let x = 0; x <= xMax; x += .5) {
+    for (let x = xMin; x <= xMax; x += .5) {
       const screenX = mapX(x);
       context.beginPath(); context.moveTo(screenX, top); context.lineTo(screenX, height - bottom); context.stroke();
     }
-    for (let y = 0; y <= yMax; y += 1) {
+    for (let y = yMin; y <= yMax; y += 1) {
       const screenY = mapY(y);
       context.beginPath(); context.moveTo(left, screenY); context.lineTo(width - right, screenY); context.stroke();
     }
     context.strokeStyle = '#1b2027';
     context.lineWidth = 1.2;
-    context.beginPath(); context.moveTo(left, height - bottom); context.lineTo(width - right, height - bottom); context.stroke();
-    context.beginPath(); context.moveTo(left, height - bottom); context.lineTo(left, top); context.stroke();
+    context.beginPath(); context.moveTo(left, mapY(0)); context.lineTo(width - right, mapY(0)); context.stroke();
+    context.beginPath(); context.moveTo(mapX(0), height - bottom); context.lineTo(mapX(0), top); context.stroke();
     context.fillStyle = '#4b555f';
     context.font = '11px ui-sans-serif, sans-serif';
-    [1, 2, 3, 4].forEach((x) => context.fillText(String(x), mapX(x) - 3, height - 16));
-    [2, 4, 6, 8, 10].forEach((y) => context.fillText(String(y), 18, mapY(y) + 4));
-    context.fillText('x', width - right - 4, height - 7);
-    context.fillText('y', left - 14, top + 2);
+    [1, 2, 3, 4].forEach((x) => context.fillText(String(x), mapX(x) - 3, mapY(0) + 15));
+    [-1, 2, 4, 6, 8, 10].forEach((y) => context.fillText(String(y), 18, mapY(y) + 4));
+    context.fillText('x', width - right - 4, mapY(0) - 7);
+    context.fillText('y', mapX(0) + 8, top + 2);
+    context.setLineDash([4, 4]);
+    context.strokeStyle = '#822433';
+    context.lineWidth = 1;
+    context.beginPath(); context.moveTo(mapX(0), top); context.lineTo(mapX(0), height - bottom); context.stroke();
+    context.setLineDash([]);
+    context.fillStyle = '#822433';
+    context.fillText('x₀ = 0', mapX(0) + 7, mapY(0) + 15);
 
     context.save();
     context.beginPath(); context.rect(left, top, plotWidth, plotHeight); context.clip();
@@ -113,22 +122,24 @@
       context.lineWidth = 2.7;
       context.lineCap = 'round';
       context.beginPath();
-      for (let index = 0; index <= 160; index += 1) {
-        const x = (index / 160) * xMax;
-        const y = x ** power.exponent;
+      let drawing = false;
+      for (let index = 0; index <= 180; index += 1) {
+        const x = xMin + (index / 180) * (xMax - xMin);
+        const y = power.evaluate(x);
+        if (y === null) { drawing = false; continue; }
         const screenX = mapX(x);
         const screenY = mapY(y);
-        if (index === 0) context.moveTo(screenX, screenY); else context.lineTo(screenX, screenY);
+        if (!drawing) { context.moveTo(screenX, screenY); drawing = true; } else context.lineTo(screenX, screenY);
       }
       context.stroke();
       const arrowEndX = Math.min(xMax, (yMax * .93) ** (1 / power.exponent));
       const arrowStartX = Math.max(.02, arrowEndX - .12);
-      drawArrow(context, mapX(arrowStartX), mapY(arrowStartX ** power.exponent), mapX(arrowEndX), mapY(arrowEndX ** power.exponent), power.color);
+      drawArrow(context, mapX(arrowStartX), mapY(power.evaluate(arrowStartX)), mapX(arrowEndX), mapY(power.evaluate(arrowEndX)), power.color);
     });
     context.restore();
     powers.forEach((power) => {
       const x = power.labelAt;
-      const y = x ** power.exponent;
+      const y = power.evaluate(x);
       context.fillStyle = power.color;
       context.font = '600 14px Georgia, serif';
       context.fillText(power.label, mapX(x) + 7, Math.max(top + 16, mapY(y) - 7));
