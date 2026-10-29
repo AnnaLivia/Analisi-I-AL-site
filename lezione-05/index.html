@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Analisi 1 — Lezione 05: simboli di Landau, operazioni asintotiche e gerarchie di infiniti." />
+    <meta name="theme-color" content="#822433" />
+    <title>Analisi 1 · Lezione 05</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="lesson-05-page">
+    <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Analisi 1, home del corso">
+          <span class="brand-mark" aria-hidden="true">Σ</span>
+          <span><strong>Analisi 1</strong><small>Sapienza · Analisi 1</small></span>
+        </a>
+        <div class="header-meta">
+          <a class="book-link" href="#gerarchia">Esamina la gerarchia</a>
+          <span class="eyebrow">A.A. 2026/27</span>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenuto">
+      <section class="hero section-shell" id="top">
+        <div class="hero-copy">
+          <p class="kicker"><span class="kicker-dot"></span> Lezione 05 · esercitazione</p>
+          <h1>Ordini<br /><em>asintotici.</em></h1>
+          <p class="lesson-meta"><strong>Simboli di Landau e gerarchie di infiniti</strong><br />Prof.ssa Anna Livia Croella</p>
+          <p class="hero-lede">Il confronto asintotico formalizza la crescita relativa di funzioni e successioni, separando il comportamento locale dal regime per argomento divergente.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#gerarchia">Visualizza le crescite <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="#operazioni">Regole di calcolo <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Definizione del simbolo piccolo o">
+          <div class="hero-card-top"><span class="status-dot"></span><span>Confronto asintotico</span><span class="hero-card-number">05 / 14</span></div>
+          <div class="hero-equation landau-equation" aria-hidden="true">
+            <span>f = o(g)</span><span class="equation-arrow">⇔</span><span>lim<sub>x→+∞</sub>&nbsp;f/g = 0</span>
+          </div>
+          <div class="topic-grid">
+            <span><b>01</b> O, o, Θ, ∼</span>
+            <span><b>02</b> Operazioni</span>
+            <span><b>03</b> Gerarchie</span>
+            <span><b>04</b> Limiti</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="lesson-map section-shell" aria-labelledby="percorso-title">
+        <div class="section-heading compact-heading">
+          <div><p class="kicker">Il percorso</p><h2 id="percorso-title">Dalle serie al confronto asintotico.</h2></div>
+          <p class="heading-note">Le gerarchie di crescita forniscono lo strumento naturale per valutare limiti e confrontare termini dominanti.</p>
+        </div>
+        <div class="lesson-rail" aria-label="Lezioni del corso">
+          <a class="lesson-step" href="../"><span>01</span><strong>Funzioni</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-02/"><span>02</span><strong>Limiti</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-03/"><span>03</span><strong>Equivalenze</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-04/"><span>04</span><strong>Serie</strong><small>precedente</small></a>
+          <a class="lesson-step active" href="#definizioni"><span>05</span><strong>Landau</strong><small>in corso</small></a>
+          <span class="lesson-more">… altre 9 lezioni</span>
+        </div>
+      </section>
+
+      <section class="section-shell landau-intro" id="definizioni" aria-labelledby="definizioni-title">
+        <div class="section-heading">
+          <div><p class="kicker">Definizioni</p><h2 id="definizioni-title">Quattro relazioni, quattro livelli di informazione.</h2></div>
+          <p class="heading-note">Siano <span class="math">f,g</span> definite definitivamente e sia <span class="math">g</span> non nulla definitivamente.</p>
+        </div>
+        <div class="symbol-grid">
+          <article class="symbol-card accent-red">
+            <span class="card-index">O</span><h3>Dominazione</h3>
+            <p><span class="math">f = O(g)</span> se esistono <span class="math">C&gt;0</span> e <span class="math">x<sub>0</sub></span> tali che <span class="math">|f(x)| ≤ C|g(x)|</span> per ogni <span class="math">x ≥ x<sub>0</sub></span>.</p>
+            <div class="card-tag">maggiorazione definitiva</div>
+          </article>
+          <article class="symbol-card accent-gold">
+            <span class="card-index">o</span><h3>Trascurabilità</h3>
+            <p><span class="math">f = o(g)</span> se <span class="math">lim<sub>x→+∞</sub> f(x)/g(x)=0</span>. Il rapporto rende quantitativa la perdita di ordine.</p>
+            <div class="card-tag">scala stretta</div>
+          </article>
+          <article class="symbol-card accent-ink">
+            <span class="card-index">Θ</span><h3>Ordine comune</h3>
+            <p><span class="math">f = Θ(g)</span> se <span class="math">f=O(g)</span> e <span class="math">g=O(f)</span>: le due funzioni differiscono al più per fattori costanti.</p>
+            <div class="card-tag">confronto bilaterale</div>
+          </article>
+          <article class="symbol-card accent-red">
+            <span class="card-index">∼</span><h3>Equivalenza</h3>
+            <p><span class="math">f ∼ g</span> se <span class="math">lim<sub>x→+∞</sub> f(x)/g(x)=1</span>. In particolare, <span class="math">f∼g ⇒ f=Θ(g)</span>.</p>
+            <div class="card-tag">rapporto unitario</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell operations-section" id="operazioni" aria-labelledby="operazioni-title">
+        <div class="section-heading">
+          <div><p class="kicker">Calcolo asintotico</p><h2 id="operazioni-title">Regole di composizione.</h2></div>
+          <p class="heading-note">Le relazioni sono considerate nel limite per <span class="math">x→+∞</span>; i rapporti coinvolti sono assunti definiti definitivamente.</p>
+        </div>
+        <div class="operations-layout">
+          <div class="operations-table-wrap">
+            <table class="operations-table">
+              <caption>Conseguenze operative delle definizioni</caption>
+              <thead><tr><th scope="col">Ipotesi</th><th scope="col">Conclusione</th><th scope="col">Motivazione</th></tr></thead>
+              <tbody>
+                <tr><td><span class="math">f=O(g), h=O(k)</span></td><td><span class="math">fh=O(gk)</span></td><td>Il prodotto di due rapporti limitati è limitato.</td></tr>
+                <tr><td><span class="math">f=o(g), h=O(k)</span></td><td><span class="math">fh=o(gk)</span></td><td>Un fattore infinitesimo moltiplicato per uno limitato resta infinitesimo.</td></tr>
+                <tr><td><span class="math">f=o(g)</span></td><td><span class="math">f+g ∼ g</span></td><td><span class="math">(f+g)/g = 1+f/g → 1</span>.</td></tr>
+                <tr><td><span class="math">f∼g, h∼k</span></td><td><span class="math">fh∼gk</span></td><td>I rapporti tendono entrambi a <span class="math">1</span>.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <aside class="operation-note" aria-label="Avvertenza metodologica">
+            <span class="mini-label">Avvertenza</span>
+            <h3>Il confronto puntuale non è asintotico.</h3>
+            <p>L’ineguaglianza osservata in un punto fissato non determina una relazione di Landau. Occorre un’affermazione valida definitivamente, oppure il limite del rapporto.</p>
+            <p class="math operation-example">log x = o(x<sup>α</sup>) &nbsp; per ogni α&gt;0.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-shell hierarchy-section" id="gerarchia" aria-labelledby="gerarchia-title">
+        <div class="section-heading">
+          <div><p class="kicker">Gerarchia di infiniti</p><h2 id="gerarchia-title">Dal dato locale al regime asintotico.</h2></div>
+          <p class="heading-note">Il grafico usa una scala verticale logaritmica per rendere leggibili, nello stesso quadro, ordini di grandezza molto diversi.</p>
+        </div>
+        <div class="hierarchy-board">
+          <div class="hierarchy-controls">
+            <div class="control-block">
+              <div class="label-row"><label for="x0">Punto di osservazione x<sub>0</sub></label><output id="x0-value">5</output></div>
+              <input id="x0" type="range" min="2" max="8" step="1" value="5" />
+            </div>
+            <div class="control-block">
+              <div class="label-row"><label for="alpha">Esponente α</label><output id="alpha-value">1,2</output></div>
+              <input id="alpha" type="range" min="0.4" max="2.5" step="0.1" value="1.2" />
+            </div>
+            <div class="control-block">
+              <div class="label-row"><label for="base">Base a</label><output id="base-value">1,7</output></div>
+              <input id="base" type="range" min="1.2" max="3" step="0.1" value="1.7" />
+            </div>
+          </div>
+          <div class="hierarchy-canvas-wrap"><canvas id="hierarchy-canvas" aria-label="Grafico delle funzioni logaritmica, potenza, esponenziale, fattoriale e potenza con esponente variabile"></canvas></div>
+          <p class="interaction-note">Asse verticale: <span class="math">log<sub>10</sub>(f(x))</span>. Per il tracciamento continuo, <span class="math">x!</span> è interpretato come <span class="math">Γ(x+1)</span>.</p>
+        </div>
+        <div class="comparison-grid">
+          <article class="local-panel" aria-labelledby="locale-title">
+            <span class="mini-label">Osservazione locale</span>
+            <h3 id="locale-title">Valori in <span class="math">x<sub>0</sub></span>.</h3>
+            <p>Questo riquadro registra il confronto numerico nel solo punto selezionato; non costituisce una prova di dominazione.</p>
+            <ul class="local-values" id="local-values" aria-live="polite"></ul>
+            <p class="local-order" id="local-order"></p>
+          </article>
+          <article class="asymptotic-panel" aria-labelledby="infinito-title">
+            <span class="mini-label">Regime asintotico</span>
+            <h3 id="infinito-title">Per <span class="math">x→+∞</span>.</h3>
+            <p class="asymptotic-chain"><span>log x</span><b>= o</b><span>x<sup>α</sup></span><b>= o</b><span>a<sup>x</sup></span><b>= o</b><span>x!</span><b>= o</b><span>x<sup>x</sup></span></p>
+            <p>La catena vale per ogni <span class="math">α&gt;0</span> e <span class="math">a&gt;1</span>. Essa è un’affermazione sui limiti dei rapporti, non sull’ordinamento in un valore prefissato.</p>
+            <div class="asymptotic-result" id="asymptotic-result">log x = o(x<sup>1,2</sup>) = o(1,7<sup>x</sup>) = o(x!) = o(x<sup>x</sup>)</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell quiz-section landau-quiz-section" id="verifica" aria-labelledby="verifica-title">
+        <div class="section-heading">
+          <div><p class="kicker">Verifica formativa</p><h2 id="verifica-title">Limiti, gerarchie e simboli di Landau.</h2></div>
+          <p class="heading-note">Ogni conclusione deve essere giustificata dal limite di un rapporto o da una relazione asintotica nota.</p>
+        </div>
+        <div class="quiz-grid landau-quiz-grid">
+          <article class="quiz-card" data-answer="b" data-explanation="Il rapporto tende a zero: il logaritmo è trascurabile rispetto a ogni potenza positiva.">
+            <span class="quiz-number">01</span><h3>Logaritmo e potenze</h3>
+            <p><span class="math">lim<sub>x→+∞</sub> log x / x<sup>2/3</sup></span> vale:</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · +∞</button><button type="button" data-choice="b">B · 0</button><button type="button" data-choice="c">C · 1</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="c" data-explanation="Dividendo per n⁴ si ottiene 1 + 3 log(n)/n², che tende a 1.">
+            <span class="quiz-number">02</span><h3>Termine dominante</h3>
+            <p>Per <span class="math">f(n)=n<sup>4</sup>+3n<sup>2</sup>log n</span>, quale relazione è corretta?</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · f=o(n⁴)</button><button type="button" data-choice="b">B · f=O(n²log n)</button><button type="button" data-choice="c">C · f∼n⁴</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="a" data-explanation="La fattoriale domina ogni esponenziale a base fissata maggiore di uno.">
+            <span class="quiz-number">03</span><h3>Esponenziale e fattoriale</h3>
+            <p><span class="math">lim<sub>n→+∞</sub> 2<sup>n</sup>/n!</span> vale:</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · 0</button><button type="button" data-choice="b">B · 1</button><button type="button" data-choice="c">C · +∞</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="c" data-explanation="Dalla formula di Stirling segue n!/nⁿ ∼ √(2πn)e⁻ⁿ, dunque il rapporto tende a zero.">
+            <span class="quiz-number">04</span><h3>Fattoriale e potenza</h3>
+            <p>Quale relazione descrive correttamente <span class="math">n!</span> e <span class="math">n<sup>n</sup></span>?</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · n! ∼ nⁿ</button><button type="button" data-choice="b">B · nⁿ=o(n!)</button><button type="button" data-choice="c">C · n!=o(nⁿ)</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="b" data-explanation="Si ha (fh)/(gk)=(f/g)(h/k): un fattore tende a zero e l’altro resta limitato.">
+            <span class="quiz-number">05</span><h3>Prodotti</h3>
+            <p>Se <span class="math">f=o(g)</span> e <span class="math">h=O(k)</span>, allora:</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · fh=Θ(gk)</button><button type="button" data-choice="b">B · fh=o(gk)</button><button type="button" data-choice="c">C · fh∼gk</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+          <article class="quiz-card" data-answer="a" data-explanation="La formula di Stirling implica log(n!) = n log n − n + O(log n), quindi il rapporto con n log n tende a 1.">
+            <span class="quiz-number">06</span><h3>Logaritmo della fattoriale</h3>
+            <p>Quale equivalenza è corretta per <span class="math">n→+∞</span>?</p>
+            <div class="quiz-options"><button type="button" data-choice="a">A · log(n!)∼n log n</button><button type="button" data-choice="b">B · log(n!)∼n²</button><button type="button" data-choice="c">C · log(n!)=o(n)</button></div><p class="quiz-feedback" aria-live="polite"></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell closing-section" aria-labelledby="chiusura-title">
+        <div class="closing-card">
+          <div><p class="kicker">Sintesi metodologica</p><h2 id="chiusura-title">Rapporto → limite → ordine.</h2></div>
+          <div class="closing-list">
+            <span><b>1</b> Esplicitare le funzioni di confronto e il dominio definitivo.</span>
+            <span><b>2</b> Ridurre il problema allo studio di un rapporto.</span>
+            <span><b>3</b> Tradurre il limite nella relazione di Landau appropriata.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="footer-inner"><span>Analisi 1 · Esercitazioni</span><span>Materiale didattico · Sapienza Università di Roma</span><a href="#top">torna su ↑</a></div></footer>
+    <script src="app.js"></script>
+  </body>
+</html>

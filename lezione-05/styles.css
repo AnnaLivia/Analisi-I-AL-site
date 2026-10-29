@@ -1,0 +1,78 @@
+.lesson-05-page .hero-card { transform: rotate(1deg); }
+.landau-equation { gap: .5rem; font-size: clamp(1.55rem, 3vw, 3.15rem); }
+.landau-equation span:last-child { color: #e4c674; }
+
+.landau-intro, .operations-section, .hierarchy-section { border-top: 1px solid var(--line); }
+.symbol-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--line); }
+.symbol-card { min-height: 305px; padding: 1.5rem; border-top: 4px solid transparent; background: var(--card); }
+.symbol-card.accent-red { border-top-color: var(--sapienza-red); }
+.symbol-card.accent-gold { border-top-color: var(--sapienza-gold); }
+.symbol-card.accent-ink { border-top-color: var(--ink); }
+.symbol-card .card-index { display: grid; place-items: center; width: 29px; height: 29px; color: white; border-radius: 50%; background: var(--sapienza-red); font: 1rem var(--serif); }
+.symbol-card h3 { margin: 1.8rem 0 .9rem; font: 1.6rem var(--serif); }
+.symbol-card p { color: var(--ink-soft); font-size: .88rem; }
+.symbol-card .card-tag { margin-top: 1.2rem; color: var(--sapienza-red); font-size: .71rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+
+.operations-layout { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(260px, .7fr); gap: 1rem; align-items: stretch; }
+.operations-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+.operations-table { width: 100%; min-width: 660px; border-collapse: collapse; text-align: left; }
+.operations-table caption { padding: 1.1rem 1.2rem; color: var(--sapienza-red); text-align: left; font-weight: 800; }
+.operations-table th, .operations-table td { padding: 1rem 1.2rem; border-top: 1px solid var(--line); vertical-align: top; font-size: .83rem; }
+.operations-table th { color: var(--ink); background: #f5f2ed; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.operations-table td { color: var(--ink-soft); }
+.operations-table td:nth-child(1), .operations-table td:nth-child(2) { color: var(--ink); white-space: nowrap; }
+.operation-note { display: flex; flex-direction: column; justify-content: center; padding: 1.7rem; border-radius: var(--radius); color: white; background: var(--ink); }
+.operation-note .mini-label { color: #e4c674; }
+.operation-note h3 { margin: 1.1rem 0 .65rem; color: white; font: 1.7rem var(--serif); }
+.operation-note p { color: rgba(255,255,255,.73); font-size: .88rem; }
+.operation-note .operation-example { margin: 1.1rem 0 0; color: #e4c674; font-size: 1rem; }
+
+.hierarchy-board { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+.hierarchy-controls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; padding: 1.35rem 1.45rem; border-bottom: 1px solid var(--line); background: #f2f0eb; }
+.hierarchy-controls .control-block { min-width: 0; }
+.hierarchy-canvas-wrap { height: 430px; padding: 1.25rem 1.45rem 0; }
+.hierarchy-canvas-wrap canvas { width: 100%; height: 100%; border: 1px solid var(--line); border-radius: 12px; background: #fcfcfb; }
+.hierarchy-board > .interaction-note { padding: 0 1.45rem 1.4rem; }
+
+.comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.local-panel, .asymptotic-panel { min-height: 320px; padding: 1.7rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+.local-panel .mini-label, .asymptotic-panel .mini-label { color: var(--sapienza-red); }
+.local-panel h3, .asymptotic-panel h3 { margin: .8rem 0 .7rem; font: 1.8rem var(--serif); }
+.local-panel > p, .asymptotic-panel > p { color: var(--ink-soft); font-size: .88rem; }
+.local-values { display: grid; grid-template-columns: 1fr 1fr; gap: .45rem .8rem; padding: 0; margin: 1.35rem 0 .8rem; list-style: none; }
+.local-values li { display: flex; justify-content: space-between; gap: .7rem; padding: .52rem .65rem; border-radius: 8px; background: #f4f1ec; color: var(--ink-soft); font-size: .76rem; }
+.local-values strong { color: var(--ink); font-family: var(--serif); font-weight: 400; }
+.local-order { min-height: 1.4em; margin-bottom: 0; color: var(--sapienza-red) !important; font: .92rem var(--serif); }
+.asymptotic-panel { color: white; border-color: var(--sapienza-red); background: var(--sapienza-red); }
+.asymptotic-panel .mini-label { color: #e4c674; }
+.asymptotic-panel h3 { color: white; }
+.asymptotic-panel > p { color: rgba(255,255,255,.78); }
+.asymptotic-chain { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; margin: 1.5rem 0; color: white !important; font: 1.25rem var(--serif); }
+.asymptotic-chain b { color: #e4c674; font: .73rem var(--sans); letter-spacing: .06em; white-space: nowrap; }
+.asymptotic-result { margin-top: 1.4rem; padding: .85rem .95rem; border: 1px solid rgba(255,255,255,.28); border-radius: 10px; color: #fff4d6; background: rgba(0,0,0,.12); font: .94rem var(--serif); }
+
+.landau-quiz-grid { grid-template-columns: repeat(3, 1fr); }
+.landau-quiz-section .quiz-card { min-height: 345px; }
+.landau-quiz-section .quiz-card > p { min-height: 70px; }
+
+@media (max-width: 1040px) {
+  .symbol-grid { grid-template-columns: 1fr 1fr; }
+  .operations-layout { grid-template-columns: 1fr; }
+  .operation-note { min-height: 220px; }
+}
+
+@media (max-width: 760px) {
+  .hierarchy-controls, .comparison-grid { grid-template-columns: 1fr; }
+  .hierarchy-canvas-wrap { height: 340px; padding-right: .8rem; padding-left: .8rem; }
+  .hierarchy-board > .interaction-note { padding-right: .8rem; padding-left: .8rem; }
+  .local-values { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .lesson-05-page .hero-card { transform: none; }
+  .symbol-grid, .landau-quiz-grid { grid-template-columns: 1fr; }
+  .symbol-card { min-height: 0; }
+  .hierarchy-controls { padding: 1.15rem; }
+  .local-panel, .asymptotic-panel { min-height: 0; padding: 1.35rem; }
+  .asymptotic-chain { gap: .4rem; font-size: 1.05rem; }
+}
