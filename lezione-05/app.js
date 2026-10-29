@@ -4,7 +4,7 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const COLORS = { log: '#822433', power: '#b99345', exponential: '#326772', factorial: '#425a84', selfPower: '#1b2027' };
-  const labels = { log: 'log x', power: 'x^α', exponential: 'a^x', factorial: 'x!', selfPower: 'x^x' };
+  const labels = { log: 'log x', power: 'x^α', exponential: 'λ^x', factorial: 'x!', selfPower: 'x^x' };
 
   function resizeCanvas(canvas, context) {
     const rect = canvas.getBoundingClientRect();
@@ -32,14 +32,14 @@
   const formatDecimal = (value) => Number(value).toFixed(1).replace('.', ',');
 
   function currentParameters() {
-    return { x0: Number($('#x0').value), alpha: Number($('#alpha').value), base: Number($('#base').value) };
+    return { x0: Number($('#x0').value), alpha: Number($('#alpha').value), lambda: Number($('#lambda').value) };
   }
 
-  function valuesAt(x, alpha, base) {
+  function valuesAt(x, alpha, lambda) {
     return {
       log: Math.log(x),
       power: x ** alpha,
-      exponential: base ** x,
+      exponential: lambda ** x,
       factorial: factorial(x),
       selfPower: x ** x
     };
@@ -151,7 +151,7 @@
     if (!canvas) return;
     const context = canvas.getContext('2d');
     const { width, height } = resizeCanvas(canvas, context);
-    const { x0, alpha, base } = currentParameters();
+    const { x0, alpha, lambda } = currentParameters();
     const left = 58;
     const right = 22;
     const top = 26;
@@ -163,7 +163,7 @@
     const sampleCount = 140;
     const keys = Object.keys(labels);
     const samples = Array.from({ length: sampleCount }, (_, index) => xMin + (index / (sampleCount - 1)) * (xMax - xMin));
-    const curves = Object.fromEntries(keys.map((key) => [key, samples.map((x) => ({ x, y: Math.log10(Math.max(valuesAt(x, alpha, base)[key], 1e-8)) }))]));
+    const curves = Object.fromEntries(keys.map((key) => [key, samples.map((x) => ({ x, y: Math.log10(Math.max(valuesAt(x, alpha, lambda)[key], 1e-8)) }))]));
     const yValues = keys.flatMap((key) => curves[key].map((point) => point.y));
     const minY = Math.floor(Math.min(...yValues) - .25);
     const maxY = Math.ceil(Math.max(...yValues) + .25);
@@ -211,7 +211,7 @@
         if (index === 0) context.moveTo(screenX, screenY); else context.lineTo(screenX, screenY);
       });
       context.stroke();
-      const local = Math.log10(Math.max(valuesAt(x0, alpha, base)[key], 1e-8));
+      const local = Math.log10(Math.max(valuesAt(x0, alpha, lambda)[key], 1e-8));
       context.fillStyle = COLORS[key];
       context.beginPath(); context.arc(markerX, mapY(local), 4.2, 0, 2 * Math.PI); context.fill();
     });
@@ -229,19 +229,19 @@
   }
 
   function updateComparison() {
-    const { x0, alpha, base } = currentParameters();
+    const { x0, alpha, lambda } = currentParameters();
     $('#x0-value').textContent = x0;
     $('#alpha-value').textContent = formatDecimal(alpha);
-    $('#base-value').textContent = formatDecimal(base);
-    const values = valuesAt(x0, alpha, base);
+    $('#lambda-value').textContent = formatDecimal(lambda);
+    const values = valuesAt(x0, alpha, lambda);
     const ordered = Object.entries(values).sort(([, first], [, second]) => first - second);
     $('#local-values').innerHTML = ordered.map(([key, value]) => `<li><span>${labels[key]}</span><strong>${formatNumber(value)}</strong></li>`).join('');
     $('#local-order').textContent = `Ordinamento in x₀: ${ordered.map(([key]) => labels[key]).join(' ≤ ')}.`;
-    $('#asymptotic-result').innerHTML = `log x = o(x<sup>${formatDecimal(alpha)}</sup>); x<sup>${formatDecimal(alpha)}</sup> = o(${formatDecimal(base)}<sup>x</sup>); ${formatDecimal(base)}<sup>x</sup> = o(x!); x! = o(x<sup>x</sup>)`;
+    $('#asymptotic-result').innerHTML = `log x = o(x<sup>${formatDecimal(alpha)}</sup>); x<sup>${formatDecimal(alpha)}</sup> = o(${formatDecimal(lambda)}<sup>x</sup>); ${formatDecimal(lambda)}<sup>x</sup> = o(x!); x! = o(x<sup>x</sup>)`;
     drawHierarchy();
   }
 
-  ['#x0', '#alpha', '#base'].forEach((selector) => $(selector).addEventListener('input', updateComparison));
+  ['#x0', '#alpha', '#lambda'].forEach((selector) => $(selector).addEventListener('input', updateComparison));
   window.addEventListener('resize', () => { drawPowerFamily(); drawHierarchy(); });
   drawPowerFamily();
   updateComparison();

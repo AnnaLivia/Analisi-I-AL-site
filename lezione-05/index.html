@@ -124,7 +124,7 @@
 
       <section class="section-shell hierarchy-section" id="gerarchia" aria-labelledby="gerarchia-title">
         <div class="section-heading">
-          <div><p class="kicker">Gerarchia di infiniti</p><h2 id="gerarchia-title">Dal dato locale al regime asintotico.</h2></div>
+          <div><p class="kicker">Gerarchia di infiniti</p><h2 id="gerarchia-title">Confronto asintotico fra famiglie di funzioni.</h2></div>
           <p class="heading-note">Il grafico usa una scala verticale logaritmica per rendere leggibili, nello stesso quadro, ordini di grandezza molto diversi.</p>
         </div>
         <div class="power-family-board">
@@ -148,8 +148,8 @@
               <input id="alpha" type="range" min="0.4" max="2.5" step="0.1" value="1.2" />
             </div>
             <div class="control-block">
-              <div class="label-row"><label for="base">Base a</label><output id="base-value">1,7</output></div>
-              <input id="base" type="range" min="1.2" max="3" step="0.1" value="1.7" />
+              <div class="label-row"><label for="lambda">Base λ dell’esponenziale</label><output id="lambda-value">1,7</output></div>
+              <input id="lambda" type="range" min="1.2" max="3" step="0.1" value="1.7" />
             </div>
           </div>
           <div class="hierarchy-canvas-wrap"><canvas id="hierarchy-canvas" aria-label="Grafico delle funzioni logaritmica, potenza, esponenziale, fattoriale e potenza con esponente variabile"></canvas></div>
@@ -166,8 +166,8 @@
           <article class="asymptotic-panel" aria-labelledby="infinito-title">
             <span class="mini-label">Regime asintotico</span>
             <h3 id="infinito-title">Per <span class="math">x→+∞</span>.</h3>
-            <p class="asymptotic-chain"><span>log x</span><b>≺</b><span>x<sup>α</sup></span><b>≺</b><span>a<sup>x</sup></span><b>≺</b><span>x!</span><b>≺</b><span>x<sup>x</sup></span></p>
-            <p>La catena vale per ogni <span class="math">α&gt;0</span> e <span class="math">a&gt;1</span>. Essa è un’affermazione sui limiti dei rapporti, non sull’ordinamento in un valore prefissato.</p>
+            <p class="asymptotic-chain"><span>log x</span><b>≺</b><span>x<sup>α</sup></span><b>≺</b><span>λ<sup>x</sup></span><b>≺</b><span>x!</span><b>≺</b><span>x<sup>x</sup></span></p>
+            <p>La catena vale per ogni <span class="math">α&gt;0</span> e <span class="math">λ&gt;1</span>. Essa è un’affermazione sui limiti dei rapporti, non sull’ordinamento in un valore prefissato.</p>
             <div class="asymptotic-result" id="asymptotic-result">log x = o(x<sup>1,2</sup>); x<sup>1,2</sup> = o(1,7<sup>x</sup>); 1,7<sup>x</sup> = o(x!); x! = o(x<sup>x</sup>)</div>
           </article>
         </div>
