@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Analisi 1 — Lezione 06: derivata, retta tangente, derivate elementari e algebra delle derivate." />
+    <meta name="theme-color" content="#822433" />
+    <title>Analisi 1 · Derivate</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="lesson-06-page">
+    <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Analisi 1, home del corso">
+          <span class="brand-mark" aria-hidden="true">Σ</span>
+          <span><strong>Analisi 1</strong><small>Sapienza · Analisi 1</small></span>
+        </a>
+        <div class="header-meta"><a class="book-link" href="#tangente">Esamina la tangente</a><span class="eyebrow">A.A. 2026/27</span></div>
+      </div>
+    </header>
+    <main id="contenuto">
+      <section class="hero section-shell" id="top">
+        <div class="hero-copy">
+          <p class="kicker"><span class="kicker-dot"></span> Lezione 06 · esercitazione</p>
+          <h1>Derivate<br /><em>e retta tangente.</em></h1>
+          <p class="lesson-meta"><strong>Lezione del 6 novembre</strong><br />Prof.ssa Anna Livia Croella</p>
+          <p class="hero-lede">La derivata è il limite del rapporto incrementale e determina il coefficiente angolare della retta tangente al grafico nel punto considerato.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#tangente">Esplora la tangente <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="#formulario">Consulta le formule <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Definizione di derivata">
+          <div class="hero-card-top"><span class="status-dot"></span><span>Rapporto incrementale</span><span class="hero-card-number">06 / 14</span></div>
+          <div class="hero-equation derivative-equation" aria-hidden="true"><span>f′(x₀)</span><span class="equation-arrow">=</span><span>lim<sub>h→0</sub> [f(x₀+h)−f(x₀)]/h</span></div>
+          <div class="topic-grid">
+            <span><b>01</b> Rapporto incrementale</span><span><b>02</b> Tangente</span>
+            <span><b>03</b> Derivate elementari</span><span><b>04</b> Algebra</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="lesson-map section-shell" aria-labelledby="percorso-title">
+        <div class="section-heading compact-heading">
+          <div><p class="kicker">Il percorso</p><h2 id="percorso-title">Dal limite alla formula operativa.</h2></div>
+          <p class="heading-note">La rappresentazione geometrica della derivata precede l’uso sistematico delle regole di calcolo.</p>
+        </div>
+        <div class="lesson-rail" aria-label="Lezioni del corso">
+          <a class="lesson-step" href="../"><span>01</span><strong>Funzioni</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-02/"><span>02</span><strong>Limiti</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-03/"><span>03</span><strong>Equivalenze</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-04/"><span>04</span><strong>Serie</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-05/"><span>05</span><strong>Landau</strong><small>precedente</small></a>
+          <a class="lesson-step active" href="#tangente"><span>06</span><strong>Derivate</strong><small>in corso</small></a>
+          <span class="lesson-more">… altre 8 lezioni</span>
+        </div>
+      </section>
+
+      <section class="section-shell tangent-section" id="tangente" aria-labelledby="tangente-title">
+        <div class="section-heading">
+          <div><p class="kicker">Laboratorio · rapporto incrementale</p><h2 id="tangente-title">Dalla secante alla retta tangente.</h2></div>
+          <p class="heading-note">Fissato <span class="math">x<sub>0</sub></span>, la secante per <span class="math">P<sub>0</sub>=(x<sub>0</sub>,f(x<sub>0</sub>))</span> e <span class="math">P<sub>h</sub>=(x<sub>0</sub>+h,f(x<sub>0</sub>+h))</span> tende alla tangente quando <span class="math">h→0</span>.</p>
+        </div>
+        <div class="tangent-lab">
+          <div class="tangent-controls">
+            <div class="control-block"><label for="function-select">Funzione</label><select id="function-select"><option value="quadratic">f(x) = x² − x − 1</option><option value="sine">f(x) = sin x</option><option value="exponential">f(x) = eˣ − 1</option><option value="cubic">f(x) = x³ − 3x</option></select></div>
+            <div class="control-block slider-block"><div class="label-row"><label for="x0">Punto x₀</label><output id="x0-value">1,0</output></div><input id="x0" type="range" min="-3" max="3" value="1" step="0.1" /></div>
+            <div class="control-block slider-block"><div class="label-row"><label for="h">Incremento h</label><output id="h-value">1,0</output></div><input id="h" type="range" min="-2" max="2" value="1" step="0.1" /><p class="control-note">Il valore <span class="math">h=0</span> è escluso: il rapporto incrementale non sarebbe definito.</p></div>
+            <button class="reset-button" id="reset-tangent" type="button">↺ Ripristina</button>
+            <div class="derivative-readout" aria-live="polite"><span>Rapporto incrementale</span><strong id="secant-slope">—</strong><span>Derivata in x₀</span><strong id="derivative-value">—</strong></div>
+          </div>
+          <div class="tangent-graph-panel">
+            <div class="graph-toolbar"><span class="legend-item"><i class="legend-line curve-line"></i> grafico di f</span><span class="legend-item"><i class="legend-line secant-line"></i> secante</span><span class="legend-item"><i class="legend-line tangent-line"></i> tangente</span></div>
+            <canvas id="tangent-canvas" aria-label="Grafico della funzione, della secante e della retta tangente"></canvas>
+            <p class="tangent-formula" id="tangent-formula">t(x) = —</p>
+          </div>
+        </div>
+        <div class="limit-strip">
+          <div><span class="mini-label">Secante</span><strong id="secant-expression">[f(x₀+h)−f(x₀)]/h</strong></div>
+          <div><span class="mini-label">Passaggio al limite</span><strong>h → 0</strong></div>
+          <div><span class="mini-label">Tangente</span><strong>y = f(x₀)+f′(x₀)(x−x₀)</strong></div>
+        </div>
+      </section>
+
+      <section class="section-shell formula-section" id="formulario" aria-labelledby="formulario-title">
+        <div class="section-heading">
+          <div><p class="kicker">Sezione 6.2 · formulario</p><h2 id="formulario-title">Derivate elementari e algebra delle derivate.</h2></div>
+          <p class="heading-note">Le formule sono valide nei rispettivi domini di derivabilità; le condizioni su basi, argomenti e denominatori sono parte integrante dell’enunciato.</p>
+        </div>
+        <div class="formula-dashboard">
+          <article class="formula-panel elementary-panel">
+            <div class="panel-heading"><span class="card-index">I</span><div><h3>Funzioni elementari</h3><p>Teorema 6.17</p></div></div>
+            <dl class="derivative-table">
+              <div><dt><span class="math">(x<sup>α</sup>)′</span></dt><dd><span class="math">αx<sup>α−1</sup></span>, <span class="math">x&gt;0</span>, <span class="math">α∈ℝ</span></dd></div>
+              <div><dt><span class="math">(e<sup>x</sup>)′</span></dt><dd><span class="math">e<sup>x</sup></span></dd></div><div><dt><span class="math">(a<sup>x</sup>)′</span></dt><dd><span class="math">a<sup>x</sup> log a</span>, <span class="math">a&gt;0</span></dd></div>
+              <div><dt><span class="math">(log|x|)′</span></dt><dd><span class="math">1/x</span>, <span class="math">x≠0</span></dd></div><div><dt><span class="math">(sin x)′</span></dt><dd><span class="math">cos x</span></dd></div>
+              <div><dt><span class="math">(cos x)′</span></dt><dd><span class="math">−sin x</span></dd></div><div><dt><span class="math">(|x|)′</span></dt><dd><span class="math">sgn x</span>, <span class="math">x≠0</span></dd></div>
+            </dl>
+          </article>
+          <article class="formula-panel algebra-panel">
+            <div class="panel-heading"><span class="card-index">II</span><div><h3>Algebra delle derivate</h3><p>Teorema 6.20</p></div></div>
+            <div class="rule-stack">
+              <div><span>Linearità</span><strong>(αf+βg)′=αf′+βg′</strong></div>
+              <div><span>Prodotto</span><strong>(fg)′=f′g+fg′</strong></div>
+              <div><span>Quoziente</span><strong>(f/g)′=(f′g−fg′)/g<sup>2</sup></strong><small>con g(x)≠0</small></div>
+            </div>
+            <p class="formula-note">Se <span class="math">f</span> e <span class="math">g</span> sono derivabili in <span class="math">x<sub>0</sub></span>, le formule valgono nel punto <span class="math">x<sub>0</sub></span>. Per il quoziente è inoltre necessaria la condizione <span class="math">g(x<sub>0</sub>)≠0</span>.</p>
+          </article>
+        </div>
+        <div class="worked-derivative"><p class="mini-label">Applicazione della regola del prodotto</p><p class="math">d/dx [(x<sup>4</sup>−3x+1)e<sup>x</sup>] = (4x<sup>3</sup>−3)e<sup>x</sup>+(x<sup>4</sup>−3x+1)e<sup>x</sup> = (x<sup>4</sup>+4x<sup>3</sup>−3x−2)e<sup>x</sup>.</p></div>
+      </section>
+
+      <section class="section-shell quiz-section derivative-quiz-section" id="verifica" aria-labelledby="verifica-title">
+        <div class="section-heading"><div><p class="kicker">Verifica formativa</p><h2 id="verifica-title">Derivate, tangenti e condizioni di applicabilità.</h2></div><p class="heading-note">Ogni risposta deve discendere dalla definizione di derivata o da una regola applicata nel suo dominio.</p></div>
+        <div class="quiz-grid derivative-quiz-grid">
+          <article class="quiz-card" data-answer="b" data-explanation="La derivata è il limite del rapporto incrementale, se tale limite esiste ed è finito."><span class="quiz-number">01</span><h3>Definizione</h3><p>Il coefficiente angolare della tangente in <span class="math">x<sub>0</sub></span> è:</p><div class="quiz-options"><button type="button" data-choice="a">A · f(x₀)</button><button type="button" data-choice="b">B · f′(x₀)</button><button type="button" data-choice="c">C · f(x₀+h)</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="c" data-explanation="La derivata di x³ è 3x²; nel punto x=−2 vale quindi 3·4."><span class="quiz-number">02</span><h3>Potenza</h3><p>Se <span class="math">f(x)=x<sup>3</sup></span>, allora <span class="math">f′(−2)</span> vale:</p><div class="quiz-options"><button type="button" data-choice="a">A · −12</button><button type="button" data-choice="b">B · −8</button><button type="button" data-choice="c">C · 12</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="a" data-explanation="La regola del prodotto richiede la derivata di entrambi i fattori: (xeˣ)'=eˣ+xeˣ."><span class="quiz-number">03</span><h3>Prodotto</h3><p>La derivata di <span class="math">xe<sup>x</sup></span> è:</p><div class="quiz-options"><button type="button" data-choice="a">A · (1+x)eˣ</button><button type="button" data-choice="b">B · xeˣ</button><button type="button" data-choice="c">C · eˣ</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="b" data-explanation="La formula (log|x|)'=1/x vale per x≠0; in x=0 il logaritmo non è definito."><span class="quiz-number">04</span><h3>Dominio</h3><p>La formula <span class="math">(log|x|)′=1/x</span> è valida:</p><div class="quiz-options"><button type="button" data-choice="a">A · per ogni x∈ℝ</button><button type="button" data-choice="b">B · per x≠0</button><button type="button" data-choice="c">C · soltanto per x&gt;0</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="c" data-explanation="Il quoziente è derivabile solo dove il denominatore non si annulla; la formula contiene infatti g² al denominatore."><span class="quiz-number">05</span><h3>Quoziente</h3><p>Per applicare la regola del quoziente in <span class="math">x<sub>0</sub></span>, occorre in particolare:</p><div class="quiz-options"><button type="button" data-choice="a">A · f(x₀)=0</button><button type="button" data-choice="b">B · g′(x₀)=0</button><button type="button" data-choice="c">C · g(x₀)≠0</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="a" data-explanation="Le pendenze delle secanti convergono alla derivata: la secante tende alla retta tangente."><span class="quiz-number">06</span><h3>Interpretazione geometrica</h3><p>Al tendere di <span class="math">h</span> a zero, il rapporto incrementale tende:</p><div class="quiz-options"><button type="button" data-choice="a">A · a f′(x₀), se esiste</button><button type="button" data-choice="b">B · sempre a 0</button><button type="button" data-choice="c">C · a f(x₀)</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="footer-inner"><span>Analisi 1 · Esercitazioni</span><span>Materiale didattico · Sapienza Università di Roma</span><a href="#top">torna su ↑</a></div></footer>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+.lesson-06-page { --derivative-red: #822433; --secant: #b99345; --curve: #326772; --ink: #1b2027; }
+.derivative-equation { font-size: clamp(1rem, 1.6vw, 1.28rem); }
+.tangent-lab { display: grid; grid-template-columns: minmax(230px, .8fr) minmax(0, 1.7fr); border: 1px solid #ddd7cd; background: #fff; box-shadow: 0 18px 45px rgba(27,32,39,.06); }
+.tangent-controls { padding: 1.5rem; background: #f7f5f1; border-right: 1px solid #ddd7cd; display: grid; gap: 1.1rem; align-content: start; }
+.tangent-controls .control-note { margin: .45rem 0 0; color: #66707a; font-size: .83rem; line-height: 1.45; }
+.tangent-controls select, .tangent-controls input { width: 100%; }
+.tangent-controls select { margin-top: .45rem; padding: .72rem; border: 1px solid #cfc8bd; border-radius: 4px; background: #fff; font: inherit; }
+.derivative-readout { display: grid; grid-template-columns: 1fr auto; gap: .36rem .7rem; margin-top: .15rem; padding: 1rem; border-left: 3px solid var(--derivative-red); background: #fff; }
+.derivative-readout span { color: #66707a; font-size: .78rem; }.derivative-readout strong { font-family: Georgia, serif; color: var(--ink); }
+.tangent-graph-panel { min-width: 0; padding: 1rem 1.2rem 1.1rem; }
+#tangent-canvas { display: block; width: 100%; height: 420px; margin-top: .5rem; background: #fcfcfb; }
+.curve-line { background: var(--curve); }.secant-line { background: var(--secant); border-top: 2px dashed var(--secant); }.tangent-line { background: var(--derivative-red); }
+.tangent-formula { margin: .8rem 0 0; padding: .75rem 1rem; background: #f7f5f1; color: #3e4853; font-family: Georgia, serif; }
+.limit-strip { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; padding: 1rem 1.25rem; border: 1px solid #ddd7cd; border-top: 0; background: #fff; }
+.limit-strip > div { display: grid; gap: .25rem; }.limit-strip > div:nth-child(2) { text-align: center; color: var(--derivative-red); }.mini-label { color: #7b675c; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.formula-dashboard { display: grid; grid-template-columns: 1.16fr .84fr; gap: 1.25rem; }
+.formula-panel { padding: 1.35rem; border: 1px solid #ddd7cd; background: #fff; }
+.panel-heading { display: flex; gap: .9rem; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid #e6e1d9; }
+.panel-heading .card-index { display: grid; width: 2.35rem; height: 2.35rem; place-items: center; border-radius: 50%; color: #fff; background: var(--derivative-red); font-family: Georgia, serif; }
+.panel-heading h3, .panel-heading p { margin: 0; }.panel-heading p { margin-top: .18rem; color: #7b675c; font-size: .85rem; }
+.derivative-table { margin: 0; }.derivative-table > div { display: grid; grid-template-columns: minmax(115px, .7fr) 1.5fr; gap: .75rem; padding: .75rem 0; border-bottom: 1px solid #eeeae3; }.derivative-table > div:last-child { border: 0; }.derivative-table dt { font-family: Georgia, serif; font-weight: 700; }.derivative-table dd { margin: 0; color: #4d5964; }
+.rule-stack { display: grid; gap: .8rem; margin-top: 1rem; }.rule-stack > div { display: grid; gap: .3rem; padding: .82rem; border-left: 3px solid var(--secant); background: #f8f6f2; }.rule-stack span, .rule-stack small { color: #6b747c; font-size: .82rem; }.rule-stack strong { font-family: Georgia, serif; font-weight: 400; }.formula-note { margin: 1rem 0 0; color: #4d5964; line-height: 1.55; }
+.worked-derivative { margin-top: 1.25rem; padding: 1.2rem 1.4rem; border-left: 4px solid var(--curve); background: #eff5f3; }.worked-derivative p { margin: .35rem 0 0; overflow-x: auto; }
+.derivative-quiz-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) { .tangent-lab, .formula-dashboard { grid-template-columns: 1fr; }.tangent-controls { border-right: 0; border-bottom: 1px solid #ddd7cd; }.derivative-quiz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { #tangent-canvas { height: 310px; }.limit-strip, .derivative-quiz-grid { grid-template-columns: 1fr; }.limit-strip > div:nth-child(2) { text-align: left; }.derivative-table > div { grid-template-columns: 1fr; gap: .3rem; } }
