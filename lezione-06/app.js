@@ -23,15 +23,18 @@
   }
   function draw() {
     const spec = functions[$('#function-select').value];
-    const x0 = Number($('#x0').value); let h = Number($('#h').value);
-    if (Math.abs(h) < .001) { h = .1; $('#h').value = h; }
+    const x0 = Number($('#x0').value); const hValue = Number($('#h').value);
+    const h = hValue === 0 ? 0.0001 : hValue;
     const x1 = x0 + h; const f0 = spec.fn(x0); const f1 = spec.fn(x1);
     const secant = (f1 - f0) / h; const derivative = spec.derivative(x0);
-    $('#x0-value').textContent = format(x0); $('#h-value').textContent = format(h);
+    $('#x0-value').textContent = format(x0); $('#h-value').textContent = format(hValue);
     $('#secant-slope').textContent = format(secant); $('#derivative-value').textContent = format(derivative);
-    $('#secant-expression').textContent = '[f(' + format(x1) + ') − f(' + format(x0) + ')] / ' + format(h) + ' = ' + format(secant);
+    $('#secant-expression').textContent = hValue === 0 ? 'lim h→0⁺ [f(x₀+h)−f(x₀)]/h ≈ ' + format(secant) : '[f(' + format(x1) + ') − f(' + format(x0) + ')] / ' + format(h) + ' = ' + format(secant);
     const intercept = f0 - derivative * x0;
     $('#tangent-formula').textContent = 't(x) = ' + format(derivative) + 'x ' + (intercept < 0 ? '−' : '+') + ' ' + format(Math.abs(intercept));
+    const t1AtX1 = f0 + derivative * h; const e1AtX1 = f1 - t1AtX1;
+    $('#t1-numeric').textContent = 'T₁(' + format(x1) + ') = ' + format(t1AtX1);
+    $('#e1-numeric').textContent = 'E₁(' + format(x1) + ') = ' + format(e1AtX1) + ';  E₁/h ≈ ' + format(e1AtX1 / h);
     const rect = resizeCanvas(); const width = rect.width; const height = rect.height;
     const xMin = -4, xMax = 4, samples = Array.from({ length: 250 }, (_, i) => xMin + i * (xMax - xMin) / 249);
     const values = samples.map(spec.fn).concat([f0, f1, f0 + derivative * (xMin - x0), f0 + derivative * (xMax - x0)]);
@@ -49,7 +52,8 @@
     context.fillStyle = COLORS.ink; context.fillText('x', width - right - 5, mapY(0) - 8); context.fillText('y', mapX(0) + 8, top + 6);
     context.beginPath(); context.strokeStyle = COLORS.curve; context.lineWidth = 2.6;
     samples.forEach((x, i) => { const px = mapX(x), py = mapY(spec.fn(x)); if (i === 0) context.moveTo(px, py); else context.lineTo(px, py); }); context.stroke();
-    line(mapX(x0), mapY(f0), mapX(x1), mapY(f1), COLORS.secant, 2.2, [6, 5]);
+    const secantIntercept = f0 - secant * x0;
+    line(mapX(xMin), mapY(secant * xMin + secantIntercept), mapX(xMax), mapY(secant * xMax + secantIntercept), COLORS.secant, 2.2, [6, 5]);
     line(mapX(xMin), mapY(f0 + derivative * (xMin - x0)), mapX(xMax), mapY(f0 + derivative * (xMax - x0)), COLORS.tangent, 2.1);
     [[x0, f0, 'P₀'], [x1, f1, 'Pₕ']].forEach((point) => { context.fillStyle = COLORS.ink; context.beginPath(); context.arc(mapX(point[0]), mapY(point[1]), 4.5, 0, 2 * Math.PI); context.fill(); context.fillText(point[2], mapX(point[0]) + 7, mapY(point[1]) - 8); });
   }

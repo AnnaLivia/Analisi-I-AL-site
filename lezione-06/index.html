@@ -29,7 +29,7 @@
           <p class="hero-lede">La derivata è il limite del rapporto incrementale e determina il coefficiente angolare della retta tangente al grafico nel punto considerato.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#tangente">Esplora la tangente <span aria-hidden="true">↓</span></a>
-            <a class="button button-quiet" href="#formulario">Consulta le formule <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="">Scarica la LIM <span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div class="hero-card" aria-label="Definizione di derivata">
@@ -67,7 +67,7 @@
           <div class="tangent-controls">
             <div class="control-block"><label for="function-select">Funzione</label><select id="function-select"><option value="quadratic">f(x) = x² − x − 1</option><option value="sine">f(x) = sin x</option><option value="exponential">f(x) = eˣ − 1</option><option value="cubic">f(x) = x³ − 3x</option></select></div>
             <div class="control-block slider-block"><div class="label-row"><label for="x0">Punto x₀</label><output id="x0-value">1,0</output></div><input id="x0" type="range" min="-3" max="3" value="1" step="0.1" /></div>
-            <div class="control-block slider-block"><div class="label-row"><label for="h">Incremento h</label><output id="h-value">1,0</output></div><input id="h" type="range" min="-2" max="2" value="1" step="0.1" /><p class="control-note">Il valore <span class="math">h=0</span> è escluso: il rapporto incrementale non sarebbe definito.</p></div>
+            <div class="control-block slider-block"><div class="label-row"><label for="h">Incremento h</label><output id="h-value">1,0</output></div><input id="h" type="range" min="0" max="2" value="1" step="0.1" /><p class="control-note">Si considera <span class="math">h≥0</span>; in <span class="math">h=0</span> la secante è interpretata nel limite.</p></div>
             <button class="reset-button" id="reset-tangent" type="button">↺ Ripristina</button>
             <div class="derivative-readout" aria-live="polite"><span>Rapporto incrementale</span><strong id="secant-slope">—</strong><span>Derivata in x₀</span><strong id="derivative-value">—</strong></div>
           </div>
@@ -81,6 +81,14 @@
           <div><span class="mini-label">Secante</span><strong id="secant-expression">[f(x₀+h)−f(x₀)]/h</strong></div>
           <div><span class="mini-label">Passaggio al limite</span><strong>h → 0</strong></div>
           <div><span class="mini-label">Tangente</span><strong>y = f(x₀)+f′(x₀)(x−x₀)</strong></div>
+        </div>
+        <div class="approximation-panel">
+          <div class="approximation-heading"><p class="kicker">Migliore approssimazione lineare</p><h3>Il primo ordine nel punto <span class="math">x<sub>0</sub></span>.</h3><p>La funzione <span class="math">T<sub>1</sub></span> è la retta tangente; <span class="math">E<sub>1</sub></span> è lo scarto residuo rispetto alla funzione.</p></div>
+          <div class="approximation-grid">
+            <article><span class="mini-label">Approssimazione T₁</span><strong id="t1-formula">T₁(x) = f(x₀)+f′(x₀)(x−x₀)</strong><p id="t1-numeric">—</p></article>
+            <article><span class="mini-label">Errore E₁</span><strong id="e1-formula">E₁(x) = f(x)−T₁(x)</strong><p id="e1-numeric">—</p></article>
+            <article><span class="mini-label">Proprietà asintotica</span><strong id="e1-ratio">E₁(x)/(x−x₀) → 0</strong><p>per <span class="math">x→x<sub>0</sub></span>, quando <span class="math">f</span> è derivabile in <span class="math">x<sub>0</sub></span>.</p></article>
+          </div>
         </div>
       </section>
 
@@ -105,11 +113,12 @@
               <div><span>Linearità</span><strong>(αf+βg)′=αf′+βg′</strong></div>
               <div><span>Prodotto</span><strong>(fg)′=f′g+fg′</strong></div>
               <div><span>Quoziente</span><strong>(f/g)′=(f′g−fg′)/g<sup>2</sup></strong><small>con g(x)≠0</small></div>
+              <div><span>Reciproco</span><strong>(1/g)′=−g′/g<sup>2</sup></strong><small>con g(x)≠0</small></div>
             </div>
             <p class="formula-note">Se <span class="math">f</span> e <span class="math">g</span> sono derivabili in <span class="math">x<sub>0</sub></span>, le formule valgono nel punto <span class="math">x<sub>0</sub></span>. Per il quoziente è inoltre necessaria la condizione <span class="math">g(x<sub>0</sub>)≠0</span>.</p>
           </article>
         </div>
-        <div class="worked-derivative"><p class="mini-label">Applicazione della regola del prodotto</p><p class="math">d/dx [(x<sup>4</sup>−3x+1)e<sup>x</sup>] = (4x<sup>3</sup>−3)e<sup>x</sup>+(x<sup>4</sup>−3x+1)e<sup>x</sup> = (x<sup>4</sup>+4x<sup>3</sup>−3x−2)e<sup>x</sup>.</p></div>
+        <div class="worked-derivative"><p class="mini-label">Derivate di tangente e cotangente</p><p class="math">(tan x)′ = 1/cos<sup>2</sup>x = 1+tan<sup>2</sup>x, &nbsp;&nbsp; (cot x)′ = −1/sin<sup>2</sup>x = −(1+cot<sup>2</sup>x).</p><p class="formula-note">Le formule valgono nei punti in cui i rispettivi denominatori sono non nulli.</p></div>
       </section>
 
       <section class="section-shell quiz-section derivative-quiz-section" id="verifica" aria-labelledby="verifica-title">
