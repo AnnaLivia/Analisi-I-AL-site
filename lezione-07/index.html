@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Analisi 1 — Lezione 07: punti critici, estremi locali, punti angolosi, cuspidi e tangenti verticali." />
+    <meta name="theme-color" content="#822433" />
+    <title>Analisi 1 · Punti critici e non derivabilità</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="lesson-07-page">
+    <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Analisi 1, home del corso">
+          <span class="brand-mark" aria-hidden="true">Σ</span>
+          <span><strong>Analisi 1</strong><small>Sapienza · Analisi 1</small></span>
+        </a>
+        <div class="header-meta"><a class="book-link" href="#grafici">Esamina i grafici</a><span class="eyebrow">A.A. 2026/27</span></div>
+      </div>
+    </header>
+
+    <main id="contenuto">
+      <section class="hero section-shell" id="top">
+        <div class="hero-copy">
+          <p class="kicker"><span class="kicker-dot"></span> Lezione 07 · esercitazione</p>
+          <h1>Punti critici<br /><em>ed estremi.</em></h1>
+          <p class="lesson-meta"><strong>Lezione del 13 novembre</strong><br />Prof.ssa Anna Livia Croella</p>
+          <p class="hero-lede">La natura di un punto del grafico dipende dal comportamento della funzione e delle sue derivate nei due lati: stazionarietà, estremi, angoli, cuspidi e tangenti verticali sono fenomeni distinti.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#concetti">Inizia dai concetti <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Classificazione dei punti">
+          <div class="hero-card-top"><span class="status-dot"></span><span>Classificazione locale</span><span class="hero-card-number">07 / 14</span></div>
+          <div class="hero-equation point-equation" aria-hidden="true"><span>f′(x<sub>0</sub>) = 0</span><span class="equation-arrow">⇔</span><span>punto stazionario</span></div>
+          <div class="topic-grid">
+            <span><b>01</b> Massimo e minimo</span><span><b>02</b> Punto angoloso</span>
+            <span><b>03</b> Cuspide</span><span><b>04</b> Tangente verticale</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="lesson-map section-shell" aria-labelledby="percorso-title">
+        <div class="section-heading compact-heading">
+          <div><p class="kicker">Il percorso</p><h2 id="percorso-title">Dalla derivata alla classificazione del grafico.</h2></div>
+          <p class="heading-note">La derivata prima individua la stazionarietà e la monotonia; i limiti laterali del rapporto incrementale descrivono la non derivabilità.</p>
+        </div>
+        <div class="lesson-rail" aria-label="Lezioni del corso">
+          <a class="lesson-step" href="../"><span>01</span><strong>Funzioni</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-02/"><span>02</span><strong>Limiti</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-03/"><span>03</span><strong>Equivalenze</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-04/"><span>04</span><strong>Serie</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-05/"><span>05</span><strong>Landau</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-06/"><span>06</span><strong>Derivate</strong><small>precedente</small></a>
+          <a class="lesson-step active" href="#concetti"><span>07</span><strong>Punti critici</strong><small>in corso</small></a>
+          <span class="lesson-more">… altre 7 lezioni</span>
+        </div>
+      </section>
+
+      <section class="section-shell" id="concetti" aria-labelledby="concetti-title">
+        <div class="section-heading">
+          <div><p class="kicker">Concetti fondamentali</p><h2 id="concetti-title">La terminologia va tenuta distinta.</h2></div>
+          <p class="heading-note">Un punto di non derivabilità è un candidato all’estremo, ma non è un punto critico nel senso stretto adottato dal testo.</p>
+        </div>
+        <div class="concept-grid">
+          <article class="concept-card accent-red"><span class="card-index">01 · STAZIONARIETÀ</span><h3>Punto critico</h3><p>Se <span class="math">f</span> è derivabile in <span class="math">x<sub>0</sub></span> e <span class="math">f′(x<sub>0</sub>)=0</span>, il punto è critico o stazionario. È una condizione necessaria per un estremo locale interno, non sufficiente.</p><div class="card-tag">modello: <span class="math">x<sup>3</sup></span></div></article>
+          <article class="concept-card accent-gold"><span class="card-index">02 · ESTREMI</span><h3>Massimo e minimo</h3><p>Un massimo locale richiede crescita a sinistra e decrescenza a destra; per un minimo locale avviene il contrario. Gli estremi assoluti si determinano confrontando tutti i candidati.</p><div class="card-tag">segno di <span class="math">f′</span>: <span class="math">+→−</span> oppure <span class="math">−→+</span></div></article>
+          <article class="concept-card accent-ink"><span class="card-index">03 · DERIVATE LATERALI</span><h3>Punto angoloso</h3><p>La funzione è continua, ma le derivate laterali sono finite e diverse: <span class="math">f′<sub>−</sub>(x<sub>0</sub>)≠f′<sub>+</sub>(x<sub>0</sub>)</span>. Il modello è <span class="math">|x|</span>.</p><div class="card-tag">due semitangenti distinte</div></article>
+          <article class="concept-card accent-teal"><span class="card-index">04 · PENDENZE INFINITE</span><h3>Cuspide</h3><p>Le derivate laterali sono infinite con segno opposto, per esempio <span class="math">f′<sub>−</sub>=−∞</span> e <span class="math">f′<sub>+</sub>=+∞</span>. Il grafico presenta una punta.</p><div class="card-tag">modello: <span class="math">|x|<sup>2/3</sup></span></div></article>
+          <article class="concept-card accent-violet"><span class="card-index">05 · TANGENTE VERTICALE</span><h3>Punto a tangente verticale</h3><p>Le due derivate laterali divergono verso lo stesso infinito; la tangente è la retta verticale <span class="math">x=x<sub>0</sub></span>. Il modello è <span class="math">∛x</span>.</p><div class="card-tag">pendenza: <span class="math">+∞</span> da entrambi i lati</div></article>
+          <article class="concept-card accent-red-soft"><span class="card-index">06 · CANDIDATI</span><h3>Procedura</h3><p>Su <span class="math">[a,b]</span> si esaminano punti critici, punti di non derivabilità ed estremi dell’intervallo; quindi si confrontano i valori della funzione.</p><div class="card-tag">Weierstrass + confronto</div></article>
+        </div>
+      </section>
+
+      <section class="section-shell graph-section" id="grafici" aria-labelledby="grafici-title">
+        <div class="section-heading">
+          <div><p class="kicker">Laboratorio grafico</p><h2 id="grafici-title">Un atlante locale dei punti notevoli.</h2></div>
+          <p class="heading-note">Seleziona un modello: il grafico mostra la curva nell’intorno di <span class="math">x<sub>0</sub>=0</span> e la relativa classificazione.</p>
+        </div>
+        <div class="graph-lab point-graph-lab">
+          <div class="lab-controls">
+            <div class="control-block"><label for="shape-select">Modello</label><select id="shape-select"><option value="min">f(x)=x² · minimo</option><option value="max">f(x)=−x² · massimo</option><option value="stationary">f(x)=x³ · stazionario senza estremo</option><option value="corner">f(x)=|x| · punto angoloso</option><option value="cusp">f(x)=|x|²ᐟ³ · cuspide</option><option value="vertical">f(x)=∛x · tangente verticale</option></select></div>
+            <div class="graph-readout" aria-live="polite"><span class="mini-label">Classificazione</span><strong id="shape-type">minimo locale</strong><span class="mini-label">Informazione locale</span><p id="shape-note">f′ cambia da − a +.</p></div>
+            <button class="reset-button" id="reset-shape" type="button">↺ Ripristina</button>
+          </div>
+          <div class="graph-panel">
+            <div class="graph-toolbar"><span class="legend-item"><i class="legend-line curve-line"></i> grafico di f</span><span class="legend-item"><i class="legend-line tangent-line"></i> tangente o semitangenti</span><span class="formula-display" id="shape-formula">f(x)=x²</span></div>
+            <div class="canvas-wrap point-canvas-wrap"><canvas id="singularity-canvas" aria-label="Grafico interattivo dei punti critici e dei punti di non derivabilità"></canvas><div class="canvas-readout">x<sub>0</sub> = 0</div></div>
+            <p class="interaction-note">La linea verticale tratteggiata indica una tangente verticale o una cuspide; le semirette colorate indicano le tangenti laterali nel punto angoloso.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell classification-section" id="classificazione" aria-labelledby="classificazione-title">
+        <div class="section-heading">
+          <div><p class="kicker">Criteri locali</p><h2 id="classificazione-title">Segno di <span class="math">f′</span> e derivate laterali.</h2></div>
+          <p class="heading-note">La tabella raccoglie i modelli da riconoscere prima di procedere al calcolo degli estremi assoluti.</p>
+        </div>
+        <div class="classification-table" role="table" aria-label="Classificazione dei punti">
+          <div class="classification-row table-head" role="row"><span>Tipo</span><span>Informazione locale</span><span>Esempio</span></div>
+          <div class="classification-row" role="row"><strong>Minimo locale</strong><span><span class="math">f′: −→+</span></span><span><span class="math">x²</span> in 0</span></div>
+          <div class="classification-row" role="row"><strong>Massimo locale</strong><span><span class="math">f′: +→−</span></span><span><span class="math">−x²</span> in 0</span></div>
+          <div class="classification-row" role="row"><strong>Stazionario senza estremo</strong><span><span class="math">f′: +→+</span></span><span><span class="math">x³</span> in 0</span></div>
+          <div class="classification-row" role="row"><strong>Angoloso</strong><span><span class="math">f′<sub>−</sub>,f′<sub>+</sub></span> finiti e diversi</span><span><span class="math">|x|</span> in 0</span></div>
+          <div class="classification-row" role="row"><strong>Cuspide</strong><span>pendenze infinite di segno opposto</span><span><span class="math">|x|<sup>2/3</sup></span> in 0</span></div>
+          <div class="classification-row" role="row"><strong>Tangente verticale</strong><span>pendenze infinite dello stesso segno</span><span><span class="math">∛x</span> in 0</span></div>
+        </div>
+        <div class="theorem-strip"><span class="card-index">FERMAT</span><p>Se un estremo locale è interno e la funzione è derivabile, allora il punto è stazionario. I punti angolosi, le cuspidi e le tangenti verticali non soddisfano questa ipotesi, ma restano candidati da esaminare.</p></div>
+      </section>
+
+      <section class="section-shell theorem-section" id="teoremi" aria-labelledby="teoremi-title">
+        <div class="section-heading"><div><p class="kicker">Richiamo teorico</p><h2 id="teoremi-title">Fermat e Lagrange nel quadro della lezione.</h2></div><p class="heading-note">La classificazione locale si appoggia ai risultati già introdotti sui punti stazionari e sulla monotonia.</p></div>
+        <div class="theorem-grid">
+          <article class="theorem-panel"><span class="card-index">TEOREMA DI FERMAT</span><p>Se <span class="math">f</span> è derivabile in <span class="math">x<sub>0</sub></span> e ha in quel punto un estremo locale interno, allora</p><div class="theorem-equation"><span class="math">f′(x<sub>0</sub>)=0.</span></div><p class="theorem-note">L’implicazione non è invertibile: <span class="math">x³</span> ha derivata nulla in 0 ma non ha un estremo.</p></article>
+          <article class="theorem-panel"><span class="card-index">TEOREMA DI LAGRANGE</span><p>Se <span class="math">f</span> è continua su <span class="math">[a,b]</span> e derivabile su <span class="math">(a,b)</span>, esiste <span class="math">c∈(a,b)</span> tale che</p><div class="theorem-equation"><span class="math">f′(c)=\dfrac{f(b)-f(a)}{b-a}.</span></div><p class="theorem-note">Il criterio di monotonia traduce il segno di <span class="math">f′</span> in crescita o decrescenza sull’intervallo.</p></article>
+        </div>
+      </section>
+
+      <section class="section-shell quiz-section" id="verifica" aria-labelledby="verifica-title">
+        <div class="section-heading"><div><p class="kicker">Verifica formativa</p><h2 id="verifica-title">Riconoscere e classificare.</h2></div><p class="heading-note">Ogni risposta richiede di distinguere il tipo di punto e le ipotesi che consentono di applicare il criterio.</p></div>
+        <div class="quiz-grid extremum-quiz-grid">
+          <article class="quiz-card" data-answer="b" data-explanation="Un punto critico, nel senso del testo, è un punto interno di derivabilità con derivata nulla."><span class="quiz-number">01</span><h3>Punto critico</h3><p>Quale condizione definisce un punto critico stazionario?</p><div class="quiz-options"><button type="button" data-choice="a">A · f′ non esiste</button><button type="button" data-choice="b">B · f′(x<sub>0</sub>)=0</button><button type="button" data-choice="c">C · f(x<sub>0</sub>)=0</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="a" data-explanation="Il passaggio +→− indica crescita a sinistra e decrescenza a destra."><span class="quiz-number">02</span><h3>Massimo</h3><p>Il segno di <span class="math">f′</span> per un massimo locale è:</p><div class="quiz-options"><button type="button" data-choice="a">A · + → −</button><button type="button" data-choice="b">B · − → +</button><button type="button" data-choice="c">C · + → +</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="c" data-explanation="Per |x| le derivate laterali in 0 sono −1 e +1: il punto è angoloso e costituisce un minimo."><span class="quiz-number">03</span><h3>Angolo</h3><p>In <span class="math">f(x)=|x|</span>, il punto 0 è:</p><div class="quiz-options"><button type="button" data-choice="a">A · punto critico</button><button type="button" data-choice="b">B · cuspide</button><button type="button" data-choice="c">C · punto angoloso</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="b" data-explanation="Per |x|^{2/3} le pendenze laterali divergono con segno opposto: −∞ a sinistra e +∞ a destra."><span class="quiz-number">04</span><h3>Cuspide</h3><p>Quale modello presenta una cuspide in 0?</p><div class="quiz-options"><button type="button" data-choice="a">A · ∛x</button><button type="button" data-choice="b">B · |x|<sup>2/3</sup></button><button type="button" data-choice="c">C · x²</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="a" data-explanation="Per ∛x la derivata è positiva e tende a +∞ da entrambi i lati: la tangente è x=0."><span class="quiz-number">05</span><h3>Tangente verticale</h3><p>Per <span class="math">f(x)=∛x</span> in 0 si ha:</p><div class="quiz-options"><button type="button" data-choice="a">A · tangente verticale</button><button type="button" data-choice="b">B · punto angoloso</button><button type="button" data-choice="c">C · massimo locale</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="c" data-explanation="Un estremo assoluto su [a,b] si determina confrontando punti critici, non derivabilità ed estremi dell’intervallo."><span class="quiz-number">06</span><h3>Procedura</h3><p>Quale insieme di candidati va confrontato su un intervallo chiuso?</p><div class="quiz-options"><button type="button" data-choice="a">A · solo gli zeri di f′</button><button type="button" data-choice="b">B · solo gli estremi a,b</button><button type="button" data-choice="c">C · tutti i candidati locali e gli estremi dell’intervallo</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+        </div>
+      </section>
+
+      <section class="section-shell closing-section"><div class="closing-card"><div><p class="kicker">Sintesi operativa</p><h2>Prima classificare, poi confrontare.</h2></div><div class="closing-list"><span><b>1</b> Determinare derivabilità e derivate laterali.</span><span><b>2</b> Studiare il segno di <span class="math">f′</span> nei due lati.</span><span><b>3</b> Distinguere stazionarietà, angolo, cuspide e tangente verticale.</span></div></div></section>
+    </main>
+    <footer class="site-footer"><div class="footer-inner"><span>Analisi 1 · Esercitazioni</span><span>Materiale didattico · Sapienza Università di Roma</span><a href="#top">torna su ↑</a></div></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
