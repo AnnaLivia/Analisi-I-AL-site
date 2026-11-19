@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Analisi 1 — Lezione 08: schema operativo e checklist per lo studio di funzione." />
+    <meta name="theme-color" content="#822433" />
+    <title>Analisi 1 · Studio di funzione</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="lesson-08-page">
+    <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Analisi 1, home del corso">
+          <span class="brand-mark" aria-hidden="true">Σ</span>
+          <span><strong>Analisi 1</strong><small>Sapienza · Analisi 1</small></span>
+        </a>
+        <div class="header-meta"><a class="book-link" href="#checklist">Checklist</a><span class="eyebrow">A.A. 2026/27</span></div>
+      </div>
+    </header>
+
+    <main id="contenuto">
+      <section class="hero section-shell" id="top">
+        <div class="hero-copy">
+          <p class="kicker"><span class="kicker-dot"></span> Lezione 08 · esercitazione</p>
+          <h1>Studio<br /><em>di funzione.</em></h1>
+          <p class="lesson-meta"><strong>Lezione del 20 novembre 2026</strong><br />Prof.ssa Anna Livia Croella</p>
+          <p class="hero-lede">Lo studio di funzione è un procedimento ordinato: ogni calcolo deve produrre un’informazione verificabile sul grafico e confluire nello schema finale.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#checklist">Parti dalla checklist <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="#grafico-processo">Apri il laboratorio grafico <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="" download>Scarica la LIM <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Schema sintetico dello studio di funzione">
+          <div class="hero-card-top"><span class="status-dot"></span><span>Schema operativo</span><span class="hero-card-number">08 / 14</span></div>
+          <div class="hero-equation study-equation" aria-hidden="true"><span>dominio → segno → limiti</span><span>f′ → f″ → grafico</span></div>
+          <div class="topic-grid">
+            <span><b>01</b> Determinare il dominio</span><span><b>02</b> Localizzare gli zeri</span>
+            <span><b>03</b> Studiare le derivate</span><span><b>04</b> Integrare le informazioni</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="lesson-map section-shell" aria-labelledby="percorso-title">
+        <div class="section-heading compact-heading">
+          <div><p class="kicker">Il percorso</p><h2 id="percorso-title">Dalla funzione al grafico.</h2></div>
+          <p class="heading-note">Il grafico non si traccia in un unico passaggio: si costruisce progressivamente, aggiornandolo dopo ciascun controllo.</p>
+        </div>
+        <div class="lesson-rail" aria-label="Lezioni del corso">
+          <a class="lesson-step" href="../"><span>01</span><strong>Funzioni</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-02/"><span>02</span><strong>Limiti</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-03/"><span>03</span><strong>Equivalenze</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-04/"><span>04</span><strong>Serie</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-05/"><span>05</span><strong>Landau</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-06/"><span>06</span><strong>Derivate</strong><small>precedente</small></a>
+          <a class="lesson-step" href="../lezione-07/"><span>07</span><strong>Punti critici</strong><small>precedente</small></a>
+          <a class="lesson-step active" href="#checklist"><span>08</span><strong>Studio di funzione</strong><small>in corso</small></a>
+        </div>
+      </section>
+
+      <section class="section-shell checklist-section" id="checklist" aria-labelledby="checklist-title">
+        <div class="section-heading">
+          <div><p class="kicker">Schema di lavoro</p><h2 id="checklist-title">Checklist dello studio di funzione.</h2></div>
+          <p class="heading-note">Spunta una fase solo dopo averne registrato il risultato. La percentuale indica l’avanzamento dello schema.</p>
+        </div>
+        <div class="checklist-layout">
+          <ol class="study-checklist" aria-label="Checklist interattiva dello studio di funzione">
+            <li class="check-item" data-step="1">
+              <label class="check-label"><input type="checkbox" /><span class="check-number">01</span><span><strong>Dominio</strong><small>Determinare l’insieme <span class="math">D</span> di definizione.</small></span></label>
+              <p>Imporre le condizioni di esistenza: denominatori diversi da zero; radicandi di indice pari non negativi; argomenti dei logaritmi positivi; basi di potenze reali positive; argomenti di <span class="math">arcsin</span> e <span class="math">arccos</span> appartenenti a <span class="math">[-1,1]</span>.</p>
+              <div class="check-example"><span class="mini-label">Controllo</span><span class="math">f(x)=(x+1)/√(x−2)</span> &nbsp;⇒&nbsp; <span class="math">D=(2,+∞)</span></div>
+            </li>
+            <li class="check-item" data-step="2">
+              <label class="check-label"><input type="checkbox" /><span class="check-number">02</span><span><strong>Simmetrie, periodicità, intersezioni e segno</strong><small>Ridurre il lavoro sfruttando la struttura della funzione.</small></span></label>
+              <p>Confrontare <span class="math">f(-x)</span> con <span class="math">f(x)</span> e con <span class="math">-f(x)</span>; verificare l’eventuale periodicità; risolvere <span class="math">f(x)=0</span>, calcolare <span class="math">f(0)</span> quando definito e costruire lo studio del segno.</p>
+              <div class="check-example"><span class="mini-label">Output</span> zeri, intersezioni con gli assi e intervalli di positività/negatività.</div>
+            </li>
+            <li class="check-item" data-step="3">
+              <label class="check-label"><input type="checkbox" /><span class="check-number">03</span><span><strong>Limiti significativi e asintoti</strong><small>Esaminare estremi del dominio e direzioni infinite.</small></span></label>
+              <p>Calcolare i limiti nei punti di accumulazione del dominio e per <span class="math">x→±∞</span>. Un limite infinito individua un asintoto verticale; un limite finito all’infinito un asintoto orizzontale. Per un asintoto obliquo determinare <span class="math">m=lim f(x)/x</span> e <span class="math">q=lim(f(x)-mx)</span>.</p>
+              <div class="check-example"><span class="mini-label">Esempio</span><span class="math">(2x²+1)/x=2x+1/x</span> &nbsp;⇒&nbsp; <span class="math">y=2x</span> per <span class="math">x→±∞</span>.</div>
+            </li>
+            <li class="check-item" data-step="4">
+              <label class="check-label"><input type="checkbox" /><span class="check-number">04</span><span><strong>Derivabilità e punti non derivabili</strong><small>Calcolare <span class="math">f′</span> e controllarne il dominio.</small></span></label>
+              <p>Nei punti interni del dominio verificare sempre la derivabilità. Se necessario confrontare le derivate laterali: valori finiti diversi individuano un punto angoloso; derivate infinite di segno opposto una cuspide; derivate infinite dello stesso segno una tangente verticale.</p>
+              <div class="check-example"><span class="mini-label">Criterio</span> la continuità nel punto non implica la derivabilità.</div>
+            </li>
+            <li class="check-item" data-step="5">
+              <label class="check-label"><input type="checkbox" /><span class="check-number">05</span><span><strong>Monotonia ed estremi</strong><small>Studiare il segno di <span class="math">f′</span>.</small></span></label>
+              <p>Individuare gli zeri di <span class="math">f′</span> e i punti in cui <span class="math">f′</span> non esiste; costruire la tabella dei segni. Il passaggio <span class="math">+→−</span> segnala un massimo locale, mentre <span class="math">−→+</span> segnala un minimo locale. Su un intervallo chiuso confrontare tutti i candidati con gli estremi dell’intervallo.</p>
+              <div class="check-example"><span class="mini-label">Esempio</span><span class="math">f(x)=x^3-3x</span>: candidati <span class="math">x=±1</span>.</div>
+            </li>
+            <li class="check-item" data-step="6">
+              <label class="check-label"><input type="checkbox" /><span class="check-number">06</span><span><strong>Concavità, convessità e flessi</strong><small>Studiare il segno di <span class="math">f″</span>.</small></span></label>
+              <p>Calcolare <span class="math">f″</span> e individuare gli intervalli in cui è positiva o negativa. Un punto di flesso richiede un cambiamento di concavità; se inoltre <span class="math">f′(x<sub>0</sub>)=0</span>, il flesso ha tangente orizzontale. Concludere ricomponendo tutte le informazioni nel grafico.</p>
+              <div class="check-example"><span class="mini-label">Esempio</span><span class="math">f(x)=x^3-3x</span>: <span class="math">f″(x)=6x</span>, flesso in <span class="math">0</span>.</div>
+            </li>
+          </ol>
+          <aside class="progress-panel" aria-live="polite">
+            <p class="mini-label">Avanzamento</p>
+            <strong id="progress-value">0 / 6</strong>
+            <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+            <p id="progress-note">Lo schema è ancora vuoto: iniziare dal dominio.</p>
+            <div class="progress-rule"><span>Regola operativa</span><p>Ogni fase deve lasciare una traccia: un insieme, una tabella, un limite, una derivata o un elemento del grafico.</p></div>
+            <button class="reset-button" id="reset-checklist" type="button">↺ Azzera checklist</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-shell graph-walkthrough-section" id="grafico-processo" aria-labelledby="grafico-processo-title">
+        <div class="section-heading">
+          <div><p class="kicker">Laboratorio grafico</p><h2 id="grafico-processo-title">Dalla checklist al grafico.</h2></div>
+          <p class="heading-note">Selezionare una fase: il piano cartesiano incorpora l’informazione prodotta da quel passaggio. Il grafico della funzione compare al termine dello studio.</p>
+        </div>
+        <div class="graph-walkthrough">
+          <div class="walkthrough-controls">
+            <p class="mini-label">Funzione guida</p>
+            <div class="walk-function"><strong>f(x) = (x² − 1)/(x² − 4)</strong><span>Il modello mostra dominio, zeri, asintoti, estremi e concavità.</span></div>
+            <p class="mini-label">Fasi dello studio</p>
+            <div class="walk-steps" role="list" aria-label="Fasi progressive dello studio di funzione">
+              <button class="walk-step is-active" type="button" data-stage="1" aria-pressed="true"><span>01</span><strong>Dominio</strong><small>punti esclusi</small></button>
+              <button class="walk-step" type="button" data-stage="2" aria-pressed="false"><span>02</span><strong>Segno e intersezioni</strong><small>zeri e punto sull’asse y</small></button>
+              <button class="walk-step" type="button" data-stage="3" aria-pressed="false"><span>03</span><strong>Limiti e asintoti</strong><small>comportamento ai bordi</small></button>
+              <button class="walk-step" type="button" data-stage="4" aria-pressed="false"><span>04</span><strong>Derivabilità</strong><small>regolarità su D</small></button>
+              <button class="walk-step" type="button" data-stage="5" aria-pressed="false"><span>05</span><strong>Monotonia ed estremi</strong><small>segno di f′</small></button>
+              <button class="walk-step" type="button" data-stage="6" aria-pressed="false"><span>06</span><strong>Concavità e grafico</strong><small>segno di f″ · curva finale</small></button>
+            </div>
+            <div class="walk-status" aria-live="polite"><span class="mini-label">Informazione aggiunta</span><strong id="walk-stage-title">Dominio</strong><p id="walk-stage-note">La funzione è definita per x ≠ −2, 2.</p></div>
+          </div>
+          <div class="graph-panel walkthrough-panel">
+            <div class="graph-toolbar"><span class="legend-item"><i class="legend-line curve-line"></i> curva finale</span><span class="legend-item"><i class="legend-line guide-line"></i> informazione della fase</span><span class="formula-display" id="walk-formula">f(x) = (x² − 1)/(x² − 4)</span></div>
+            <div class="canvas-wrap study-canvas-wrap"><canvas id="study-canvas" role="img" aria-label="Piano cartesiano progressivo per lo studio della funzione f di x uguale x quadrato meno uno diviso x quadrato meno quattro"></canvas><div class="canvas-readout" id="walk-readout">Fase 1 di 6</div></div>
+            <p class="interaction-note" id="walk-caption">I punti esclusi dal dominio sono marcati sull’asse delle ascisse.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell quiz-section" id="verifica" aria-labelledby="verifica-title">
+        <div class="section-heading"><div><p class="kicker">Controllo dello schema</p><h2 id="verifica-title">Controllare l’ordine dei passaggi.</h2></div><p class="heading-note">Le domande verificano la funzione svolta da ciascuna fase nello studio completo.</p></div>
+        <div class="quiz-grid study-quiz-grid">
+          <article class="quiz-card" data-answer="b" data-explanation="La radice è al denominatore: occorre x−2&gt;0, non soltanto x−2≥0."><span class="quiz-number">01</span><h3>Condizioni di esistenza</h3><p>Qual è il dominio di <span class="math">f(x)=1/√(x−2)</span>?</p><div class="quiz-options"><button type="button" data-choice="a">A · <span class="math">[2,+∞)</span></button><button type="button" data-choice="b">B · <span class="math">(2,+∞)</span></button><button type="button" data-choice="c">C · <span class="math">ℝ∖{2}</span></button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="a" data-explanation="Un limite infinito in un punto di accumulazione del dominio produce un asintoto verticale x=x₀."><span class="quiz-number">02</span><h3>Asintoto verticale</h3><p>Quale condizione individua un asintoto verticale?</p><div class="quiz-options"><button type="button" data-choice="a">A · <span class="math">lim<sub>x→x₀</sub>f(x)=±∞</span></button><button type="button" data-choice="b">B · <span class="math">lim<sub>x→∞</sub>f(x)=0</span></button><button type="button" data-choice="c">C · <span class="math">f′(x₀)=0</span></button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="c" data-explanation="Per un asintoto obliquo si determinano prima m=lim f(x)/x e poi q=lim(f(x)-mx)."><span class="quiz-number">03</span><h3>Asintoto obliquo</h3><p>Quale coppia di limiti si deve calcolare?</p><div class="quiz-options"><button type="button" data-choice="a">A · <span class="math">lim f(x)</span> e <span class="math">lim f′(x)</span></button><button type="button" data-choice="b">B · Solo <span class="math">lim f(x)/x</span></button><button type="button" data-choice="c">C · <span class="math">m=lim f(x)/x</span> e <span class="math">q=lim(f(x)-mx)</span></button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="b" data-explanation="Derivate laterali finite e diverse descrivono un punto angoloso; la continuità può comunque sussistere."><span class="quiz-number">04</span><h3>Non derivabilità</h3><p>Come si riconosce un punto angoloso?</p><div class="quiz-options"><button type="button" data-choice="a">A · Due derivate laterali infinite opposte</button><button type="button" data-choice="b">B · Derivate laterali finite e diverse</button><button type="button" data-choice="c">C · Derivata nulla</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="a" data-explanation="Il passaggio +→− di f′ significa crescita a sinistra e decrescenza a destra: massimo locale."><span class="quiz-number">05</span><h3>Estremo locale</h3><p>Quale variazione del segno di <span class="math">f′</span> indica un massimo?</p><div class="quiz-options"><button type="button" data-choice="a">A · + → −</button><button type="button" data-choice="b">B · − → +</button><button type="button" data-choice="c">C · + → +</button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+          <article class="quiz-card" data-answer="c" data-explanation="Un flesso richiede un cambio di concavità, cioè un cambio di segno di f″, non soltanto l’annullamento di f″."><span class="quiz-number">06</span><h3>Flesso</h3><p>Quale condizione è essenziale per un punto di flesso?</p><div class="quiz-options"><button type="button" data-choice="a">A · <span class="math">f′(x₀)=0</span> sempre</button><button type="button" data-choice="b">B · <span class="math">f(x₀)=0</span></button><button type="button" data-choice="c">C · Cambio di concavità ai lati di <span class="math">x₀</span></button></div><p class="quiz-feedback" aria-live="polite"></p></article>
+        </div>
+      </section>
+
+      <section class="section-shell closing-section"><div class="closing-card"><div><p class="kicker">Sintesi operativa</p><h2>Calcolare, registrare, verificare.</h2></div><div class="closing-list"><span><b>1</b> Determinare il dominio prima di ogni altra analisi.</span><span><b>2</b> Trasformare ogni calcolo in una riga dello schema.</span><span><b>3</b> Aggiornare il grafico e controllare la coerenza globale.</span></div></div></section>
+    </main>
+    <footer class="site-footer"><div class="footer-inner"><span>Analisi 1 · Esercitazioni</span><span>Materiale didattico · Sapienza Università di Roma</span><a href="#top">torna su ↑</a></div></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
