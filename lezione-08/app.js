@@ -260,22 +260,21 @@
     }
     if (currentStage >= 4) {
       studyLabel('f derivabile su D', -3.65, -2.25, mapX, mapY, '#326772');
-      studyPoint(-3, 1.6, mapX, mapY, '', '#326772', false);
-      studyPoint(3, 1.6, mapX, mapY, '', '#326772', false);
     }
     if (currentStage >= 5) {
       studyArrow(-3.25, 1.5, -2.65, 2.25, '#326772', mapX, mapY);
       studyArrow(-1.55, -.85, -.7, .1, '#326772', mapX, mapY);
       studyArrow(.7, .1, 1.55, -.85, '#822433', mapX, mapY);
       studyArrow(2.65, 2.25, 3.25, 1.5, '#822433', mapX, mapY);
-      studyPoint(0, .25, mapX, mapY, 'max locale', '#822433', false);
+      studyPoint(0, .25, mapX, mapY, '', '#822433', false);
+      studyLabel('max locale', -1.25, .62, mapX, mapY, '#822433');
       studyLine(mapX(-.65), mapY(.25), mapX(.65), mapY(.25), '#822433', 1.8, [6, 4]);
     }
     if (currentStage >= 6) {
       drawStudyCurve(mapX, mapY, yMin, yMax, left, right, top, bottom);
       studyPoint(-1, 0, mapX, mapY, '−1', '#b99345', false);
       studyPoint(1, 0, mapX, mapY, '1', '#b99345', false);
-      studyPoint(0, .25, mapX, mapY, 'max locale', '#822433', false);
+      studyPoint(0, .25, mapX, mapY, '', '#822433', false);
     }
   }
 
